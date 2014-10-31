@@ -1,0 +1,17 @@
+#' Determine the Lethal Concentration
+#'
+#' Determine the lethal concentration for a specified level of mortality.
+#' @param pct 		A numeric vector of mortalities (in percents) for which to estimate the lethal concentration.
+#' @param b0 		A numeric vector (more commonly a scalar) giving the intercept of the dose-response curve.
+#' @param b1 		A numeric vector (more commonly a scalar) giving the slope of the dose-response curve.
+#'	x = dose (the concentration of the applied chemical on the log10 scale), 
+#'	and y, the proportion of dead individuals (on the probit scale, with 0s converted to 0.1\% and 1s converted to 99.9\%).
+#' @return 			A list with two elements: sv, a numeric vector of length two giving the starting values for the LC50\% and LC99.9\%,
+#'	and p, a numeric scalar giving the P value of the associated chi-squared statistic.
+#' @export
+#' @examples 
+#' chi2(c(10, 8, 3), c(7, 7, 7))
+
+LC <- function(pct, b0=int, b1=slope) {
+	as.numeric(10^( (probit(pct/100) - b0) / b1 ))
+	}
