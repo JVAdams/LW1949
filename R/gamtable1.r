@@ -10,7 +10,9 @@
 #'	The expected and corrected values from Table 1 are then used to build a GAM model, 
 #'	which is used as input to the \code{\link{correctval}} function.
 #' @examples
-#' gamtable1()
+#' fit <- gamtable1()
+#' summary(fit)
+#' plot(fit)
 
 gamtable1 <- function() {
 	# fit a smooth gam function to replace the table look up of Litchfield and Wilcoxon (1949) Table 1

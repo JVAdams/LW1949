@@ -18,13 +18,15 @@ A list with two elements: sv, a numeric vector of length two giving the starting
 	and p, a numeric scalar giving the P value of the associated chi-squared statistic.
 }
 \description{
-Determine starting values for the LC50\% and LC99.9\% (both on the log10 scale).
+Determine starting values for the LC50\% and LC99.9\% (both on the log10 scale) using simple linear regression on the log10 dose vs. probit effect scale.
 }
 \examples{
 test <- data.frame(
 	dose=c(0.0625, 0.125, 0.25, 0.5),
 	ntot=rep(8, 4),
-	pdead = c(0.125, 0.5, 0.5, 0.875))
+	ndead = c(1, 4, 4, 7))
+test$pdead = test$ndead/test$ntot
+test$mcat = mcat(test)
 test$ldose <- log10(test$dose)
 test$pbpdead <- probit(test$pdead)
 gamfit <- gamtable1()

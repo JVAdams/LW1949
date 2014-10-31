@@ -19,6 +19,8 @@ Note that for an expected value of 37 Table 1 gives a corrected value of 9.4, bu
 	which is used as input to the \code{\link{correctval}} function.
 }
 \examples{
-gamtable1()
+fit <- gamtable1()
+summary(fit)
+plot(fit)
 }
 

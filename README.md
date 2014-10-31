@@ -1,9 +1,8 @@
 LW1949
 ======
 
-**LW1949** is a package of functions for the [R programming language](http://www.r-project.org/).  
-**LW1949** is an automated approach to Litchfield and Wilcoxon's (1949) evaluation of dose-effect experiments.
-**LW1949** was first introduced by Adams et al. (in preparation).
+**LW1949** is a package of functions for the [R programming language](http://www.r-project.org/).  It provides an automated approach to 
+Litchfield and Wilcoxon's (1949) evaluation of dose-effect experiments. **LW1949** was first introduced by Adams et al. (in preparation).
 
 - - -
 

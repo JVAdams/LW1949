@@ -17,6 +17,11 @@
 #' 
 #' @references Adams, JV, KS Slaght, and MA Boogaard.  \emph{In preparation}.  
 #' An automated approach to Litchfield and Wilcoxon's Evaluation of Dose-Effect Experiments. 
+#' 
+#' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
+#' \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}. 
+#' Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
+#' 
 #' @name LW1949
 #' @docType package
 NULL

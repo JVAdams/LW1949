@@ -10,7 +10,7 @@
 #'	and p, a numeric scalar giving the P value of the associated chi-squared statistic.
 #' @export
 #' @examples 
-#' chi2(c(10, 8, 3), c(7, 7, 7))
+#' LC(c(16, 50, 84, 99.9), 1.700875, 2.199559)
 
 LC <- function(pct, b0=int, b1=slope) {
 	as.numeric(10^( (probit(pct/100) - b0) / b1 ))
