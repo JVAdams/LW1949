@@ -3,21 +3,25 @@
 \alias{startvals}
 \title{Determine Starting Values for LC50\% and LC99.9\%}
 \usage{
-startvals(dat, fit)
+startvals(DEdata, fit, constr = c(0.0001, 0.9999))
 }
 \arguments{
+\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+containing eight variables: dose, ntot, ndead, pdead, logdose, bitpdead, mcateg, and LWkeep.}
+
 \item{fit}{A model object that can be used to predict the corrected values (as proportions) from \code{distexpprop5},
 the distance from the expected values (as proportions) and 0.5.  Typically the output from \code{\link{gamtable1}()}.}
 
-\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
-containing eight variables: dose, ntot, ndead, pdead, logdose, bitpdead, mcateg, and LWkeep.}
+\item{constr}{A numeric vector of length two, indicating the constraints (see \code{\link{constrain}})
+applied to the proportional mortalities, default c(0.0001, 0.9999).}
 }
 \value{
 A list with two elements: sv, a numeric vector of length two giving the starting values for the LC50\% and LC99.9\%,
 	and p, a numeric scalar giving the P value of the associated chi-squared statistic.
 }
 \description{
-Determine starting values for the LC50\% and LC99.9\% (both on the log10 scale) using simple linear regression on the log10 dose vs. probit effect scale.
+Determine starting values for the LC50\% and LC99.9\% (both on the log10 scale) using simple linear regression
+	on the log10 dose vs. probit effect scale.
 }
 \examples{
 conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
@@ -25,6 +29,6 @@ numtested <- rep(8, 5)
 nmort <- c(1, 4, 4, 7, 8)
 mydat <- dataprep(dose=conc, ntot=numtested, ndead=nmort)
 gamfit <- gamtable1()
-startvals(test, gamfit)
+startvals(mydat, gamfit)
 }
 

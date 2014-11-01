@@ -4,7 +4,7 @@
 #' @param dose 	A numeric vector of chemical concentrations.
 #' @param ntot 	A numeric vector of the number of individuals that were tested at each dose.
 #' @param ndead A numeric vector of the number of individuals that died at each dose.
-#' @return 		a data frame with eight columns, seven numeric vectors and one logical vector:
+#' @return 		A data frame with eight columns (ordered by dose and pdead), seven numeric vectors and one logical vector:
 #'	dose - chemical concentrations.
 #'	ntot - the number of individuals that were tested at each dose.
 #'	ndead - the number of individuals that died at each dose.
@@ -39,7 +39,9 @@ dataprep <- function(dose, ntot, ndead) {
 	# get rid of consecutive 0% and 100%s
 	# A 1. Don't list > 2 consecutive 100% effects at the upper end or > 2 consecutive 0% effects at the lower end.
 	df$LWkeep <- keeponly(df$pdead)
-	# get rid of any zero dosages (controls)
+	# get rid of any missing doses or mortalities
+	df$LWkeep[is.na(df$dose) | is.na(df$pdead)] <- FALSE
+	# get rid of any zero doses (controls)
 	df$LWkeep[df$dose == 0] <- FALSE
 	df
 	}

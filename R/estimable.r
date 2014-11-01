@@ -11,7 +11,11 @@
 #' conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
 #' numtested <- rep(8, 5)
 #' nmort <- c(1, 4, 4, 7, 8)
-#' LWauto(dose=conc, ntot=numtested, ndead=nmort)
+#' mydat <- dataprep(dose=conc, ntot=numtested, ndead=nmort)
+#' estimable(mydat)
+#' nmort2 <- rep(4, 5)
+#' mydat2 <- dataprep(dose=conc, ntot=numtested, ndead=nmort2)
+#' estimable(mydat2)
 
 estimable <- function(DEdata) {
 	nonmiss <- !is.na(DEdata$dose) & !is.na(DEdata$pdead)

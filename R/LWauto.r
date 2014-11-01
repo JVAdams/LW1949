@@ -26,16 +26,16 @@ LWauto <- function(DEdata) {
 		gamfit <- gamtable1()
 
 		# calculate starting values for the LC50 and LC99.9 using simple linear regression
-		pms <- sum(dfsub$mcat==50)
+		pms <- sum(dfsub$mcateg==50)
 		svp <- list(sv=c(NA, NA), p=NA)
 		# fit line to partial mortalities alone
 		if(pms > 1) {
-			dfpart <- dfsub[dfsub$mcat==50, ]
+			dfpart <- dfsub[dfsub$mcateg==50, ]
 			svp <- startvals(dfpart, gamfit)
 			}
 		# fit line to partial mortalities with last 0% and first 100%
 		if(pms==1 | is.na(svp$p)) {
-			dfpart <- rbind(dfsub[dfsub$mcat==0, ][sum(dfsub$mcat==0), ], dfsub[dfsub$mcat==50, ], dfsub[dfsub$mcat==100, ][1, ])
+			dfpart <- rbind(dfsub[dfsub$mcateg==0, ][sum(dfsub$mcateg==0), ], dfsub[dfsub$mcateg==50, ], dfsub[dfsub$mcateg==100, ][1, ])
 			svp <- startvals(dfpart, gamfit)
 			}
 		# fit line to all the data
@@ -44,7 +44,7 @@ LWauto <- function(DEdata) {
 			}
 		# fit line to first 0% and last 100% alone
 		if(is.na(svp$p)) {
-			dfpart <- rbind(dfsub[dfsub$mcat==0, ][1, ], dfsub[dfsub$mcat==100, ][sum(dfsub$mcat==100), ])
+			dfpart <- rbind(dfsub[dfsub$mcateg==0, ][1, ], dfsub[dfsub$mcateg==100, ][sum(dfsub$mcateg==100), ])
 			svp <- startvals(dfpart)
 			}
 
@@ -54,8 +54,8 @@ LWauto <- function(DEdata) {
 		# C. The chi squared test
 		# find the LC50 and LC99.9 (on the log10 scale) that give the lowest p value for the chi-square
 		# find the parameters that yield the best fit in the log10dose * probit space, by maximizing the P value of the chi squared
-		estLCs <- optim(par=svp$start, fn=assessfit, dat=dfsub, fit=gamfit, control=list(fnscale=-1))$par
-		chi <- assessfit(estLCs, dat=dfsub, fit=gamfit, simple=FALSE)
+		estLCs <- optim(par=svp$start, fn=assessfit, DEdata=dfsub, fit=gamfit, control=list(fnscale=-1))$par
+		chi <- assessfit(estLCs, DEdata=dfsub, fit=gamfit, simple=FALSE)
 		if(!is.na(chi["pval"]) & chi["pval"] < 0.05) warning("Chi squared test indicates poor fit.")
 
 		# L-W

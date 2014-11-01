@@ -13,7 +13,7 @@ dataprep(dose, ntot, ndead)
 \item{ndead}{A numeric vector of the number of individuals that died at each dose.}
 }
 \value{
-a data frame with eight columns, seven numeric vectors and one logical vector:
+A data frame with eight columns (ordered by dose and pdead), seven numeric vectors and one logical vector:
 	dose - chemical concentrations.
 	ntot - the number of individuals that were tested at each dose.
 	ndead - the number of individuals that died at each dose.

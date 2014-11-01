@@ -3,15 +3,14 @@
 \alias{assessfit}
 \title{Assess Fit of Dose Response Curve}
 \usage{
-assessfit(LCs, dat, fit, simple = TRUE)
+assessfit(LCs, DEdata, fit, simple = TRUE)
 }
 \arguments{
 \item{LCs}{A numeric vector of estimated lethal concentrations on the log10 scale.
 The first element is the LC50\%, the second is the LC99.9\%.    These two points define the dose response curve.}
 
-\item{dat}{A data frame of raw toxicity data, including these four variables:
-dose (the concentration of the applied chemical), ntot (the number of individuals tested), pdead (the proportion of dead individuals),
-and mcat (mortality category =0 for none dead, =100 for all dead, and =50 for any partial mortality).}
+\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+containing at least these four variables: dose, ntot, pdead, mcateg.}
 
 \item{fit}{A model object that can be used to predict the corrected values (as proportions) from \code{distexpprop5},
 the distance from the expected values (as proportions) and 0.5.  Typically the output from \code{\link{gamtable1}()}.}
@@ -35,14 +34,12 @@ This function is used as part of a routine that attempts to find the dose respon
 	and expected values are corrected using the \code{\link{correctval}} function.
 }
 \examples{
-test <- data.frame(
-	dose=c(0.0625, 0.125, 0.25, 0.5),
-	ntot=rep(8, 4),
-	ndead = c(0, 4, 6, 8))
-test$pdead <- test$ndead/test$ntot
-test$mcat <- mcat(test)
+conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
+numtested <- rep(8, 5)
+nmort <- c(1, 4, 4, 7, 8)
+mydat <- dataprep(dose=conc, ntot=numtested, ndead=nmort)
 gamfit <- gamtable1()
-assessfit(log10(c(0.125, 0.5)), test, gamfit, simple=FALSE)
+assessfit(log10(c(0.125, 0.5)), mydat, gamfit, simple=FALSE)
 }
 \references{
 J. T. Litchfield, Jr. and F. Wilcoxon.  1949.
