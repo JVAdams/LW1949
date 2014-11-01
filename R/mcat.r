@@ -1,6 +1,6 @@
 #' Define Mortality Category
 #'
-#' Define three mortality categories, 0 for nonoe dead, 100 for all dead, and 50 for anything in between, partial mortality.
+#' Define three mortality categories, 0 for none dead, 100 for all dead, and 50 for anything in between, partial mortality.
 #' @param dat	A data frame of raw toxicity data, including these three variables:
 #'	dose (the concentration of the applied chemical), ntot (the number of individuals tested), and ndead (the number of dead individuals).
 #' @return		A numeric vector the same length as \code{prob} with quantiles on the probit scale. 

@@ -3,7 +3,7 @@
 \alias{LC}
 \title{Determine the Lethal Concentration}
 \usage{
-LC(pct, b0 = int, b1 = slope)
+LC(pct, b0, b1)
 }
 \arguments{
 \item{pct}{A numeric vector of mortalities (in percents) for which to estimate the lethal concentration.}

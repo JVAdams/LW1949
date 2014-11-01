@@ -3,14 +3,11 @@
 \alias{LWauto}
 \title{Apply Litchfield and Wilcoxon Evaluation of Dose-Effect Experiments}
 \usage{
-LWauto(dose, ntot, ndead)
+LWauto(DEdata)
 }
 \arguments{
-\item{dose}{A numeric vector of chemical concentrations.}
-
-\item{ntot}{A numeric vector of the number of individuals that were tested at each dose.}
-
-\item{ndead}{A numeric vector of the number of individuals that died at each dose.}
+\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+containing at eight variables: dose, ntot, ndead, pdead, logdose, bitpdead, mcateg, and LWkeep.}
 }
 \value{
 A list of length three:
@@ -26,6 +23,7 @@ Automatically apply Litchfield and Wilcoxon's (1949) evaluation of dose-effect e
 conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
 numtested <- rep(8, 5)
 nmort <- c(1, 4, 4, 7, 8)
-LWauto(dose=conc, ntot=numtested, ndead=nmort)
+mydat <- dataprep(dose=conc, ntot=numtested, ndead=nmort)
+LWauto(mydat)
 }
 

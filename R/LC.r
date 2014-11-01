@@ -12,6 +12,6 @@
 #' @examples 
 #' LC(c(16, 50, 84, 99.9), 1.700875, 2.199559)
 
-LC <- function(pct, b0=int, b1=slope) {
+LC <- function(pct, b0, b1) {
 	as.numeric(10^( (probit(pct/100) - b0) / b1 ))
 	}

@@ -13,7 +13,7 @@ dose (the concentration of the applied chemical), ntot (the number of individual
 A numeric vector the same length as \code{prob} with quantiles on the probit scale.
 }
 \description{
-Define three mortality categories, 0 for nonoe dead, 100 for all dead, and 50 for anything in between, partial mortality.
+Define three mortality categories, 0 for none dead, 100 for all dead, and 50 for anything in between, partial mortality.
 }
 \examples{
 test <- data.frame(

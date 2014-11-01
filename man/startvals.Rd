@@ -6,12 +6,11 @@
 startvals(dat, fit)
 }
 \arguments{
-\item{dat}{A data frame of raw toxicity data, including these two variables:
-ldose = dose (the concentration of the applied chemical on the log10 scale),
-and pbpdead, the proportion of dead individuals (on the probit scale, with 0s converted to 0.1\% and 1s converted to 99.9\%).}
-
 \item{fit}{A model object that can be used to predict the corrected values (as proportions) from \code{distexpprop5},
 the distance from the expected values (as proportions) and 0.5.  Typically the output from \code{\link{gamtable1}()}.}
+
+\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+containing eight variables: dose, ntot, ndead, pdead, logdose, bitpdead, mcateg, and LWkeep.}
 }
 \value{
 A list with two elements: sv, a numeric vector of length two giving the starting values for the LC50\% and LC99.9\%,
@@ -21,14 +20,10 @@ A list with two elements: sv, a numeric vector of length two giving the starting
 Determine starting values for the LC50\% and LC99.9\% (both on the log10 scale) using simple linear regression on the log10 dose vs. probit effect scale.
 }
 \examples{
-test <- data.frame(
-	dose=c(0.0625, 0.125, 0.25, 0.5),
-	ntot=rep(8, 4),
-	ndead = c(1, 4, 4, 7))
-test$pdead = test$ndead/test$ntot
-test$mcat = mcat(test)
-test$ldose <- log10(test$dose)
-test$pbpdead <- probit(test$pdead)
+conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
+numtested <- rep(8, 5)
+nmort <- c(1, 4, 4, 7, 8)
+mydat <- dataprep(dose=conc, ntot=numtested, ndead=nmort)
 gamfit <- gamtable1()
 startvals(test, gamfit)
 }
