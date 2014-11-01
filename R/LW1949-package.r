@@ -16,7 +16,7 @@
 #' any such warranty, and no responsibility is assumed by the USGS in connection therewith.
 #' 
 #' @references Adams, JV, KS Slaght, and MA Boogaard.  \emph{In preparation}.  
-#' An automated approach to Litchfield and Wilcoxon's Evaluation of Dose-Effect Experiments. 
+#' An automated approach to Litchfield and Wilcoxon's evaluation of dose-effect experiments. 
 #' 
 #' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
 #' \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}. 
