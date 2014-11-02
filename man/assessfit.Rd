@@ -3,14 +3,14 @@
 \alias{assessfit}
 \title{Assess Fit of Dose Response Curve}
 \usage{
-assessfit(LCs, DEdata, fit, simple = TRUE)
+assessfit(params, DEdata, fit, simple = TRUE)
 }
 \arguments{
-\item{LCs}{A numeric vector of estimated lethal concentrations on the log10 scale.
-The first element is the LC50\%, the second is the LC99.9\%.    These two points define the dose response curve.}
+\item{params}{A numeric vector of length two, with the estimated intercept and slope of the dose-effect relation on the
+log10 and probit scale.    These parameters define the dose response curve.}
 
 \item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
-containing at least these four variables: dose, ntot, pdead, mcateg.}
+containing at least these four variables: dose, ntot, pfx, fxcateg.}
 
 \item{fit}{A model object that can be used to predict the corrected values (as proportions) from \code{distexpprop5},
 the distance from the expected values (as proportions) and 0.5.  Typically the output from \code{\link{gamtable1}()}.}
@@ -18,17 +18,19 @@ the distance from the expected values (as proportions) and 0.5.  Typically the o
 \item{simple}{A logical scalar indicating if the output should be restricted just the P value, default TRUE.}
 }
 \value{
-If \code{simple=FALSE}, a vector of length three: chistat, a numeric scalar, the chi-squared statistic;
-	pval, a numeric scalar, its associated P value; and df, an integer, the degrees of freedom of \code{chistat}.
-	If \code{simple=TRUE}, a numeric scalar, the P value of the chi-squared statistic (see details).
+If \code{simple=FALSE}, a list of length two.  The first element, \code{chi}, is a numeric vector of length three:
+	chistat, the chi-squared statistic; df, the degrees of freedom of \code{chistat}; and pval, their associated P value.
+	The second element, \code{stepB}, is a matrix of three numeric vectors the same length as \code{obsn},
+	exp, expected effects; expcorr, expected effects corrected; and contrib, contributions to the chi-squared.
+	If \code{simple=TRUE}, a numeric scalar, the chi-squared statistic (see details).
 }
 \description{
 Assess the fit of a dose response curve using the chi-squared statistic.
 The curve is described by two lethal concentrations, and is represented by a straight line in the log dose vs. probit effect scale.
 }
 \details{
-This function is used as part of a routine that attempts to find the dose response curve that maximizes the
-	P value from the chi-squared statistic measuring the distance between the observed and expected values.
+This function is used as part of a routine that attempts to find the dose response curve that minimizes the
+	chi-squared statistic measuring the distance between the observed and expected values of the proportion affected.
 	Following Litchfield and Wilcoxon (1949, steps B1 and B2),
  records for any 0\% or 100\% dose with expected values < 0.01\% or > 99.99\% are deleted,
 	and expected values are corrected using the \code{\link{correctval}} function.
@@ -36,8 +38,8 @@ This function is used as part of a routine that attempts to find the dose respon
 \examples{
 conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
 numtested <- rep(8, 5)
-nmort <- c(1, 4, 4, 7, 8)
-mydat <- dataprep(dose=conc, ntot=numtested, ndead=nmort)
+nalive <- c(1, 4, 4, 7, 8)
+mydat <- dataprep(dose=conc, ntot=numtested, nfx=nalive)
 gamfit <- gamtable1()
 assessfit(log10(c(0.125, 0.5)), mydat, gamfit, simple=FALSE)
 }

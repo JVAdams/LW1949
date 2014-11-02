@@ -7,7 +7,7 @@ LWauto(DEdata)
 }
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
-containing at eight variables: dose, ntot, ndead, pdead, logdose, bitpdead, mcateg, and LWkeep.}
+containing at eight variables: dose, ntot, nfx, pfx, logdose, bitpfx, fxcateg, and LWkeep.}
 }
 \value{
 A list of length three:
@@ -20,10 +20,11 @@ A list of length three:
 Automatically apply Litchfield and Wilcoxon's (1949) evaluation of dose-effect experiments.
 }
 \examples{
-conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
+dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
 numtested <- rep(8, 5)
-nmort <- c(1, 4, 4, 7, 8)
-mydat <- dataprep(dose=conc, ntot=numtested, ndead=nmort)
+numalive <- c(1, 4, 4, 7, 8)
+mydat <- dataprep(dose=dose, ntot=numtested, nfx=numalive)
+mydat
 LWauto(mydat)
 }
 

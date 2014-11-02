@@ -11,8 +11,9 @@ chi2(obsn, expn)
 \item{expn}{A numeric vector of expected counts.}
 }
 \value{
-A numeric vector of length three: chistat, the chi-squared statistic;
-	pval, its associated P value; and df, the degrees of freedom of \code{chistat}.
+A list of length two.  The first element is a numeric vector of length three: chistat, the chi-squared statistic;
+	df, the degrees of freedom of \code{chistat}; and pval, their associated P value.
+	The second element is a numeric vector the same length as \code{obsn}, contributions to the chi-squared.
 }
 \description{
 Calculate the chi-squared statistic from observed and expected counts.

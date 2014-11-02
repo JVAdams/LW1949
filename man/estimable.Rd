@@ -7,7 +7,8 @@ estimable(DEdata)
 }
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
-containing at least two variables: dose, a numeric vector of chemical concentrations, and pdead, a numeric vector of proportional mortality at each dose.}
+containing at least two variables: dose, a numeric vector of chemical concentrations, and pfx,
+a numeric vector of proportional effects at each dose.}
 }
 \value{
 A logical scalar indicating if lethal concentrations are estimable.  If FALSE, a warning is generated.
@@ -17,16 +18,16 @@ Determine if lethal concentrations are estimable based on available dose-effect 
 }
 \details{
 Lethal concentrations are defined to be estimable (with error) if and only if there are at least three test records and
-	there is some (non-zero) variability in both the doses and the proportional mortalities.
+	there is some (non-zero) variability in both the doses and the proportional effects.
 }
 \examples{
 conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
 numtested <- rep(8, 5)
-nmort <- c(1, 4, 4, 7, 8)
-mydat <- dataprep(dose=conc, ntot=numtested, ndead=nmort)
+nalive <- c(1, 4, 4, 7, 8)
+mydat <- dataprep(dose=conc, ntot=numtested, nfx=nalive)
 estimable(mydat)
-nmort2 <- rep(4, 5)
-mydat2 <- dataprep(dose=conc, ntot=numtested, ndead=nmort2)
+nalive2 <- rep(4, 5)
+mydat2 <- dataprep(dose=conc, ntot=numtested, nfx=nalive2)
 estimable(mydat2)
 }
 

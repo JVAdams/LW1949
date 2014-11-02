@@ -6,20 +6,20 @@
 LC(pct, b0, b1)
 }
 \arguments{
-\item{pct}{A numeric vector of mortalities (in percents) for which to estimate the lethal concentration.}
+\item{pct}{A numeric vector of effects (in percents) for which to estimate the lethal concentration.}
 
 \item{b0}{A numeric vector (more commonly a scalar) giving the intercept of the dose-response curve.}
 
 \item{b1}{A numeric vector (more commonly a scalar) giving the slope of the dose-response curve.
 x = dose (the concentration of the applied chemical on the log10 scale),
-and y, the proportion of dead individuals (on the probit scale, with 0s converted to 0.1\% and 1s converted to 99.9\%).}
+and y, the proportion of affected individuals (on the probit scale, with 0s converted to 0.1\% and 1s converted to 99.9\%).}
 }
 \value{
 A list with two elements: sv, a numeric vector of length two giving the starting values for the LC50\% and LC99.9\%,
 	and p, a numeric scalar giving the P value of the associated chi-squared statistic.
 }
 \description{
-Determine the lethal concentration for a specified level of mortality.
+Determine the lethal concentration for a specified percent effect.
 }
 \examples{
 LC(c(16, 50, 84, 99.9), 1.700875, 2.199559)

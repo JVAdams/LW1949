@@ -3,24 +3,24 @@
 \alias{dataprep}
 \title{Prepare Data}
 \usage{
-dataprep(dose, ntot, ndead)
+dataprep(dose, ntot, nfx)
 }
 \arguments{
 \item{dose}{A numeric vector of chemical concentrations.}
 
 \item{ntot}{A numeric vector of the number of individuals that were tested at each dose.}
 
-\item{ndead}{A numeric vector of the number of individuals that died at each dose.}
+\item{nfx}{A numeric vector of the number of individuals that were affected at each dose.}
 }
 \value{
-A data frame with eight columns (ordered by dose and pdead), seven numeric vectors and one logical vector:
+A data frame with eight columns (ordered by dose and proportion affected), seven numeric vectors and one logical vector:
 	dose - chemical concentrations.
 	ntot - the number of individuals that were tested at each dose.
-	ndead - the number of individuals that died at each dose.
-	pdead - the proportion of individuals that died at each dose.
+	nfx - the number of individuals that were affected at each dose.
+	pfx - the proportion of individuals that were affected at each dose.
 	logdose - log transformed dose, \code{log10(dose)}.
-	bitpdead - probit transformed proportional mortality, \code{\link{probit}(pdead)}.
-	mcateg - mortality category: 0 for none dead, 100 for all dead, and 50 for any proportional mortality.
+	bitpfx - probit transformed proportional affected, \code{\link{probit}(pfx)}.
+	fxcateg - effects category: 0 for none affected, 100 for all affected, and 50 for other proportions affected.
 	LWkeep - logical vector identifying records to keep for Litchfield and Wilcoxon (1949, step A1) method.
 }
 \description{
@@ -29,8 +29,8 @@ Prepare dose-effect data for evaluation.
 \examples{
 conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
 numtested <- rep(8, 5)
-nmort <- c(1, 4, 4, 7, 8)
-dataprep(dose=conc, ntot=numtested, ndead=nmort)
+nalive <- c(1, 4, 4, 7, 8)
+dataprep(dose=conc, ntot=numtested, nfx=nalive)
 }
 \references{
 Litchfield, JT Jr. and F Wilcoxon.  1949.
