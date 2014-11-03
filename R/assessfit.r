@@ -1,7 +1,7 @@
 #' Assess Fit of Dose Response Curve
 #'
 #' Assess the fit of a dose response curve using the chi-squared statistic.
-#' The curve is described by two lethal concentrations, and is represented by a straight line in the log dose vs. probit effect scale.
+#' The curve is described by the intercept and slope of a straight line in the log dose vs. probit effect scale.
 #' @param params	A numeric vector of length two, with the estimated intercept and slope of the dose-effect relation on the
 #'	log10 and probit scale.	These parameters define the dose response curve.
 #' @param DEdata 	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
@@ -33,7 +33,7 @@
 #' assessfit(log10(c(0.125, 0.5)), mydat, gamfit, simple=FALSE)
 
 assessfit <- function(params, DEdata, fit, simple=TRUE) {
-	# calculate chi squared value from given line (defined by log10 transform of the lc50 and lc999)
+	# calculate chi squared value from given line
 	expected <- invprobit(params[1] + params[2]*log10(DEdata$dose))
 	### B1. If the expected value for any 0% or 100% dose is < 0.01% or > 99.99%, delete record
 	sel <- (expected >= 0.0001 & expected <= 0.9999) | DEdata$fxcateg==50

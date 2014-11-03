@@ -26,7 +26,7 @@ If \code{simple=FALSE}, a list of length two.  The first element, \code{chi}, is
 }
 \description{
 Assess the fit of a dose response curve using the chi-squared statistic.
-The curve is described by two lethal concentrations, and is represented by a straight line in the log dose vs. probit effect scale.
+The curve is described by the intercept and slope of a straight line in the log dose vs. probit effect scale.
 }
 \details{
 This function is used as part of a routine that attempts to find the dose response curve that minimizes the

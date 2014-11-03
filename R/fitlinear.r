@@ -16,10 +16,9 @@
 #' nalive <- c(1, 4, 4, 7, 8)
 #' mydat <- dataprep(dose=conc, ntot=numtested, nfx=nalive)
 #' gamfit <- gamtable1()
-#' DEcoef(mydat, gamfit)
+#' fitlinear(mydat, gamfit)
 
-DEcoef <- function(DEdata, fit, constr=c(0.0001, 0.9999)) {
-	# define log10(lc50) and log10(lc999) starting values
+fitlinear <- function(DEdata, fit, constr=c(0.0001, 0.9999)) {
 	cbitpfx <- constrain(DEdata$bitpfx, probit(constr))
 	lm(cbitpfx ~ logdose, data=DEdata[DEdata$LWkeep, ])$coef
 	}

@@ -10,7 +10,8 @@ Maintainer: Jean V. Adams <jvadams@usgs.gov>
 Depends:
     R (>= 3.1.0)
 Imports:
-    mgcv
+    mgcv,
+    MASS
 Description: LW1949 takes the manual approach to evaluating dose-effect
     experiments (Litchfield and Wilcoxon 1949) and automates the steps so that
     the computer can do the work.
