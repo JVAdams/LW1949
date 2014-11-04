@@ -7,7 +7,7 @@ fitprobit(DEdata)
 }
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
-containing eight variables: dose, ntot, nfx, pfx, logdose, bitpfx, fxcateg, and LWkeep.}
+containing eight variables: dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.}
 }
 \value{
 A an object of class \code{\link{glm}}.

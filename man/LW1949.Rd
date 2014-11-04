@@ -9,7 +9,7 @@
 \pkg{LW1949} was first introduced by Adams et al. (\emph{in preparation}).
 }
 \details{
-\emph{U.S. Geological Survey} (USGS) Computer Program \pkg{LW1949} version 2014-10.
+\emph{U.S. Geological Survey} (USGS) Computer Program \pkg{LW1949} version 2014-11.
 Written by Jean V. Adams, \href{http://www.glsc.usgs.gov/}{USGS - Great Lakes Science Center}, Ann Arbor, Michigan, USA.
 Written in programming language R (R Core Team, 2014, www.R-project.org), version 3.1.1 (2014-07-10).
 Run on a PC with Intel(R) Core(TM) I7-4600m CPU, 2.90 GHz processor, 16.0 GB RAM, and

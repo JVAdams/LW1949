@@ -12,7 +12,5 @@
 #' predlinear(c(16, 50, 84, 99.9), 1.700875, 2.199559)
 
 predlinear <- function(pct, b0, b1) {
-	y <- as.numeric(10^( (probit(pct/100) - b0) / b1 ))
-	names(y) <- paste0("ED", pct)
-	y
+	as.numeric(10^( (probit(pct/100) - b0) / b1 ))
 	}

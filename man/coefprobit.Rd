@@ -10,7 +10,7 @@ coefprobit(pfit)
 typically the result of a call to \code{\link{fitprobit}}.}
 }
 \value{
-A numeric vector of length three, the intercept and slope of the dose-response curve, each with 95% confidence limits.
+A numeric vector of length three, the intercept and slope of the dose-response curve, each with 95\% confidence limits.
 }
 \description{
 Calculate the coefficients from a fitted probit regression model.

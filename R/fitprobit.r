@@ -2,7 +2,7 @@
 #'
 #' Fit a probit regression to dose-effect data, using the log10 of the dose, the binomial family, and the probit link.
 #' @param DEdata	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
-#'	containing eight variables: dose, ntot, nfx, pfx, logdose, bitpfx, fxcateg, and LWkeep.
+#'	containing eight variables: dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.
 #' @return 			A an object of class \code{\link{glm}}.
 #' @export
 #' @examples 

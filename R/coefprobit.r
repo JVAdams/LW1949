@@ -3,7 +3,7 @@
 #' Calculate the coefficients from a fitted probit regression model.
 #' @param pfit 	An object of class \code{\link{glm}} representing a probit regression fit to dose-effect data, 
 #'	typically the result of a call to \code{\link{fitprobit}}.
-#' @return 		A numeric vector of length three, the intercept and slope of the dose-response curve, each with 95% confidence limits.
+#' @return 		A numeric vector of length three, the intercept and slope of the dose-response curve, each with 95\% confidence limits.
 #' @export
 #' @examples 
 #' conc <- c(0.0625, 0.125, 0.25, 0.5, 1)

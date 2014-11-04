@@ -12,7 +12,7 @@ predprobit(pct, pfit)
 typically the result of a call to \code{\link{fitprobit}}.}
 }
 \value{
-A numeric vector of length three, the effective dose and the lower and upper 95% confidence limits.
+A numeric vector of length three, the effective dose and the lower and upper 95\% confidence limits.
 }
 \description{
 Determine the effective dose for a specified percent effect from a fitted probit regression model.

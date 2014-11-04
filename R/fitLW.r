@@ -2,11 +2,11 @@
 #'
 #' Automatically apply Litchfield and Wilcoxon's (1949) evaluation of dose-effect experiments.
 #' @param DEdata 	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
-#'	containing at eight variables: dose, ntot, nfx, pfx, logdose, bitpfx, fxcateg, and LWkeep.
+#'	containing at least eight variables: dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.
 #' @return 		A list of length three:
 #'  chi = the chi-squared statistic with associated P value and degrees of freedom,
 #'  params = the estimated intercept and slope of the dose-response curve on the log10 probit scale,
-#'  LWest = the Litchfield Wilcoxon estimates of ED50 with 95% confidence intervals and other metrics used in their step-by-step approach
+#'  LWest = the Litchfield Wilcoxon estimates of ED50 with 95\% confidence intervals and other metrics used in their step-by-step approach
 #'  (ED16, ED84, S, and slope).
 #' @export
 #' @examples 
@@ -83,7 +83,7 @@ fitLW <- function(DEdata) {
 		# F. Factors for significantly heterogeneous data
 		# G. Test for parallelism of two lines and estimate of relative potency
 
-		out <- list(chi=chi, params=c(int=estparams[1], slope=estparams[2]), 
+		out <- list(chi=chi, params=estparams, 
 			LWest=c(ED50=ED50, lower=lower50, upper=upper50, ED16=ED16, ED84=ED84, S=S, Nprime=Nprime, f50=f50))
 		}
 	out

@@ -4,7 +4,7 @@
 #' @param pct 	A numeric scalar of the effect (as a percent) for which to estimate the effective dose.
 #' @param pfit 	An object of class \code{\link{glm}} representing a probit regression fit to dose-effect data, 
 #'	typically the result of a call to \code{\link{fitprobit}}.
-#' @return 		A numeric vector of length three, the effective dose and the lower and upper 95% confidence limits.
+#' @return 		A numeric vector of length three, the effective dose and the lower and upper 95\% confidence limits.
 #' @import		MASS
 #' @export
 #' @examples 
