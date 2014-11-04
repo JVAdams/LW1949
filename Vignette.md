@@ -81,4 +81,4 @@ Plot the results from the two methods:
 	abline(fp$coef, lty=2)
 	abline(fLW$params)
 
-![Dose-effect relation](https://octodex.github.com/images/yaktocat.png)
+![Dose-effect relation](https://github.com/JVAdams/LW1949/blob/master/Capture.PNG)
