@@ -25,6 +25,14 @@ dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
 numtested <- rep(8, 5)
 numalive <- c(1, 4, 4, 7, 8)
 mydat <- dataprep(dose=dose, ntot=numtested, nfx=numalive)
+# just plot the raw data
 plotDE(mydat)
+# plot the raw data and some fitted lines
+fLW <- fitLW(mydat)
+fp <- fitprobit(mydat)
+plotDE(mydat)
+abline(fp$coef, lty=2)
+abline(fLW$params)
+legend("topleft", c("LW", "Probit"), lty=c(1, 2), bg="white")
 }
 
