@@ -4,7 +4,7 @@
 \title{Plot Dose-Effect Experiments}
 \usage{
 plotDE(DEdata, xlab = "Dose", ylab = "Affected  (\%)", ylim = c(0.1,
-  99.9))
+  99.9), ...)
 }
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
@@ -16,6 +16,8 @@ containing at least five variables: dose, pfx, log10dose, bitpfx, fxcateg.}
 
 \item{ylim}{A numeric vector of length two giving the y coordinate range for affects (\%), default c(0.1, 99.9).
 Observed effects beyond this range will be plotted at the limits of this range using an open symbol.}
+
+\item{...}{Additional arguments to \code{\link{plot}}.}
 }
 \description{
 Plot the results of dose-effect experiments.

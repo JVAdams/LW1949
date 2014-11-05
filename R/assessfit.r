@@ -45,7 +45,7 @@ assessfit <- function(params, DEdata, fit, simple=TRUE) {
 	# expand contributions to chi-squared to original length
 	stepB <- matrix(NA, nrow=length(expected), ncol=3, dimnames=list(NULL, c("exp", "expcorr", "contrib")))
 	stepB[, "exp"] <- expected
-	stepB[sel, "expcorr"] <- cor.exp
+	stepB[, "expcorr"] <- cor.exp
 	stepB[sel, "contrib"] <- chilist$contrib
 	if(simple) y <- chilist$chi["chistat"] else y <- list(chi=chilist$chi, stepB=stepB)
 	y

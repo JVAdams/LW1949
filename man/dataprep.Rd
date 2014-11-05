@@ -17,6 +17,7 @@ A data frame with eight columns (ordered by dose and proportion affected), seven
 	dose - chemical concentrations.
 	ntot - the number of individuals that were tested at each dose.
 	nfx - the number of individuals that were affected at each dose.
+	rec - the record number corresponding to the input vectors \code{dose}, \code{ntot}, \code{nfx}.
 	pfx - the proportion of individuals that were affected at each dose.
 	log10dose - log transformed dose, \code{log10(dose)}.
 	bitpfx - probit transformed proportional affected, \code{\link{probit}(pfx)}.

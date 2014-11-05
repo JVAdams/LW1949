@@ -17,6 +17,30 @@ prettylog <- function(x, lead=c(1, 5)) {
 		rlxd <- unique(c(floor(lxd), ceiling(lxd)))
 		d*10^rlxd
 		}
+	xr <- range(x, na.rm=TRUE)
+	if(xr[2]/xr[1] < 10) {
+		by <- signif(diff(xr)/10, 1)
+		seq(
 	sort(unlist(lapply(lead, urd, x)))
 	}
+
+	
+x <- 1:2
+
+y <- c(0.004, 100000)
+y <- c(0.06, 1)
+y <- c(0.8, 2)
+y <- c(0.6, 2)
+
+signif(diff(y)/10, 1)
+
+ly <- log10(y)
+
+plot(x, ly, yaxt="n")
+yr <- c(floor(min(ly, na.rm=TRUE)), ceiling(max(ly, na.rm=TRUE)))
+pow <- seq(yr[1], yr[2])
+ticksat <- as.vector(sapply(pow, function(p) (1:9)*10^p))
+axis(2, pow, las=1, labels=10^pow)
+axis(2, log10(ticksat), labels=NA, tcl=-0.25, lwd=0, lwd.ticks=1)
+
 	
