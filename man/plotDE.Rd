@@ -35,6 +35,6 @@ fp <- fitprobit(mydat)
 plotDE(mydat)
 abline(fp$coef, lty=2)
 abline(fLW$params)
-legend("topleft", c("LW", "Probit"), lty=c(1, 2), bg="white")
+legend("topleft", c("Litchfield-Wilcoxon", "Probit"), lty=c(1, 2), bg="white")
 }
 

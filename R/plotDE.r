@@ -22,11 +22,11 @@
 #' plotDE(mydat)
 #' abline(fp$coef, lty=2)
 #' abline(fLW$params)
-#' legend("topleft", c("LW", "Probit"), lty=c(1, 2), bg="white")
+#' legend("topleft", c("Litchfield-Wilcoxon", "Probit"), lty=c(1, 2), bg="white")
 
 plotDE <- function(DEdata, xlab="Dose", ylab="Affected  (%)", ylim=c(0.1, 99.9), ...) {
-	# xtix <- prettylog(DEdata$dose, 1:9)
-	xtix <- axTicks(side=2, axp=c(range(pretty(DEdata$dose)), -4), log=TRUE, nintLog=Inf)
+	xtix <- prettylog(DEdata$dose, 1:9, 5)
+	# xtix <- axTicks(side=2, axp=c(range(pretty(DEdata$dose)), -4), log=TRUE, nintLog=Inf)
 
 	plot(DEdata$log10dose, DEdata$bitpfx, type="n", xlim=range(  log10( c(DEdata$dose, xtix[xtix>0]) ), na.rm=TRUE), ylim=probit(ylim/100), 
 		axes=F, xlab=xlab, ylab=ylab, ...)
