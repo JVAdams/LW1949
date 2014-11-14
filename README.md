@@ -19,6 +19,12 @@ If you don't already have `Rtools` and `devtools`, you will need to download and
 	find_rtools()
 	install.packages("devtools")
 
+An alternative approach for Windows users is to download this 
+[zip file](https://github.com/JVAdams/LW1949/raw/master/LW1949.zip)
+and install the package from the R menu:
+- Packages
+- Install package(s) from local zip files...
+	
 - - -
 
 _Thanks to Hilary Parker whose blog post 
