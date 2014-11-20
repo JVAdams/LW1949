@@ -10,8 +10,9 @@
 #'	The expected and corrected values from Table 1 are then used to build a GAM model, 
 #'	which is used as input to the \code{\link{correctval}} function.
 #' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
-#' \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}. 
+#' A simplified method of evaluating dose-effect experiments. 
 #' Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
+#' \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}. 
 #' @examples
 #' fit <- gamtable1()
 #' summary(fit)

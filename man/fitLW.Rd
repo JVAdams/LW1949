@@ -31,7 +31,8 @@ fitLW(mydat)
 }
 \references{
 Litchfield, JT Jr. and F Wilcoxon.  1949.
-\href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}.
+A simplified method of evaluating dose-effect experiments.
 Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
+\href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}.
 }
 

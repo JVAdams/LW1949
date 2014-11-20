@@ -16,8 +16,9 @@
 #'	LWkeep - logical vector identifying records to keep for Litchfield and Wilcoxon (1949, step A1) method.
 #' @export
 #' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
-#'	\href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}. 
-#'	Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
+#' A simplified method of evaluating dose-effect experiments. 
+#' Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
+#' \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}. 
 #' @examples 
 #' conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
 #' numtested <- rep(8, 5)

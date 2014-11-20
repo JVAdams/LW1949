@@ -19,8 +19,9 @@
 #' @import				tcltk
 #' @export
 #' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
-#' \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}. 
+#' A simplified method of evaluating dose-effect experiments. 
 #' Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
+#' \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}. 
 #' @details				The input data must include at least these seven columns, with these names in the header row: 
 #' \itemize{
 #'   \item \code{Test ID} = A character or numeric vector, the unique identifier for each test
