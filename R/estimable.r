@@ -1,7 +1,7 @@
 #' Determine if a Dose-Effect Relation is Estimable
 #'
 #' Determine if a dose-effect relation is estimable based on available data.
-#' @param DEdata 	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+#' @param DEdata 	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}})
 #'	containing at least two variables: dose, a numeric vector of chemical concentrations, and pfx, 
 #'	a numeric vector of proportional effects at each dose.
 #' @return 			A logical scalar indicating if a dose-effect relation is estimable.  If FALSE, a warning is generated.

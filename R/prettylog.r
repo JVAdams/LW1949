@@ -2,7 +2,7 @@
 #'
 #' Compute a sequence of "round" values which cover the range of \code{x} on the log scale. 
 #' @param x		A numeric vector.
-#' @param lead	An integer vector giving the desired lead digitis of pretty values on the log scale, default c(1, 5).
+#' @param lead	An integer vector giving the desired lead digits of pretty values on the log scale, default c(1, 5).
 #' @param extra	An integer scalar giving the desired number of additional non-log scale values to include, default 5.
 #' @return		A numeric vector of pretty values covering the range of \code{x} on the log scale.
 #' @export

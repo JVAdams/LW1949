@@ -6,25 +6,32 @@
 fitLW(DEdata)
 }
 \arguments{
-\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}})
 containing at least eight variables: dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.}
 }
 \value{
 A list of length three:
- chi = the chi-squared statistic with associated P value and degrees of freedom,
- params = the estimated intercept and slope of the dose-response curve on the log10 probit scale,
- LWest = the Litchfield Wilcoxon estimates of ED50 with 95\% confidence intervals and other metrics used in their step-by-step approach
+\itemize{
+  \item \code{chi} = the chi-squared statistic with associated P value and degrees of freedom,
+  \item \code{params} = the estimated intercept and slope of the dose-response curve on the log10 probit scale,
+  \item \code{LWest} = the Litchfield Wilcoxon estimates of ED50 with 95\% confidence intervals and other metrics used in their step-by-step approach
  (ED16, ED84, S, and slope).
+}
 }
 \description{
 Automatically apply Litchfield and Wilcoxon's (1949) evaluation of dose-effect experiments.
 }
 \examples{
 dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
-numtested <- rep(8, 5)
-numalive <- c(1, 4, 4, 7, 8)
-mydat <- dataprep(dose=dose, ntot=numtested, nfx=numalive)
+ntested <- rep(8, 5)
+nalive <- c(1, 4, 4, 7, 8)
+mydat <- dataprep(dose=dose, ntot=ntested, nfx=nalive)
 mydat
 fitLW(mydat)
+}
+\references{
+Litchfield, JT Jr. and F Wilcoxon.  1949.
+\href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}.
+Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
 }
 

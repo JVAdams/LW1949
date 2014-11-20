@@ -2,7 +2,7 @@
 #'
 #' Determine coefficients (intercept and slope) from dose-effect data using simple linear regression 
 #'	on the log10 dose vs. probit effect scale.
-#' @param DEdata 	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+#' @param DEdata 	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}})
 #'	containing eight variables: dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.
 #' @param fit		A model object that can be used to predict the corrected values (as proportions) from \code{distexpprop5}, 
 #'	the distance from the expected values (as proportions) and 0.5.  Typically the output from \code{\link{gamtable1}()}.

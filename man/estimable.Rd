@@ -6,7 +6,7 @@
 estimable(DEdata)
 }
 \arguments{
-\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}})
 containing at least two variables: dose, a numeric vector of chemical concentrations, and pfx,
 a numeric vector of proportional effects at each dose.}
 }

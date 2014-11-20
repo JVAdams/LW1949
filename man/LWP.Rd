@@ -22,31 +22,38 @@ The csv file is given the same name (plus the suffix "Smry") and is placed in th
 
 \item{showresults}{A logical scalar indicating if results should be printed to the console, default TRUE.}
 
-\item{returnresults}{A logical scalar indicating if results should be returned by the funcion, default FALSE.}
+\item{returnresults}{A logical scalar indicating if results should be returned by the function, default FALSE.}
 }
 \value{
 If \code{returnresults=TRUE}, a data frame with 11 rows per test and 2 more columns than the input data.
 	Three columns from the input data are not included (\code{TFM Conc. (mg/L)}, \code{No. Tested}, and \code{No. Dead}).
 	Five columns are added: the parameter (\code{param}), the method used (\code{method}),
-	the estimate (\code{estimate}), and the 95% confidence interval of the estimate (\code{lower95ci} and \code{upper95ci})
+	the estimate (\code{estimate}), and the 95\% confidence interval of the estimate (\code{lower95ci} and \code{upper95ci})
 }
 \description{
 User friendly evaluation of dose-effect experiments using automated Litchfield Wilcoxon (1949) and probit estimation methods.
 	This function has been tailored for non-R users with input data set up in a particular way (see Details).
 }
 \details{
-The input data must include at least these seven columns, with these names:
-"Test ID" = A character or numeric vector, the unique identifier for each test
-"Source" = A character vector, the source of the chemical
-"Batch" = A character or numeric vector, the batch of the chemical
-"Species" = A character vector, the species tested
-"TFM Conc. (mg/L)" = A numeric vector, the concentration of TFM in mg/L
-"No. Tested" = A numeric vector, the number of animals tested
-"No. Dead" = A numeric vector, the number of animals dead
+The input data must include at least these seven columns, with these names in the header row:
+\itemize{
+  \item \code{Test ID} = A character or numeric vector, the unique identifier for each test
+  \item \code{Source} = A character vector, the source of the chemical
+  \item \code{Batch} = A character or numeric vector, the batch of the chemical
+  \item \code{Species} = A character vector, the species tested
+  \item \code{TFM Conc. (mg/L)} = A numeric vector, the concentration of TFM in mg/L
+  \item \code{No. Tested} = A numeric vector, the number of animals tested
+  \item \code{No. Dead} = A numeric vector, the number of animals dead
+}
 }
 \examples{
 \dontrun{
 LWP()
 }
+}
+\references{
+Litchfield, JT Jr. and F Wilcoxon.  1949.
+\href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}.
+Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
 }
 

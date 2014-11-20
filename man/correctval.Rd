@@ -21,4 +21,9 @@ Given an expected proportion, calculate the corrected proportion using a model f
 gamfit <- gamtable1()
 correctval(c(0.37, 0.5, 0.63), gamfit)
 }
+\references{
+Litchfield, JT Jr. and F Wilcoxon.  1949.
+\href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}.
+Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
+}
 

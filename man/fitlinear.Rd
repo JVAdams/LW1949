@@ -6,7 +6,7 @@
 fitlinear(DEdata, fit, constr = c(0.0001, 0.9999))
 }
 \arguments{
-\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}})
 containing eight variables: dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.}
 
 \item{fit}{A model object that can be used to predict the corrected values (as proportions) from \code{distexpprop5},

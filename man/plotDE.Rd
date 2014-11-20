@@ -7,12 +7,12 @@ plotDE(DEdata, xlab = "Dose", ylab = "Affected  (\%)", ylim = c(0.1,
   99.9), ...)
 }
 \arguments{
-\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}})
 containing at least five variables: dose, pfx, log10dose, bitpfx, fxcateg.}
 
-\item{xlab}{A caracter scalar, the title for the dose (x) axis, default "Dose".}
+\item{xlab}{A character scalar, the title for the dose (x) axis, default "Dose".}
 
-\item{ylab}{A caracter scalar, the title for the affects (y) axis, default "Affected  (\%)".}
+\item{ylab}{A character scalar, the title for the affects (y) axis, default "Affected  (\%)".}
 
 \item{ylim}{A numeric vector of length two giving the y coordinate range for affects (\%), default c(0.1, 99.9).
 Observed effects beyond this range will be plotted at the limits of this range using an open symbol.}
@@ -24,9 +24,9 @@ Plot the results of dose-effect experiments.
 }
 \examples{
 dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
-numtested <- rep(8, 5)
-numalive <- c(1, 4, 4, 7, 8)
-mydat <- dataprep(dose=dose, ntot=numtested, nfx=numalive)
+ntested <- rep(8, 5)
+nalive <- c(1, 4, 4, 7, 8)
+mydat <- dataprep(dose=dose, ntot=ntested, nfx=nalive)
 # just plot the raw data
 plotDE(mydat)
 # plot the raw data and some fitted lines

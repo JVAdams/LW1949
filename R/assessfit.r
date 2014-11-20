@@ -4,7 +4,7 @@
 #' The curve is described by the intercept and slope of a straight line in the log dose vs. probit effect scale.
 #' @param params	A numeric vector of length two, with the estimated intercept and slope of the dose-effect relation on the
 #'	log10 and probit scale.	These parameters define the dose response curve.
-#' @param DEdata 	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+#' @param DEdata 	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}})
 #'	containing at least these four variables: dose, ntot, pfx, fxcateg.
 #' @param fit	A model object that can be used to predict the corrected values (as proportions) from \code{distexpprop5}, 
 #'	the distance from the expected values (as proportions) and 0.5.  Typically the output from \code{\link{gamtable1}()}.
@@ -21,8 +21,8 @@
 #'  records for any 0\% or 100\% dose with expected values < 0.01\% or > 99.99\% are deleted,
 #'	and expected values are corrected using the \code{\link{correctval}} function.
 #' @seealso 		\code{\link{chi2}} and \code{\link{chisq.test}}.
-#' @references J. T. Litchfield, Jr. and F. Wilcoxon.  1949. 
-#' \href{http://jpet.aspetjournals.org/content/96/2/99.short}{A simplified method of evaluating dose-effect experiments}.
+#' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
+#' \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}. 
 #' Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
 #' @examples 
 #' conc <- c(0.0625, 0.125, 0.25, 0.5, 1)

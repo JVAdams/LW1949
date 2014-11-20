@@ -8,7 +8,7 @@ prettylog(x, lead = c(1, 5), extra = 5)
 \arguments{
 \item{x}{A numeric vector.}
 
-\item{lead}{An integer vector giving the desired lead digitis of pretty values on the log scale, default c(1, 5).}
+\item{lead}{An integer vector giving the desired lead digits of pretty values on the log scale, default c(1, 5).}
 
 \item{extra}{An integer scalar giving the desired number of additional non-log scale values to include, default 5.}
 }

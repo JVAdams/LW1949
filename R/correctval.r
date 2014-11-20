@@ -7,6 +7,9 @@
 #' @return		A numeric vector of corrected values (as proportions), the same length as \code{val}.
 #' @import 		mgcv
 #' @export
+#' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
+#' \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}. 
+#' Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
 #' @examples
 #' gamfit <- gamtable1()
 #' correctval(c(0.37, 0.5, 0.63), gamfit)

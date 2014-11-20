@@ -9,7 +9,7 @@ assessfit(params, DEdata, fit, simple = TRUE)
 \item{params}{A numeric vector of length two, with the estimated intercept and slope of the dose-effect relation on the
 log10 and probit scale.    These parameters define the dose response curve.}
 
-\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}}
+\item{DEdata}{A data frame of dose-effect data (typically, the output from \code{\link{dataprep}})
 containing at least these four variables: dose, ntot, pfx, fxcateg.}
 
 \item{fit}{A model object that can be used to predict the corrected values (as proportions) from \code{distexpprop5},
@@ -44,8 +44,8 @@ gamfit <- gamtable1()
 assessfit(log10(c(0.125, 0.5)), mydat, gamfit, simple=FALSE)
 }
 \references{
-J. T. Litchfield, Jr. and F. Wilcoxon.  1949.
-\href{http://jpet.aspetjournals.org/content/96/2/99.short}{A simplified method of evaluating dose-effect experiments}.
+Litchfield, JT Jr. and F Wilcoxon.  1949.
+\href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{A simplified method of evaluating dose-effect experiments}.
 Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
 }
 \seealso{
