@@ -41,8 +41,7 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 
 	### bring in the data ###
 	# allow user to choose raw data file from menu
-	if(is.null(rawfile)) rawfile <- tk_choose.files(filters=matrix(c("csv", ".csv"), ncol=2), multi=FALSE)
-
+	if(is.null(rawfile)) rawfile <- tk_choose.files(default="*.csv", multi=FALSE)
 	# read in the data, fill in the blanks
 	rawdat <- read.csv(rawfile, as.is=TRUE)
 	rawdat2 <- data.frame(lapply(rawdat, fill))
