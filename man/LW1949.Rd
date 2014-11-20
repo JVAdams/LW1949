@@ -9,12 +9,18 @@
 \pkg{LW1949} was first introduced by Adams et al. (\emph{in preparation}).
 }
 \details{
+An example of how to use the functions in \pkg{LW1949} is given in this vignette
+\href{https://github.com/JVAdams/LW1949/blob/master/Vignette.md}{[link]}.
+Use \code{\link{dataprep}} to create a data frame with the results of a dose-effect experiment.
+Use \code{\link{fitLW}} and \code{\link{fitprobit}} to fit dose-effect relations.
+And use \code{\link{plotDE}} to plot the results.
+
 \emph{U.S. Geological Survey} (USGS) Computer Program \pkg{LW1949} version 2014-11.
-Written by Jean V. Adams, USGS - Great Lakes Science Center \href{http://www.glsc.usgs.gov/}{www.glsc.usgs.gov}, Ann Arbor, Michigan, USA.
+Written by Jean V. Adams, USGS - Great Lakes Science Center \href{http://www.glsc.usgs.gov/}{glsc.usgs.gov}, Ann Arbor, Michigan, USA.
 Written in programming language R (R Core Team, 2014, www.R-project.org), version 3.1.1 (2014-07-10).
 Run on a PC with Intel(R) Core(TM) I7-4600m CPU, 2.90 GHz processor, 16.0 GB RAM, and
 Microsoft Windows 7 Enterprise operating system 2009 Service Pack 1.
-Source code is available from Jean V. Adams on GitHub, \href{https://github.com/JVAdams/LW1949}{https://github.com/JVAdams/LW1949}, \email{jvadams@usgs.gov}.
+Source code is available from Jean V. Adams on GitHub, \href{https://github.com/JVAdams/LW1949}{github.com/JVAdams/LW1949}, \emph{jvadams (at) usgs (dot) gov}.
 
 \emph{Disclaimer:}  Although this program has been used by the USGS, no warranty, expressed or implied, is
 made by the USGS or the United States Government as to the accuracy and functioning of
