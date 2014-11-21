@@ -11,6 +11,7 @@
 #' @param saveresults	A logical scalar indicating if results should be saved to a csv file, default TRUE.
 #'	The csv file is given the same name (plus the suffix "Smry") and is placed in the same directory as the input file.
 #' @param showresults	A logical scalar indicating if results should be printed to the console, default TRUE. 
+#'	These results include the chi-squared statistic, degrees of freedom, and p-value for the Litchfield Wilcoxon method.
 #' @param returnresults	A logical scalar indicating if results should be returned by the function, default FALSE.
 #' @return 		If \code{returnresults=TRUE}, a data frame with 11 rows per test and 2 more columns than the input data.
 #'	Three columns from the input data are not included (\code{TFM Conc. (mg/L)}, \code{No. Tested}, and \code{No. Dead}).
@@ -111,9 +112,11 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 			# print the results to the screen
 			cat("\n\n\n")
 			cat(paste0("Test ", i, ":   ", descr, "\n"))
-			cat("\nLitchfield Wicoxon method\n")
+			cat("\nLitchfield Wicoxon method\n\n")
+			print(fitLW(mydat)$chi$chi)
+			cat("\n")
 			print(format(smryLW[, -2], 2, nsmall=2, digits=0), row.names=FALSE)
-			cat("\nProbit method\n")
+			cat("\nProbit method\n\n")
 			print(format(smryPr[, -2], 2, nsmall=2, digits=0), row.names=FALSE)
 			}
 

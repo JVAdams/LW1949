@@ -20,7 +20,8 @@ from 1 to \code{descrcolz}, default 4.}
 \item{saveresults}{A logical scalar indicating if results should be saved to a csv file, default TRUE.
 The csv file is given the same name (plus the suffix "Smry") and is placed in the same directory as the input file.}
 
-\item{showresults}{A logical scalar indicating if results should be printed to the console, default TRUE.}
+\item{showresults}{A logical scalar indicating if results should be printed to the console, default TRUE.
+These results include the chi-squared statistic, degrees of freedom, and p-value for the Litchfield Wilcoxon method.}
 
 \item{returnresults}{A logical scalar indicating if results should be returned by the function, default FALSE.}
 }
