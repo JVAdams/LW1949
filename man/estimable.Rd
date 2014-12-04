@@ -17,7 +17,7 @@ A logical scalar indicating if a dose-effect relation is estimable.  If FALSE, a
 Determine if a dose-effect relation is estimable based on available data.
 }
 \details{
-A dose-effect relation is defined to be estimable (with error) if and only if there are at least three test records and
+A dose-effect relation is defined to be estimable if and only if there are at least two test records and
 	there is some (non-zero) variability in both the doses and the proportional effects.
 }
 \examples{

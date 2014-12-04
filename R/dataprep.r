@@ -42,7 +42,7 @@ dataprep <- function(dose, ntot, nfx) {
 	# define records to keep for Litchfield Wilcoxon method
 	# get rid of consecutive 0% and 100%s
 	# A 1. Don't list > 2 consecutive 100% effects at the upper end or > 2 consecutive 0% effects at the lower end.
-	df$LWkeep <- keeponly(df$pfx)
+	df$LWkeep <- keeponly(100*df$pfx)
 	# get rid of any missing doses or effects
 	df$LWkeep[is.na(df$dose) | is.na(df$pfx)] <- FALSE
 	# get rid of any zero doses (controls)

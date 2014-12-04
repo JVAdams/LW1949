@@ -6,7 +6,7 @@
 #'	a numeric vector of proportional effects at each dose.
 #' @return 			A logical scalar indicating if a dose-effect relation is estimable.  If FALSE, a warning is generated.
 #' @export
-#' @details			A dose-effect relation is defined to be estimable (with error) if and only if there are at least three test records and
+#' @details			A dose-effect relation is defined to be estimable if and only if there are at least two test records and
 #'	there is some (non-zero) variability in both the doses and the proportional effects.
 #' @examples 
 #' conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
@@ -20,7 +20,7 @@
 
 estimable <- function(DEdata) {
 	nonmiss <- !is.na(DEdata$dose) & !is.na(DEdata$pfx)
-	if(sum(nonmiss) < 2.5) {
+	if(sum(nonmiss) < 1.5) {
 		out <- FALSE
 		} else {
 		out <- !(var(DEdata$dose[nonmiss]) < 0.00000001 | var(DEdata$pfx[nonmiss]) < 0.00000001)

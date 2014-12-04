@@ -42,7 +42,11 @@ assessfit <- function(params, DEdata, fit, simple=TRUE) {
 	### B2. Using the expected effect, record a corrected value for each 0 and 100% effect
 	cor.exp <- ifelse(DEdata$fxcateg==50, expected, correctval(expected, fit))
 	### C. The chi squared test
-	chilist <- chi2((DEdata$pfx*DEdata$ntot)[sel], (cor.exp*DEdata$ntot)[sel])
+	if(n < 0.5) {
+		chilist <- list(chi=c(chistat=NA, df=NA, pval=NA), contrib=NA)
+		} else {
+		chilist <- chi2((DEdata$pfx*DEdata$ntot)[sel], (cor.exp*DEdata$ntot)[sel])
+		}
 	# expand contributions to chi-squared to original length
 	stepB <- matrix(NA, nrow=length(expected), ncol=3, dimnames=list(NULL, c("exp", "expcorr", "contrib")))
 	stepB[, "exp"] <- expected

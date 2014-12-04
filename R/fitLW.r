@@ -68,7 +68,13 @@ fitLW <- function(DEdata) {
 		# find the parameters that yield the best fit in the log10dose * probit space, by minimizing the chi squared
 		estparams <- optim(par=sv, fn=assessfit, DEdata=dfsub, fit=gamfit)$par
 		chi <- assessfit(estparams, DEdata=dfsub, fit=gamfit, simple=FALSE)
-		if(!is.na(chi$chi["chistat"]) & chi$chi["pval"] < 0.05) warning("Chi squared test indicates poor fit.")
+		if(is.na(chi$chi["pval"])) {
+			warning("Chi squared test cannot be conducted when no expected values are between 0.01% and 99.99%.")
+			} else {
+			if(chi$chi["pval"] < 0.05) {
+				warning("Chi squared test indicates poor fit.")
+				}
+			}
 
 		### D1. Read from the line on the graph the dose for 16, 50, and 84% effects
 		ED16 <- as.numeric(predlinear(16, b0=estparams[1], b1=estparams[2]))
@@ -81,8 +87,14 @@ fitLW <- function(DEdata) {
 		# D4. Calculate S to the exponent for the ED50
 		f50 <- S^(2.77/sqrt(Nprime))
 		# D5. Calculate the 95% confidence limits of the ED50 as
-		upper50 <- ED50 * f50
-		lower50 <- ED50 / f50
+		if(is.finite(f50)) {
+			upper50 <- ED50 * f50
+			lower50 <- ED50 / f50
+			} else {
+			upper50 <- NA
+			lower50 <- NA
+			warning("Confidence bounds cannot be estimated when no expected values are between 16% and 84%.")
+			}
 
 		### I'm skipping the rest of the steps
 		# E. Calculate the confidence limits of S (requires mysterious Nomograph No. 3)
