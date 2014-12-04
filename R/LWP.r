@@ -69,15 +69,6 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 	# empty list in which to put results
 	results <- vector("list", length(sut))
 
-	if(showresults) {
-		# print a header to the screen
-		cat("\n\n\n")
-		cat("Rounded results are printed to the screen for convenience.\n")
-		cat("No need to copy or print them though, because they are saved in:\n")
-		cat("     ", paste(dirname, smryname, sep="/"), "\n")
-		cat('Note that "S" is the slope defined by Litchfield and Wilcoxon (1949).\n')
-		}
-
 	for(i in seq(along=sut)) {
 		df <- rawdat2[rawdat2$Test.ID==sut[i], ]
 		descr <- paste(df[1, 1:descrcolz], collapse=", ")
@@ -125,9 +116,21 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 			# plot the results to a pdf file
 			par(mar=c(4, 4, 2, 1))
 			plotDE(mydat, main=descr, ylab="Mortality  (%)")
-			abline(fp$coef, lty=2)
+			abline(fp$coef, lty=2, col="red")
 			abline(fLW$params)
-			legend("topleft", c("Litchfield Wilcoxon", "Probit"), lty=c(1, 2), bg="white")
+			# notes on graph
+			right <- 0.8 * (par("usr")[2] - par("usr")[1]) + par("usr")[1]
+			lwsel <- substring(smry$method, 1, 1)=="A"
+			rows <- match(c("ED25", "ED50", "ED99.9", "S"), smry$param[lwsel])
+			text(right, -1.2, "Litchfield Wilcoxon", font=2)
+			text(right, -seq(1.6, 2.8, 0.4), c("ED25", "ED50", "ED99.9", "LW Slope"), adj=1)
+			text(right, -seq(1.6, 2.8, 0.4), paste("  ", formatC(smry$estimate[lwsel][rows], digits=3, flag="#")), adj=0)
+			left <- 0.2 * (par("usr")[2] - par("usr")[1]) + par("usr")[1]
+			psel <- substring(smry$method, 1, 1)=="P"
+			rows <- match(c("ED25", "ED50", "ED99.9"), smry$param[psel])
+			text(left, 2.9, "Probit  (dashed)", font=2, col="red")
+			text(left, seq(2.5, 1.7, -0.4), c("ED25", "ED50", "ED99.9"), adj=1, col="red")
+			text(left, seq(2.5, 1.7, -0.4), paste("  ", formatC(smry$estimate[psel][rows], digits=3, flag="#")), adj=0, col="red")
 			}
 		}
 	if(saveplots) graphics.off()
@@ -135,4 +138,12 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 	smrydat <- do.call(rbind, results)
 	if(saveresults) write.csv(smrydat, paste(dirname, smryname, sep="/"), row.names=FALSE)
 	if(returnresults) return(smrydat) else invisible()
+	if(showresults) {
+		# print a header to the screen
+		cat("\n\n\n")
+		cat("Rounded results are printed to the screen for convenience.\n")
+		cat("No need to copy or print them though, because they are saved in:\n")
+		cat("     ", paste(dirname, smryname, sep="/"), "\n")
+		cat('Note that "S" is the slope defined by Litchfield and Wilcoxon (1949).\n')
+		}
 	}
