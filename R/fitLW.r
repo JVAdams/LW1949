@@ -7,8 +7,8 @@
 #' \itemize{
 #'   \item \code{chi} = the chi-squared statistic with associated P value and degrees of freedom,
 #'   \item \code{params} = the estimated intercept and slope of the dose-response curve on the log10 probit scale,
-#'   \item \code{LWest} = the Litchfield Wilcoxon estimates of ED50 with 95\% confidence intervals and other metrics used in their step-by-step approach
-#'  (ED16, ED84, S, and slope).
+#'   \item \code{LWest} = the Litchfield Wilcoxon estimates of ED50 with 95\% confidence intervals and other metrics used in their 
+#'	step-by-step approach (ED16, ED84, S, N', and fED50).
 #' }
 #' @export
 #' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
@@ -85,24 +85,36 @@ fitLW <- function(DEdata) {
 		# D3. Obtain Nprime, the total number of animals tested at those doses with expected effects between 16 and 84%.
 		Nprime <- sum(dfsub$ntot[dfsub$dose > ED16 & dfsub$dose < ED84])
 		# D4. Calculate S to the exponent for the ED50
-		f50 <- S^(2.77/sqrt(Nprime))
-		# D5. Calculate the 95% confidence limits of the ED50 as
-		if(is.finite(f50)) {
-			upper50 <- ED50 * f50
-			lower50 <- ED50 / f50
+		fED50 <- S^(2.77/sqrt(Nprime))
+		# D5. Calculate the 95% confidence limits of the ED50
+		if(is.finite(fED50)) {
+			upper50 <- ED50 * fED50
+			lower50 <- ED50 / fED50
 			} else {
 			upper50 <- NA
 			lower50 <- NA
 			warning("Confidence bounds cannot be estimated when no expected values are between 16% and 84%.")
 			}
 
-		### I'm skipping the rest of the steps
 		# E. Calculate the confidence limits of S (requires mysterious Nomograph No. 3)
+		# E1. Calculate the dosage range as a ratio, R
+		R <- max(dfsub$dose)/min(dfsub$dose)
+		# E2. Calculate A from equation 6 in Appendix (Nomograph 3)
+		A <- 10^( 1.1*(log10(S))^2 / log10(R) )
+		# E3. Calculate K (the number of doses) and fS (Nomograph 2)
+		K <- dim(dfsub)[1]
+		fS <- A^( 10*(K-1) / (K * sqrt(Nprime)) )
+		# E4. Calculate the 95% confidence limits of S
+		upperS <- S * fS
+		lowerS <- S / fS
+
+		### I'm skipping the rest of the steps
 		# F. Factors for significantly heterogeneous data
 		# G. Test for parallelism of two lines and estimate of relative potency
 
 		out <- list(chi=chi, params=estparams, 
-			LWest=c(ED50=ED50, lower=lower50, upper=upper50, ED16=ED16, ED84=ED84, S=S, Nprime=Nprime, f50=f50))
+			LWest=c(ED50=ED50, lower=lower50, upper=upper50, ED16=ED16, ED84=ED84, 
+				S=S, lowerS=lowerS, upperS=upperS, Nprime=Nprime, fED50=fED50, fS=fS))
 		}
 	out
 	}

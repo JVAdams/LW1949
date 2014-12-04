@@ -14,8 +14,8 @@ A list of length three:
 \itemize{
   \item \code{chi} = the chi-squared statistic with associated P value and degrees of freedom,
   \item \code{params} = the estimated intercept and slope of the dose-response curve on the log10 probit scale,
-  \item \code{LWest} = the Litchfield Wilcoxon estimates of ED50 with 95\% confidence intervals and other metrics used in their step-by-step approach
- (ED16, ED84, S, and slope).
+  \item \code{LWest} = the Litchfield Wilcoxon estimates of ED50 with 95\% confidence intervals and other metrics used in their
+	step-by-step approach (ED16, ED84, S, N', and fED50).
 }
 }
 \description{

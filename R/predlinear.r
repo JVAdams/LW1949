@@ -1,7 +1,7 @@
 #' Determine the Effective Dose from a Linear Regression Fit
 #'
 #' Determine the effective dose for a specified percent effect from the intercept and slope of a linear regression.
-#' @param pct 		A numeric vector of effects (in percents) for which to estimate the effect dose(s).
+#' @param pct 		A numeric vector of effects (in percents) for which to estimate the effective dose(s).
 #' @param b0 		A numeric vector (more commonly a scalar) giving the intercept of the dose-response curve.
 #' @param b1 		A numeric vector (more commonly a scalar) giving the slope of the dose-response curve.
 #'	x = dose (the concentration of the applied chemical on the log10 scale), 

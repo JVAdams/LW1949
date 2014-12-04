@@ -81,8 +81,9 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 		estimate <- c(fLW$params, predlinear(pctalive, fLW$params[1], fLW$params[2]), fLW$LWest["S"])
 		param <- names(estimate)
 		method <- rep("Auto Litchfield-Wilcoxon", length(param))
-		lower95ci <- c(NA, NA, NA, fLW$LWest["lower"], NA, NA)
-		upper95ci <- c(NA, NA, NA, fLW$LWest["upper"], NA, NA)
+		LWCIs <- predLWCI(pctalive[-2], estimate[c("ED25", "ED99.9")], fED50=fLW$LWest["fED50"], fS=fLW$LWest["fS"])
+		lower95ci <- c(NA, NA, LWCIs["ED25", "lowerY"], fLW$LWest["lower"], LWCIs["ED99.9", "lowerY"], fLW$LWest["lowerS"])
+		upper95ci <- c(NA, NA, LWCIs["ED25", "upperY"], fLW$LWest["upper"], LWCIs["ED99.9", "upperY"], fLW$LWest["upperS"])
 		smryLW <- data.frame(param, method, estimate, lower95ci, upper95ci)
 
 		Pr <- do.call(rbind, lapply(pctalive, predprobit, fp))

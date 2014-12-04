@@ -6,7 +6,7 @@
 predlinear(pct, b0, b1)
 }
 \arguments{
-\item{pct}{A numeric vector of effects (in percents) for which to estimate the effect dose(s).}
+\item{pct}{A numeric vector of effects (in percents) for which to estimate the effective dose(s).}
 
 \item{b0}{A numeric vector (more commonly a scalar) giving the intercept of the dose-response curve.}
 
