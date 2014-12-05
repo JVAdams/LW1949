@@ -40,6 +40,9 @@
 
 LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, saveresults=TRUE, showresults=TRUE, returnresults=FALSE) {
 
+	oldopt <- as.logical(options("stringsAsFactors"))
+	options(stringsAsFactors = FALSE)
+
 	### bring in the data ###
 	# allow user to choose raw data file from menu
 	if(is.null(rawfile)) rawfile <- tk_choose.files(default="*.csv", multi=FALSE)
@@ -147,4 +150,5 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 		cat("     ", paste(dirname, smryname, sep="/"), "\n")
 		cat('Note that "S" is the slope defined by Litchfield and Wilcoxon (1949).\n\n')
 		}
+	options(stringsAsFactors = oldopt)
 	}
