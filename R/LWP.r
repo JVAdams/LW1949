@@ -78,13 +78,11 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 		fp <- fitprobit(mydat)
 		pctalive <- c(25, 50, 99.9)
 
-		estimate <- c(fLW$params, predlinear(pctalive, fLW$params[1], fLW$params[2]), fLW$LWest["S"])
-		param <- names(estimate)
+		pm <- predlinear(pctalive, fLW)
+		estimate <- c(fLW$params, pm[, "ED"], fLW$LWest["S"])
+		param <- c(names(estimate[1:2]), paste0("ED", pctalive), "S")
 		method <- rep("Auto Litchfield-Wilcoxon", length(param))
-		LWCIs <- predLWCI(pctalive[-2], estimate[c("ED25", "ED99.9")], fED50=fLW$LWest["fED50"], fS=fLW$LWest["fS"])
-		lower95ci <- c(NA, NA, LWCIs["ED25", "lowerY"], fLW$LWest["lower"], LWCIs["ED99.9", "lowerY"], fLW$LWest["lowerS"])
-		upper95ci <- c(NA, NA, LWCIs["ED25", "upperY"], fLW$LWest["upper"], LWCIs["ED99.9", "upperY"], fLW$LWest["upperS"])
-		smryLW <- data.frame(param, method, estimate, lower95ci, upper95ci)
+		smryLW <- data.frame(param, method, estimate, lower95ci=pm[, "lower"], upper95ci=pm[, "upper"])
 
 		Pr <- do.call(rbind, lapply(pctalive, predprobit, fp))
 		cp <- coefprobit(fp)
@@ -145,6 +143,6 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 		cat("Rounded results are printed to the screen for convenience.\n")
 		cat("No need to copy or print them though, because they are saved in:\n")
 		cat("     ", paste(dirname, smryname, sep="/"), "\n")
-		cat('Note that "S" is the slope defined by Litchfield and Wilcoxon (1949).\n')
+		cat('Note that "S" is the slope defined by Litchfield and Wilcoxon (1949).\n\n')
 		}
 	}

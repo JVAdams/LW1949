@@ -77,9 +77,9 @@ fitLW <- function(DEdata) {
 			}
 
 		### D1. Read from the line on the graph the dose for 16, 50, and 84% effects
-		ED16 <- as.numeric(predlinear(16, b0=estparams[1], b1=estparams[2]))
-		ED50 <- as.numeric(predlinear(50, b0=estparams[1], b1=estparams[2]))
-		ED84 <- as.numeric(predlinear(84, b0=estparams[1], b1=estparams[2]))
+		ED16 <- predlinear(16, estparams, simple=TRUE)
+		ED50 <- predlinear(50, estparams, simple=TRUE)
+		ED84 <- predlinear(84, estparams, simple=TRUE)
 		# D2. Calculate the Litchfield and Wilcoxon (1949) slope function, S
 		S <- (ED84/ED50 + ED50/ED16) / 2
 		# D3. Obtain Nprime, the total number of animals tested at those doses with expected effects between 16 and 84%.

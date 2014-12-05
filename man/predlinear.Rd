@@ -3,24 +3,48 @@
 \alias{predlinear}
 \title{Determine the Effective Dose from a Linear Regression Fit}
 \usage{
-predlinear(pct, b0, b1)
+predlinear(pct, LWmod, simple = FALSE)
 }
 \arguments{
 \item{pct}{A numeric vector of effects (in percents) for which to estimate the effective dose(s).}
 
-\item{b0}{A numeric vector (more commonly a scalar) giving the intercept of the dose-response curve.}
+\item{LWmod}{If \code{simple=TRUE}, a numeric vector of length two giving the intercept and slope of the linear relation between
+the dose (x, the concentration of the applied chemical on the log10 scale),
+and the proportion of affected individuals (y, on the probit scale, with 0s converted to 0.1\% and 1s converted to 99.9\%).
+If \code{simple=FALSE}, a list with the results of fitting a Litchfield and Wilcoxon model to dose-effect data, the output from \code{\link{fitLW}}.}
 
-\item{b1}{A numeric vector (more commonly a scalar) giving the slope of the dose-response curve.
-x = dose (the concentration of the applied chemical on the log10 scale),
-and y, the proportion of affected individuals (on the probit scale, with 0s converted to 0.1\% and 1s converted to 99.9\%).}
+\item{simple}{A logical scalar indicating whether to carry out a simple estimation of effective doses from the intercept and slope (TRUE),
+or an estimation of effective doses with confidence intervals from the Litchfield and Wilcoxon model (default, FALSE).}
 }
 \value{
 A numeric vector the same length as \code{pct} giving the estimated dose at the specified percent effect.
+
+If \code{simple=TRUE}, a numeric vector the same length as \code{pct} with the estimated effective doses.
+	If \code{simple=FALSE}, an n*4 numeric matrix with the given effects (\code{pct}), the effective doses (\code{ED}),
+	and Litchfield and Wilcoxon's (1949) 95\% confidence intervals for the effective doses (\code{lower} and \code{upper}).
+	The number of rows of the matrix, n, is the length of \code{pct}.
 }
 \description{
 Determine the effective dose for a specified percent effect from the intercept and slope of a linear regression.
 }
+\details{
+Follows methods outlined in Litchfield and Wilcoxon (1949).
+	Specifically, for the 95\% confidence intervals, see page 105, and equation 13 in the Appendix (corresponding to Nomograph 4).
+}
 \examples{
-predlinear(c(16, 50, 84, 99.9), 1.700875, 2.199559)
+predlinear(c(16, 50, 84, 99.9), c(1.700875, 2.199559), simple=TRUE)
+
+dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
+ntested <- rep(8, 5)
+nalive <- c(1, 4, 4, 7, 8)
+mydat <- dataprep(dose=dose, ntot=ntested, nfx=nalive)
+fLW <- fitLW(mydat)
+predlinear(c(25, 50, 99.9), fLW)
+}
+\references{
+Litchfield, JT Jr. and F Wilcoxon.  1949.
+	A simplified method of evaluating dose-effect experiments.
+	Journal of Pharmacology and Experimental Therapeutics 99(2):99-113.
+	\href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}.
 }
 

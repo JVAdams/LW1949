@@ -5,15 +5,17 @@
 #' @param ntot 	A numeric vector of the number of individuals that were tested at each dose.
 #' @param nfx	A numeric vector of the number of individuals that were affected at each dose.
 #' @return 		A data frame with eight columns (ordered by dose and proportion affected), seven numeric vectors and one logical vector:
-#'	dose - chemical concentrations.
-#'	ntot - the number of individuals that were tested at each dose.
-#'	nfx - the number of individuals that were affected at each dose.
-#'	rec - the record number corresponding to the input vectors \code{dose}, \code{ntot}, \code{nfx}.
-#'	pfx - the proportion of individuals that were affected at each dose.
-#'	log10dose - log transformed dose, \code{log10(dose)}.
-#'	bitpfx - probit transformed proportional affected, \code{\link{probit}(pfx)}.
-#'	fxcateg - effects category: 0 for none affected, 100 for all affected, and 50 for other proportions affected.
-#'	LWkeep - logical vector identifying records to keep for Litchfield and Wilcoxon (1949, step A1) method.
+#' \itemize{
+#'   \item \code{dose} = chemical concentrations.
+#'   \item \code{ntot} = the number of individuals that were tested at each dose.
+#'   \item \code{nfx} = the number of individuals that were affected at each dose.
+#'   \item \code{rec} = the record number corresponding to the input vectors \code{dose}, \code{ntot}, \code{nfx}.
+#'   \item \code{pfx} = the proportion of individuals that were affected at each dose.
+#'   \item \code{log10dose} = log transformed dose, \code{log10(dose)}.
+#'   \item \code{bitpfx} = probit transformed proportional affected, \code{\link{probit}(pfx)}.
+#'   \item \code{fxcateg} = effects category: 0 for none affected, 100 for all affected, and 50 for other proportions affected.
+#'   \item \code{LWkeep} = logical vector identifying records to keep for Litchfield and Wilcoxon (1949, step A1) method.
+#' }
 #' @export
 #' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
 #' A simplified method of evaluating dose-effect experiments. 
