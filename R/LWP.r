@@ -82,7 +82,9 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 		estimate <- c(fLW$params, pm[, "ED"], fLW$LWest["S"])
 		param <- c(names(estimate[1:2]), paste0("ED", pctalive), "S")
 		method <- rep("Auto Litchfield-Wilcoxon", length(param))
-		smryLW <- data.frame(param, method, estimate, lower95ci=pm[, "lower"], upper95ci=pm[, "upper"])
+		lower95ci <- c(NA, NA, pm[1, "lower"], fLW$LWest["lower"], pm[3, "lower"], fLW$LWest["lowerS"])
+		upper95ci <- c(NA, NA, pm[1, "upper"], fLW$LWest["lower"], pm[3, "upper"], fLW$LWest["upperS"])
+		smryLW <- data.frame(param, method, estimate, lower95ci, upper95ci)
 
 		Pr <- do.call(rbind, lapply(pctalive, predprobit, fp))
 		cp <- coefprobit(fp)
