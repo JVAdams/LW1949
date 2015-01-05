@@ -14,9 +14,14 @@
 #' coefprobit(myfit)
 
 coefprobit <- function(pfit) {
-	Pint <- coef(summary(pfit))[1, 1] + c(0, -1.96, 1.96)*coef(summary(pfit))[1, 2]
+	if(pfit$converged) {
+		Pint <- coef(summary(pfit))[1, 1] + c(0, -1.96, 1.96)*coef(summary(pfit))[1, 2]
+		Pslope <- coef(summary(pfit))[2, 1] + c(0, -1.96, 1.96)*coef(summary(pfit))[2, 2]
+		} else {
+		Pint <- rep(NA, 3)
+		Pslope <- rep(NA, 3)
+		}
 	names(Pint) <- c("int", "ilower", "iupper")
-	Pslope <- coef(summary(pfit))[2, 1] + c(0, -1.96, 1.96)*coef(summary(pfit))[2, 2]
 	names(Pslope) <- c("slope", "slower", "supper")
 	c(Pint, Pslope)
 	}

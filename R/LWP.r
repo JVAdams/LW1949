@@ -86,13 +86,15 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 		param <- c(names(estimate[1:2]), paste0("ED", pctalive), "S")
 		method <- rep("Auto Litchfield-Wilcoxon", length(param))
 		lower95ci <- c(NA, NA, pm[1, "lower"], fLW$LWest["lower"], pm[3, "lower"], fLW$LWest["lowerS"])
-		upper95ci <- c(NA, NA, pm[1, "upper"], fLW$LWest["lower"], pm[3, "upper"], fLW$LWest["upperS"])
+		upper95ci <- c(NA, NA, pm[1, "upper"], fLW$LWest["upper"], pm[3, "upper"], fLW$LWest["upperS"])
 		smryLW <- data.frame(param, method, estimate, lower95ci, upper95ci)
 
 		Pr <- do.call(rbind, lapply(pctalive, predprobit, fp))
 		cp <- coefprobit(fp)
 		row.names(Pr) <- paste0("ED", pctalive)
-		estimate <- c(fp$coef, Pr[, "ED"])
+		fpc <- fp$coef
+		if(!fp$converged) fpc[1:2] <- NA
+		estimate <- c(fpc, Pr[, "ED"])
 		param <- names(estimate)
 		method <- rep("Probit", length(param))
 		lower95ci <- c(cp["ilower"], cp["slower"], Pr[, "lower"])
@@ -108,7 +110,7 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 			cat("\n\n\n")
 			cat(paste0("Test ", i, ":   ", descr, "\n"))
 			cat("\nLitchfield Wicoxon method\n\n")
-			print(fitLW(mydat)$chi$chi)
+			print(fLW$chi$chi)
 			cat("\n")
 			print(format(smryLW[, -2], 2, nsmall=2, digits=0), row.names=FALSE)
 			cat("\nProbit method\n\n")
@@ -120,7 +122,7 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE, save
 			# plot the results to a pdf file
 			par(mar=c(4, 4, 2, 1))
 			plotDE(mydat, main=descr, ylab="Mortality  (%)")
-			abline(fp$coef, lty=2, col="red")
+			if(!is.na(fpc[1])) abline(fpc, lty=2, col="red")
 			abline(fLW$params)
 			# notes on graph
 			right <- 0.8 * (par("usr")[2] - par("usr")[1]) + par("usr")[1]

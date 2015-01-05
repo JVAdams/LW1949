@@ -16,8 +16,12 @@
 #' predprobit(50, myfit)
 
 predprobit <- function(pct, pfit) {
-	logED <- dose.p(pfit, cf=1:2, p=pct/100)
-	ED <- 10^c(as.numeric(logED) + c(0, -1.96, 1.96) * as.numeric(attr(logED, "SE")))
+	if(pfit$converged) {
+		logED <- dose.p(pfit, cf=1:2, p=pct/100)
+		ED <- 10^c(as.numeric(logED) + c(0, -1.96, 1.96) * as.numeric(attr(logED, "SE")))
+		} else {
+		ED <- rep(NA, 3)
+		}
 	names(ED) <- c("ED", "lower", "upper")
 	ED
 	}

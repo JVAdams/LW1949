@@ -69,7 +69,7 @@ fitLW <- function(DEdata) {
 		estparams <- optim(par=sv, fn=assessfit, DEdata=dfsub, fit=gamfit)$par
 		chi <- assessfit(estparams, DEdata=dfsub, fit=gamfit, simple=FALSE)
 		if(is.na(chi$chi["pval"])) {
-			warning("Chi squared test cannot be conducted when no expected values are between 0.01% and 99.99%.")
+			warning("Chi squared test cannot be conducted when fewer than two expected values are between 0.01% and 99.99%.")
 			} else {
 			if(chi$chi["pval"] < 0.05) {
 				warning("Chi squared test indicates poor fit.")
