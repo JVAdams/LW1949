@@ -3,10 +3,12 @@
 \alias{fill}
 \title{Fill in Missing Values}
 \usage{
-fill(x)
+fill(x, resetwhen = rep(FALSE, length(x)))
 }
 \arguments{
 \item{x}{A vector, can be character, numeric, or logical.}
+
+\item{resetwhen}{A logical vector, the same length as \code{x}.}
 }
 \value{
 A vector the same length as \code{x}, with all NAs or ""s replace by the last value for the vector.
@@ -20,7 +22,9 @@ Similar to \code{\link[zoo]{na.locf}} in the \code{zoo} package, but works for "
 }
 \examples{
 numvec <- c(NA, 1:5, NA, NA, NA, 10:12, NA)
+newgroup <- c(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 fill(numvec)
+fill(numvec, newgroup)
 
 charvec <- c("", letters[1:5], "", "", "", letters[10:12], "")
 fill(charvec)
