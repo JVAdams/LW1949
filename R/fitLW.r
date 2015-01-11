@@ -28,6 +28,8 @@ fitLW <- function(DEdata) {
 		out <- list(chi=rep(NA, 3), params=rep(NA, 2), LWest=rep(NA, 8))
 		} else {
 		dfsub <- DEdata[DEdata$LWkeep, ]
+		df0 <- dfsub[dfsub$fxcateg==0, ]
+		df100 <- dfsub[dfsub$fxcateg==100, ]
 
 		# fit a smooth GAM function to expected and corrected values in Table 1 of Litchfield and Wilcoxon (1949)
 		gamfit <- gamtable1()
@@ -44,7 +46,7 @@ fitLW <- function(DEdata) {
 			}
 		# fit line to partial effects with last 0% and first 100%
 		if(pms==1 | is.na(svchi)) {
-			dfpart <- rbind(dfsub[dfsub$fxcateg==0, ][sum(dfsub$fxcateg==0), ], dfsub[dfsub$fxcateg==50, ], dfsub[dfsub$fxcateg==100, ][1, ])
+			dfpart <- rbind(df0[with(df0, which.max(conc)), ], dfsub[dfsub$fxcateg==50, ], df100[with(df100, which.min(conc)), ])
 			sv <- fitlinear(dfpart, gamfit)
 			svchi <- assessfit(sv, dfpart, gamfit)
 			}
@@ -55,7 +57,7 @@ fitLW <- function(DEdata) {
 			}
 		# fit line to first 0% and last 100% alone
 		if(is.na(svchi)) {
-			dfpart <- rbind(dfsub[dfsub$fxcateg==0, ][1, ], dfsub[dfsub$fxcateg==100, ][sum(dfsub$fxcateg==100), ])
+			dfpart <- rbind(df0[with(df0, which.min(conc)), ], dfsub[dfsub$fxcateg==50, ], df100[with(df100, which.max(conc)), ])
 			sv <- fitlinear(dfpart, gamfit)
 			svchi <- assessfit(sv, dfpart, gamfit)
 			}
