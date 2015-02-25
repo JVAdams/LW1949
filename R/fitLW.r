@@ -15,7 +15,7 @@
 #'       dose-response curve on the log10 probit scale,
 #'     \item \code{LWest} = the Litchfield Wilcoxon estimates of
 #'       ED50 with 95\% confidence intervals and the number of records with
-#'       partial mortalities (npartmort) as well as other metrics used in their
+#'       partial effects (npartfx) as well as other metrics used in their
 #'       step-by-step approach
 #'       (ED16, ED84, S with 95\% confidence intervals, N', and fED50).
 #'   }
@@ -38,7 +38,7 @@ fitLW <- function(DEdata) {
     out <- list(chi=rep(NA, 3), params=rep(NA, 2), LWest=rep(NA, 8))
   } else {
     dfsub <- DEdata[DEdata$LWkeep, ]
-    npartmort <- sum(dfsub$fxcateg==50)
+    npartfx <- sum(dfsub$fxcateg==50)
     df0 <- dfsub[dfsub$fxcateg==0, ]
     df100 <- dfsub[dfsub$fxcateg==100, ]
 
@@ -135,7 +135,7 @@ fitLW <- function(DEdata) {
     # G. Test for parallelism of two lines and estimate of relative potency
 
     out <- list(chi=chi, params=estparams,
-      LWest=c(ED50=ED50, lower=lower50, upper=upper50, npartmort=npartmort,
+      LWest=c(ED50=ED50, lower=lower50, upper=upper50, npartfx=npartfx,
         ED16=ED16, ED84=ED84, S=S, lowerS=lowerS, upperS=upperS,
         Nprime=Nprime, fED50=fED50, fS=fS))
   }
