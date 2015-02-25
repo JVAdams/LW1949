@@ -20,7 +20,7 @@ A list of length three:
       dose-response curve on the log10 probit scale,
     \item \code{LWest} = the Litchfield Wilcoxon estimates of
       ED50 with 95\% confidence intervals and the number of records with
-      partial mortalities (npartmort) as well as other metrics used in their
+      partial effects (npartfx) as well as other metrics used in their
       step-by-step approach
       (ED16, ED84, S with 95\% confidence intervals, N', and fED50).
   }
