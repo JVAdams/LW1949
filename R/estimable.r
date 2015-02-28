@@ -1,14 +1,20 @@
 #' Determine if a Dose-Effect Relation is Estimable
 #'
 #' Determine if a dose-effect relation is estimable based on available data.
-#' @param DEdata 	A data frame of dose-effect data (typically, the output from \code{\link{dataprep}})
-#'	containing at least two variables: dose, a numeric vector of chemical concentrations, and pfx, 
-#'	a numeric vector of proportional effects at each dose.
-#' @return 			A logical scalar indicating if a dose-effect relation is estimable.  If FALSE, a warning is generated.
+#' @param DEdata
+#'   A data frame of dose-effect data (typically, the output from
+#'     \code{\link{dataprep}}) containing at least two variables: dose,
+#'     a numeric vector of chemical concentrations, and pfx,
+#'	   a numeric vector of proportional effects at each dose.
+#' @return
+#'   A logical scalar indicating if a dose-effect relation is estimable.
+#'     If FALSE, a warning is generated.
 #' @export
-#' @details			A dose-effect relation is defined to be estimable if and only if there are at least two test records and
-#'	there is some (non-zero) variability in both the doses and the proportional effects.
-#' @examples 
+#' @details
+#'   A dose-effect relation is defined to be estimable if and only if there are
+#'     at least two test records and there is some (non-zero) variability in
+#'     both the doses and the proportional effects.
+#' @examples
 #' conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
 #' numtested <- rep(8, 5)
 #' nalive <- c(1, 4, 4, 7, 8)
@@ -20,11 +26,12 @@
 
 estimable <- function(DEdata) {
 	nonmiss <- !is.na(DEdata$dose) & !is.na(DEdata$pfx)
-	if(sum(nonmiss) < 1.5) {
+	if (sum(nonmiss) < 1.5) {
 		out <- FALSE
-		} else {
-		out <- !(var(DEdata$dose[nonmiss]) < 0.00000001 | var(DEdata$pfx[nonmiss]) < 0.00000001)
-		}
-	if(!out) warning("Does-effect relation not estimable.")
+	} else {
+		out <- !(var(DEdata$dose[nonmiss]) < 0.00000001 |
+      var(DEdata$pfx[nonmiss]) < 0.00000001)
+	}
+	if (!out) warning("Does-effect relation not estimable.")
 	out
 	}
