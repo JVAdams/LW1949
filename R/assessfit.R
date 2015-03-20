@@ -26,7 +26,7 @@
 #'     \code{df}, degrees of freedom; and
 #'     \code{pval}, P value.
 #'   The second element,
-#'   \code{stepB}, is a matrix of three numeric vectors the same length as
+#'   \code{contrib}, is a matrix of three numeric vectors the same length as
 #'     \code{obsn}:
 #'     \code{exp}, expected effects;
 #'     \code{expcorr}, expected effects corrected; and
@@ -83,7 +83,7 @@ assessfit <- function(params, DEdata, fit, simple=TRUE) {
 	if (simple) {
     y <- chilist$chi["chistat"]
     } else {
-    y <- list(chi=chilist$chi, stepB=stepB)
+    y <- list(chi=chilist$chi, contrib=stepB)
     }
 	y
 	}

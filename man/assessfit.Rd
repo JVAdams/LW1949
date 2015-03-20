@@ -30,7 +30,7 @@ If \code{simple=FALSE}, a list of length two.  The first element,
     \code{df}, degrees of freedom; and
     \code{pval}, P value.
   The second element,
-  \code{stepB}, is a matrix of three numeric vectors the same length as
+  \code{contrib}, is a matrix of three numeric vectors the same length as
     \code{obsn}:
     \code{exp}, expected effects;
     \code{expcorr}, expected effects corrected; and

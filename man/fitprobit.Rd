@@ -4,25 +4,30 @@
 \alias{fitprobit}
 \title{Fit a Probit Regression to Dose-Effect Data}
 \usage{
-fitprobit(DEdata)
+fitprobit(dat)
 }
 \arguments{
-\item{DEdata}{A data frame of dose-effect data (typically, the output from
-\code{\link{dataprep}}) containing eight variables:
-dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.}
+\item{dat}{A data frame of toxicity data, including at least three variables:
+dose (the concentration of the tested chemical),
+ntot (the number of individuals tested), and
+nfx (the number of affected individuals).}
 }
 \value{
 A an object of class \code{\link{glm}}.
 }
 \description{
-Fit a probit regression to dose-effect data, using the log10 of the dose,
-  the binomial family, and the probit link.
+Fit a probit regression to dose-effect data, using the log10 of the dose as
+  the response.
+}
+\details{
+Only those rows with \code{dose > 0}, \code{ntot > 0}, and \code{nfx >= 0}
+  are used in fitting the model.
 }
 \examples{
-conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
-numtested <- rep(8, 5)
-nalive <- c(1, 4, 4, 7, 8)
-mydat <- dataprep(dose=conc, ntot=numtested, nfx=nalive)
-fitprobit(mydat)
+toxdat <- data.frame(
+ dose=c(0.05, 0.0625, 0.125, 0.25, 0.5, 1),
+	ntot=rep(8, 6),
+	nfx = c(0, 1, 4, 4, 6, 8))
+fitprobit(toxdat)
 }
 

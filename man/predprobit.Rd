@@ -4,7 +4,7 @@
 \alias{predprobit}
 \title{Determine the Effective Dose from a Probit Regression Fit}
 \usage{
-predprobit(pct, pfit)
+predprobit(pct, pfit, alpha = 0.05, logbase = 10)
 }
 \arguments{
 \item{pct}{A numeric scalar of the effect (as a percent) for which to estimate the
@@ -13,21 +13,28 @@ effective dose.}
 \item{pfit}{An object of class \code{\link{glm}} representing a probit regression fit
 to dose-effect data, typically the result of a call to
 \code{\link{fitprobit}}.}
+
+\item{alpha}{A numeric scalar, the significance level used to generate
+100*(1 - \code{alpha})\% confidence limits, default 0.05.}
+
+\item{logbase}{A numeric or logical scalar, the base of the log transformation used for
+dose in \code{pfit}, default 10.  Use logbase=FALSE, if the dose was not
+log transformed.}
 }
 \value{
 A numeric vector of length three, the effective dose and the lower and
-  upper 95\% confidence limits.
+  upper 100*(1 - \code{alpha})\% confidence limits.
 }
 \description{
 Determine the effective dose for a specified percent effect from a fitted
   probit regression model.
 }
 \examples{
-conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
-numtested <- rep(8, 5)
-nalive <- c(1, 4, 4, 7, 8)
-mydat <- dataprep(dose=conc, ntot=numtested, nfx=nalive)
-myfit <- fitprobit(mydat)
+toxdat <- data.frame(
+ dose=c(0.05, 0.0625, 0.125, 0.25, 0.5, 1),
+ ntot=rep(8, 6),
+ nfx = c(0, 1, 4, 4, 6, 8))
+myfit <- fitprobit(toxdat)
 predprobit(50, myfit)
 }
 

@@ -17,6 +17,7 @@
 #' constrain(1:20, c(3, 19))
 
 constrain <- function(x, xrange) {
+  if(!is.numeric(x)) stop("Input vector must be numeric.")
 	x[!is.na(x) & x<xrange[1]] <- xrange[1]
 	x[!is.na(x) & x>xrange[2]] <- xrange[2]
 	x

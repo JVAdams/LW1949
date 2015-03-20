@@ -3,9 +3,9 @@
 #' Generate the index for eliminating values beyond a given maximum number of
 #'   consecutive extremes allowed.
 #' @param x
-#'   A numeric vector.
+#'   A numeric vector, with no missing values.
 #' @param extremes
-#'   A numeric vector of length two, boundary limits of numeric vector,
+#'   A numeric vector of length two giving the boundary limits for \code{x},
 #'     default c(0, 100).
 #' @param nconsec
 #'   An integer scalar, the maximum number of consecutive extreme values
@@ -19,14 +19,15 @@
 #' vec[keeponly(vec)]
 #' # the original vector need not be ordered
 #' vec <- c(100, 4, 100, 4, 0, 100, 0, 4, 0, 100)
-#' vec[keeponly(vec)]
+#' keeponly(vec)
 
 keeponly <- function(x, extremes=c(0, 100), nconsec=2) {
+  if(any(is.na(x))) stop("No missing values allowed in x.")
 	ord <- order(x)
 	orderedx <- x[ord]
-	hi <- orderedx==extremes[2]
+  hi <- sapply(orderedx, all.equal, extremes[2])=="TRUE"
 	selnohi <- cumsum(hi) <= nconsec
-	lo <- rev(orderedx==extremes[1])
+  lo <- rev(sapply(orderedx, all.equal, extremes[1])=="TRUE")
 	selnolo <- rev(cumsum(lo) <= nconsec)
 	ko <- selnolo & selnohi
 	ko[order(ord)]

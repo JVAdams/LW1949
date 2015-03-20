@@ -7,9 +7,9 @@
 keeponly(x, extremes = c(0, 100), nconsec = 2)
 }
 \arguments{
-\item{x}{A numeric vector.}
+\item{x}{A numeric vector, with no missing values.}
 
-\item{extremes}{A numeric vector of length two, boundary limits of numeric vector,
+\item{extremes}{A numeric vector of length two giving the boundary limits for \code{x},
 default c(0, 100).}
 
 \item{nconsec}{An integer scalar, the maximum number of consecutive extreme values
@@ -28,6 +28,6 @@ vec <- c(0, 0, 0, 4, 4, 4, 100, 100, 100, 100)
 vec[keeponly(vec)]
 # the original vector need not be ordered
 vec <- c(100, 4, 100, 4, 0, 100, 0, 4, 0, 100)
-vec[keeponly(vec)]
+keeponly(vec)
 }
 

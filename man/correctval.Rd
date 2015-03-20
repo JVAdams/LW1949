@@ -2,26 +2,25 @@
 % Please edit documentation in R/correctval.R
 \name{correctval}
 \alias{correctval}
-\title{Predict the corrected proportion using a model fit of Table 1 of Litchfield
-  and Wilcoxon (1949)}
+\title{Predict the Corrected Proportional Effect}
 \usage{
 correctval(val, fit)
 }
 \arguments{
-\item{val}{A numeric vector of expected values (as proportions).}
+\item{val}{A numeric vector of expected effects (as proportions).}
 
-\item{fit}{A model object that can be used to predict the corrected values
+\item{fit}{A model object to be used to predict the "corrected" effects
 (as proportions) from \code{distexpprop5}, the distance from the expected
-values (as proportions) and 0.5.  Typically the output from
+effects (as proportions) and 0.5.  Typically the output from
 \code{\link{gamtable1}()}.}
 }
 \value{
-A numeric vector of corrected values (as proportions),
+A numeric vector of corrected effects (as proportions),
     the same length as \code{val}.
 }
 \description{
-Given an expected proportion, calculate the corrected proportion using a
-  model fit of Table 1 of Litchfield and Wilcoxon (1949).
+Given an expected proportional effect, calculate the "corrected" proportional
+  effect using a model fit of Litchfield and Wilcoxon's (1949) Table 1.
 }
 \examples{
 gamfit <- gamtable1()
