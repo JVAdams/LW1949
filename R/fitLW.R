@@ -34,8 +34,15 @@
 #' fitLW(mydat)
 
 fitLW <- function(DEdata) {
+  if (!is.data.frame(DEdata)) stop("DEdata must be a data frame.")
+  if (any(is.na(match(c("dose", "ntot", "nfx", "pfx", "log10dose", "bitpfx",
+    "fxcateg", "LWkeep"), names(DEdata))))) {
+    stop("DEdata must include at least eight variables:",
+      "dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, LWkeep.")
+  }
   if (!estimable(DEdata)) {
     out <- list(chi=rep(NA, 3), params=rep(NA, 2), LWest=rep(NA, 8))
+    warning("Dose-effect relation not estimable.")
   } else {
     dfsub <- DEdata[DEdata$LWkeep, ]
     npartfx <- sum(dfsub$fxcateg==50)

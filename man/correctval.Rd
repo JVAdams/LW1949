@@ -10,8 +10,8 @@ correctval(val, fit)
 \item{val}{A numeric vector of expected effects (as proportions).}
 
 \item{fit}{A model object to be used to predict the "corrected" effects
-(as proportions) from \code{distexpprop5}, the distance from the expected
-effects (as proportions) and 0.5.  Typically the output from
+(as proportions) from \code{distexpprop5}, the distance between the
+expected effects (as proportions) and 0.5.  Typically the output from
 \code{\link{gamtable1}()}.}
 }
 \value{

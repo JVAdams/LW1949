@@ -8,12 +8,12 @@ fitlinear(DEdata, fit, constr = c(1e-04, 0.9999))
 }
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from
-\code{\link{dataprep}}) containing eight variables:
-dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.}
+\code{\link{dataprep}}) containing at least three variables:
+log10dose, bitpfx, and LWkeep.}
 
 \item{fit}{A model object that can be used to predict the corrected values
  (as proportions) from \code{distexpprop5},
-   the distance from the expected values (as proportions) and 0.5.
+   the distance between the expected values (as proportions) and 0.5.
 Typically the output from \code{\link{gamtable1}()}.}
 
 \item{constr}{A numeric vector of length two, indicating the constraints

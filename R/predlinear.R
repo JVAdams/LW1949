@@ -51,6 +51,19 @@
 #' predlinear(c(25, 50, 99.9), fLW)
 
 predlinear <- function(pct, LWmod, simple=FALSE) {
+  if (!is.numeric(pct) | is.na(pct)) {
+    stop("pct must be a non-missing numeric vector.")
+  }
+  if (pct <= 0 | pct >= 100) stop("pct must be between 0 and 100.")
+  if (!is.logical(simple) | length(simple)!=1) {
+    stop("simple must be a logical scalar.")
+  }
+  if (simple & (!is.numeric(LWmod) | length(LWmod)!=2)) {
+    stop("LWmod must be a numeric vector of length 2 when simple=TRUE.")
+  }
+  if (!simple & (!is.list(LWmod) | length(LWmod)!=3)) {
+    stop("LWmod must be a list of length 3 when simple=FALSE.")
+  }
 	if (simple) {
 		b0 <- LWmod[1]
 		b1 <- LWmod[2]

@@ -20,14 +20,16 @@
 #' cbind(toxdat, fxcat(toxdat))
 
 fxcat <- function(dat) {
-  if(!is.data.frame(dat)) stop("Input must be a data frame.")
-  if(any(is.na(match(c("ntot", "nfx"), names(dat))))) {
+  if (!is.data.frame(dat)) stop("Input must be a data frame.")
+  if (any(is.na(match(c("ntot", "nfx"), names(dat))))) {
     stop("Input must include at least two variables: ntot, nfx")
   }
 	categ <- rep(50, dim(dat)[1])
-	categ[subdex(dat, nfx==0)] <- 0
-	categ[subdex(dat, ntot==nfx)] <- 100
+	categ[with(dat, !is.na(nfx) & nfx==0)] <- 0
+	categ[with(dat, !is.na(ntot) & !is.na(nfx) & ntot==nfx)] <- 100
   categ[with(dat, is.na(ntot) | is.na(nfx))] <- NA
-  categ[subdex(dat, nfx>ntot | nfx<0 | ntot<1)] <- NA
+  categ[with(dat, (!is.na(nfx) & !is.na(ntot) & nfx>ntot) |
+      (!is.na(nfx) & nfx<0) |
+      (!is.na(ntot) & ntot<1))] <- NA
 	as.integer(categ)
 	}

@@ -8,7 +8,6 @@
 #'	   a numeric vector of proportional effects at each dose.
 #' @return
 #'   A logical scalar indicating if a dose-effect relation is estimable.
-#'     If FALSE, a warning is generated.
 #' @export
 #' @details
 #'   A dose-effect relation is defined to be estimable if and only if there are
@@ -25,6 +24,10 @@
 #' estimable(mydat2)
 
 estimable <- function(DEdata) {
+  if (!is.data.frame(DEdata)) stop("DEdata must be a data frame.")
+  if (any(is.na(match(c("dose", "pfx"), names(DEdata))))) {
+    stop("DEdata must include at least two variables: dose, pfx.")
+  }
 	nonmiss <- !is.na(DEdata$dose) & !is.na(DEdata$pfx)
 	if (sum(nonmiss) < 1.5) {
 		out <- FALSE
@@ -32,6 +35,5 @@ estimable <- function(DEdata) {
 		out <- !(var(DEdata$dose[nonmiss]) < 0.00000001 |
       var(DEdata$pfx[nonmiss]) < 0.00000001)
 	}
-	if (!out) warning("Does-effect relation not estimable.")
 	out
 	}

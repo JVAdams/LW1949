@@ -2,7 +2,7 @@
 #'
 #' Prepare dose-effect data for evaluation.
 #' @param dose
-#'   A numeric vector of chemical concentrations.
+#'   A numeric vector of unique, chemical concentrations.
 #' @param ntot
 #'   A numeric vector of the number of individuals that were tested at each
 #'     dose.
@@ -43,6 +43,13 @@
 #' dataprep(dose=conc, ntot=numtested, nfx=nalive)
 
 dataprep <- function(dose, ntot, nfx) {
+  if (!is.numeric(dose) | !is.numeric(ntot) | !is.numeric(nfx)) {
+    stop("All inputs must be numeric vectors")
+  }
+  dose.nona <- dose[!is.na(dose)]
+  if (sum(duplicated(dose.nona))>0) {
+    stop("dose should be a vector of unique values, with no duplicates")
+  }
 	# create a data frame
 	df <- data.frame(dose=dose, ntot=ntot, nfx=nfx)
 	# assign row number

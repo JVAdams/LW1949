@@ -7,7 +7,7 @@
 dataprep(dose, ntot, nfx)
 }
 \arguments{
-\item{dose}{A numeric vector of chemical concentrations.}
+\item{dose}{A numeric vector of unique, chemical concentrations.}
 
 \item{ntot}{A numeric vector of the number of individuals that were tested at each
 dose.}

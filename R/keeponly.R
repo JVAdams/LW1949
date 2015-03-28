@@ -22,7 +22,7 @@
 #' keeponly(vec)
 
 keeponly <- function(x, extremes=c(0, 100), nconsec=2) {
-  if(any(is.na(x))) stop("No missing values allowed in x.")
+  if (any(is.na(x))) stop("No missing values allowed in x.")
 	ord <- order(x)
 	orderedx <- x[ord]
   hi <- sapply(orderedx, all.equal, extremes[2])=="TRUE"

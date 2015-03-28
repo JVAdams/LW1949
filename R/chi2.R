@@ -20,14 +20,14 @@
 #' chi2(c(10, 8, 3), c(7, 7, 7))
 
 chi2 <- function(obsn, expn) {
-  if(!is.numeric(obsn) | !is.numeric(expn)) {
+  if (!is.numeric(obsn) | !is.numeric(expn)) {
     stop("Inputs must be numeric.")
   }
-  if(any((!is.na(obsn) & obsn < 0) | (!is.na(expn) & expn <= 0))) {
+  if (any((!is.na(obsn) & obsn < 0) | (!is.na(expn) & expn <= 0))) {
     stop("Inputs must be positive.")
   }
   sel <- !is.na(obsn) & !is.na(expn)
-  if(sum(sel) < 1) stop("No non-missing data provided.")
+  if (sum(sel) < 1) stop("No non-missing data provided.")
   obsn <- obsn[sel]
   expn <- expn[sel]
 	contrib <- (obsn - expn)^2 / expn

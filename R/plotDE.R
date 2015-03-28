@@ -38,6 +38,23 @@
 
 plotDE <- function(DEdata, xlab="Dose", ylab="Affected  (%)",
   ylim=c(0.1, 99.9), ...) {
+  if (!is.data.frame(DEdata)) stop("DEdata must be a data frame.")
+  if (any(is.na(match(c("dose", "pfx", "log10dose", "bitpfx", "fxcateg"),
+    names(DEdata))))) {
+    stop("DEdata must include at least five variables:",
+      "dose, pfx, log10dose, bitpfx, fxcateg.")
+  }
+  if (!is.character(xlab) | length(xlab)!=1) {
+    stop("xlab must be a character scalar")
+  }
+  if (!is.character(ylab) | length(ylab)!=1) {
+    stop("ylab must be a character scalar")
+  }
+  if (!is.numeric(ylim) | length(ylim)!=2) {
+    stop("ylim must be a numeric vector of length 2.")
+  }
+  if (any(ylim <= 0) | any(ylim >= 100)) stop("ylim must be between 0 and 100.")
+
 	xtix <- prettylog(DEdata$dose, 1:9, 5)
 	# xtix <- axTicks(side=2, axp=c(range(pretty(DEdata$dose)), -4), log=TRUE,
   #   nintLog=Inf)

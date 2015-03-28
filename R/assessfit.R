@@ -13,11 +13,11 @@
 #'   ntot, pfx, fxcateg.
 #' @param fit
 #'   A model object that can be used to predict the corrected values
-#'   (as proportions) from \code{distexpprop5}, the distance from the expected
-#'   values (as proportions) and 0.5.  Typically, the output from
+#'   (as proportions) from \code{distexpprop5}, the distance between the
+#'   expected values (as proportions) and 0.5.  Typically, the output from
 #'   \code{\link{gamtable1}()}.
 #' @param simple
-#'   A logical scalar indicating if the output should be restricted
+#'   A logical scalar indicating if the output should be restricted to
 #'   just the P value, default TRUE.
 #' @return
 #'   If \code{simple=FALSE}, a list of length two.  The first element,
@@ -59,21 +59,35 @@
 #' assessfit(log10(c(0.125, 0.5)), mydat, gamfit, simple=FALSE)
 
 assessfit <- function(params, DEdata, fit, simple=TRUE) {
+  if (length(params) != 2 | !is.numeric(params)) {
+    stop("params must be a numeric vector of length 2")
+  }
+  if (!is.data.frame(DEdata)) stop("DEdata must be a data frame.")
+  if (any(is.na(match(c("dose", "ntot", "pfx", "fxcateg"), names(DEdata))))) {
+    stop("DEdata must include at least four variables:",
+      "dose, ntot, pfx, fxcateg.")
+  }
+  if (length(simple) != 1 | !is.logical(simple)) {
+    stop("simple must be a logical scalar")
+  }
+
 	# calculate chi squared value from given line
 	expected <- invprobit(params[1] + params[2]*log10(DEdata$dose))
 	### B1. If the expected value for any 0% or 100% dose is < 0.01% or > 99.99%,
   # delete record
-	sel <- (expected >= 0.0001 & expected <= 0.9999) | DEdata$fxcateg==50
+	sel <- (!is.na(expected) & expected >= 0.0001 & expected <= 0.9999) |
+    (!is.na(DEdata$fxcateg) & DEdata$fxcateg==50)
 	n <- sum(sel)
 	### B2. Using the expected effect, record a corrected value for each
   # 0 and 100% effect
 	cor.exp <- ifelse(DEdata$fxcateg==50, expected, correctval(expected, fit))
 	### C. The chi squared test
 	if (n < 0.5) {
-  chilist <- list(chi=c(chistat=NA, df=NA, pval=NA), contrib=NA)
+    chilist <- list(chi=c(chistat=NA, df=NA, pval=NA), contrib=NA)
   } else {
-  chilist <- chi2((DEdata$pfx*DEdata$ntot)[sel], (cor.exp*DEdata$ntot)[sel])
+    chilist <- chi2((DEdata$pfx*DEdata$ntot)[sel], (cor.exp*DEdata$ntot)[sel])
   }
+
 	# expand contributions to chi-squared to original length
 	stepB <- matrix(NA, nrow=length(expected), ncol=3,
     dimnames=list(NULL, c("exp", "expcorr", "contrib")))
@@ -82,8 +96,8 @@ assessfit <- function(params, DEdata, fit, simple=TRUE) {
 	stepB[sel, "contrib"] <- chilist$contrib
 	if (simple) {
     y <- chilist$chi["chistat"]
-    } else {
+  } else {
     y <- list(chi=chilist$chi, contrib=stepB)
-    }
+  }
 	y
-	}
+}

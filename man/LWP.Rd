@@ -5,16 +5,17 @@
 \title{User Friendly Evaluation of Dose-Effect Experiments using Litchfield-Wilcoxon
 and Probit Methods}
 \usage{
-LWP(rawfile = NULL, descrcolz = 4, saveplots = TRUE, showplots = FALSE,
-  saveresults = TRUE, showresults = TRUE, returnresults = FALSE)
+LWP(rawfile = NULL, descrcolz = 1:4, saveplots = TRUE,
+  showplots = FALSE, saveresults = TRUE, showresults = TRUE,
+  returnresults = FALSE)
 }
 \arguments{
 \item{rawfile}{A character scalar specifying the path of the input data as a csv file.
 If NULL, default, the user will be prompted to browse to a file using a
 menu.}
 
-\item{descrcolz}{A numeric scalar, the number of columns to use as the description of the
-test, from 1 to \code{descrcolz}, default 4.}
+\item{descrcolz}{A numeric vector, the column numbers to use as the description of the
+test, default 1:4.}
 
 \item{saveplots}{A logical scalar indicating if plots should be saved to a pdf file,
 default TRUE.}

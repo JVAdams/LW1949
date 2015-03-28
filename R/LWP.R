@@ -10,8 +10,8 @@
 #'     If NULL, default, the user will be prompted to browse to a file using a
 #'     menu.
 #' @param descrcolz
-#'   A numeric scalar, the number of columns to use as the description of the
-#'     test, from 1 to \code{descrcolz}, default 4.
+#'   A numeric vector, the column numbers to use as the description of the
+#'     test, default 1:4.
 #' @param saveplots
 #'   A logical scalar indicating if plots should be saved to a pdf file,
 #'     default TRUE.
@@ -67,8 +67,26 @@
 #' LWP()
 #' }
 
-LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE,
+LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
   saveresults=TRUE, showresults=TRUE, returnresults=FALSE) {
+  if (sum(abs(as.integer(descrcolz) - descrcolz))>0) {
+    stop("descrcolz must be a vector of integers.")
+  }
+  if (!is.logical(saveplots) | length(saveplots)!=1) {
+    stop("saveplots must be a logical scalar.")
+  }
+  if (!is.logical(showplots) | length(showplots)!=1) {
+    stop("showplots must be a logical scalar.")
+  }
+  if (!is.logical(saveresults) | length(saveresults)!=1) {
+    stop("saveresults must be a logical scalar.")
+  }
+  if (!is.logical(showresults) | length(showresults)!=1) {
+    stop("showresults must be a logical scalar.")
+  }
+  if (!is.logical(returnresults) | length(returnresults)!=1) {
+    stop("returnresults must be a logical scalar.")
+  }
 
 	oldopt <- as.logical(options("stringsAsFactors"))
 	options(stringsAsFactors = FALSE)
@@ -81,6 +99,11 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE,
 	rawdat2 <- data.frame(lapply(rawdat, fill))
 	rawcolz <- match(c("TFM.Conc...mg.L.", "No..Tested", "No..Dead"),
     names(rawdat2))
+
+  if (any(descrcolz<1) | any(descrcolz>dim(rawdat)[2])) {
+    stop("descrcolz should contain integers between 1 and ",
+      dim(rawdat)[2], ".")
+  }
 
 	# use the input filename to name the output files
 	filesegs <- strsplit(rawfile, "/")[[1]]
@@ -105,7 +128,7 @@ LWP <- function(rawfile=NULL, descrcolz=4, saveplots=TRUE, showplots=FALSE,
 
 	for(i in seq(along=sut)) {
 		df <- rawdat2[rawdat2$Test.ID==sut[i], ]
-		descr <- paste(df[1, 1:descrcolz], collapse=", ")
+		descr <- paste(df[1, descrcolz], collapse=", ")
 		mydat <- with(df, dataprep(dose=TFM.Conc...mg.L., ntot=No..Tested,
       nfx=No..Dead))
 

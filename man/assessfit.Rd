@@ -16,11 +16,11 @@ These parameters define the dose-response curve.}
 ntot, pfx, fxcateg.}
 
 \item{fit}{A model object that can be used to predict the corrected values
-(as proportions) from \code{distexpprop5}, the distance from the expected
-values (as proportions) and 0.5.  Typically, the output from
+(as proportions) from \code{distexpprop5}, the distance between the
+expected values (as proportions) and 0.5.  Typically, the output from
 \code{\link{gamtable1}()}.}
 
-\item{simple}{A logical scalar indicating if the output should be restricted
+\item{simple}{A logical scalar indicating if the output should be restricted to
 just the P value, default TRUE.}
 }
 \value{

@@ -14,7 +14,6 @@ a numeric vector of chemical concentrations, and pfx,
 }
 \value{
 A logical scalar indicating if a dose-effect relation is estimable.
-    If FALSE, a warning is generated.
 }
 \description{
 Determine if a dose-effect relation is estimable based on available data.
