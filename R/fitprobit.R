@@ -9,8 +9,6 @@
 #'     nfx (the number of affected individuals).
 #' @return
 #'   A an object of class \code{\link{glm}}.
-#' @import
-#'   jvamisc
 #' @export
 #' @details
 #'   Only those rows with \code{dose > 0}, \code{ntot > 0}, and \code{nfx >= 0}

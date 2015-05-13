@@ -9,7 +9,8 @@ fitLW(DEdata)
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from
 \code{\link{dataprep}}) containing at least eight variables:
-dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.}
+dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep
+(see Details).}
 }
 \value{
 A list of length three:
@@ -28,6 +29,10 @@ A list of length three:
 \description{
 Automatically apply Litchfield and Wilcoxon's (1949) evaluation of
   dose-effect experiments.
+}
+\details{
+The input data are expected to be summarized by dose.
+  If duplicate doses are provided, an error will be thrown.
 }
 \examples{
 dose <- c(0.0625, 0.125, 0.25, 0.5, 1)

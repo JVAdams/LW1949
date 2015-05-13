@@ -9,8 +9,6 @@
 #' @return
 #'   An integer vector the same length as \code{prob} with
 #'     categories of 0, 50, or 100.
-#' @import
-#'   jvamisc
 #' @export
 #' @examples
 #' toxdat <- data.frame(

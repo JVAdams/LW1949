@@ -2,7 +2,7 @@
 #'
 #' Prepare dose-effect data for evaluation.
 #' @param dose
-#'   A numeric vector of unique, chemical concentrations.
+#'   A numeric vector of unique, chemical concentrations (see Details).
 #' @param ntot
 #'   A numeric vector of the number of individuals that were tested at each
 #'     dose.
@@ -30,6 +30,9 @@
 #'     \item \code{LWkeep} = logical vector identifying records to keep for
 #'       Litchfield and Wilcoxon (1949, step A1) method.
 #'   }
+#' @details
+#' The input data are expected to be summarized by dose.
+#'   If duplicate doses are provided, an error will be thrown.
 #' @export
 #' @references
 #' Litchfield, JT Jr. and F Wilcoxon.  1949.
@@ -48,7 +51,7 @@ dataprep <- function(dose, ntot, nfx) {
   }
   dose.nona <- dose[!is.na(dose)]
   if (sum(duplicated(dose.nona))>0) {
-    stop("dose should be a vector of unique values, with no duplicates")
+    stop("Dose should be a vector of unique values, with no duplicates")
   }
 	# create a data frame
 	df <- data.frame(dose=dose, ntot=ntot, nfx=nfx)

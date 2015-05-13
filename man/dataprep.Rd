@@ -7,7 +7,7 @@
 dataprep(dose, ntot, nfx)
 }
 \arguments{
-\item{dose}{A numeric vector of unique, chemical concentrations.}
+\item{dose}{A numeric vector of unique, chemical concentrations (see Details).}
 
 \item{ntot}{A numeric vector of the number of individuals that were tested at each
 dose.}
@@ -39,6 +39,10 @@ A data frame with eight columns (ordered by dose and proportion affected),
 }
 \description{
 Prepare dose-effect data for evaluation.
+}
+\details{
+The input data are expected to be summarized by dose.
+  If duplicate doses are provided, an error will be thrown.
 }
 \examples{
 conc <- c(0.0625, 0.125, 0.25, 0.5, 1)

@@ -5,7 +5,8 @@
 #' @param DEdata
 #'   A data frame of dose-effect data (typically, the output from
 #'   \code{\link{dataprep}}) containing at least eight variables:
-#'   dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep.
+#'   dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, and LWkeep
+#'   (see Details).
 #' @return
 #'   A list of length three:
 #'   \itemize{
@@ -19,6 +20,9 @@
 #'       step-by-step approach
 #'       (ED16, ED84, S with 95\% confidence intervals, N', and fED50).
 #'   }
+#' @details
+#' The input data are expected to be summarized by dose.
+#'   If duplicate doses are provided, an error will be thrown.
 #' @export
 #' @references
 #'   Litchfield, JT Jr. and F Wilcoxon.  1949.
@@ -37,8 +41,12 @@ fitLW <- function(DEdata) {
   if (!is.data.frame(DEdata)) stop("DEdata must be a data frame.")
   if (any(is.na(match(c("dose", "ntot", "nfx", "pfx", "log10dose", "bitpfx",
     "fxcateg", "LWkeep"), names(DEdata))))) {
-    stop("DEdata must include at least eight variables:",
+    stop("DEdata must include these eight variables:",
       "dose, ntot, nfx, pfx, log10dose, bitpfx, fxcateg, LWkeep.")
+  }
+  dose.nona <- DEdata$dose[!is.na(DEdata$dose)]
+  if (sum(duplicated(dose.nona))>0) {
+    stop("Dose should be a vector of unique values, with no duplicates")
   }
   if (!estimable(DEdata)) {
     out <- list(chi=rep(NA, 3), params=rep(NA, 2), LWest=rep(NA, 8))

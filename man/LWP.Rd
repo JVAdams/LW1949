@@ -66,6 +66,8 @@ The input data must include at least these seven columns,
     \item \code{No. Tested} = A numeric vector, the number of animals tested
     \item \code{No. Dead} = A numeric vector, the number of animals dead
   }
+  The input data are expected to be summarized by dose.
+    If duplicate doses are provided, an error will be thrown.
 }
 \examples{
 \dontrun{

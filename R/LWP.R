@@ -40,7 +40,7 @@
 #'     95\% confidence interval of the estimate (\code{lower95ci} and
 #'     \code{upper95ci})
 #' @import
-#'   tcltk jvamisc
+#'   tcltk
 #' @export
 #' @references
 #'   Litchfield, JT Jr. and F Wilcoxon.  1949.
@@ -62,6 +62,8 @@
 #'     \item \code{No. Tested} = A numeric vector, the number of animals tested
 #'     \item \code{No. Dead} = A numeric vector, the number of animals dead
 #'   }
+#'   The input data are expected to be summarized by dose.
+#'     If duplicate doses are provided, an error will be thrown.
 #' @examples
 #' \dontrun{
 #' LWP()
@@ -103,6 +105,16 @@ LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
   if (any(descrcolz<1) | any(descrcolz>dim(rawdat)[2])) {
     stop("descrcolz should contain integers between 1 and ",
       dim(rawdat)[2], ".")
+  }
+  if (any(is.na(match(c("Test.ID", "Source", "Batch", "Species", "Date", "pH",
+    "Temp..C.", "DO..mg.L.", "TFM.Conc...mg.L.", "No..Tested", "No..Dead"),
+    names(rawdat))))) {
+    stop("Input data must include all of these variables: Test ID, Source,
+      Batch, Species, TFM Conc. (mg/L), No. Tested, No. Dead.")
+  }
+  dose.nona <- rawdat2$TFM.Conc...mg.L.[!is.na(rawdat2$TFM.Conc...mg.L.)]
+  if (sum(duplicated(dose.nona))>0) {
+    stop("TFM Conc. (mg/L) should be a vector of unique values, with no duplicates")
   }
 
 	# use the input filename to name the output files
