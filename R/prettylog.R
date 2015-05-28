@@ -13,6 +13,9 @@
 #' @return
 #'   A numeric vector of pretty values covering the range of \code{x} on
 #'   the log scale.
+#' @references
+#'   This is a copy of the \code{prettylog} function from the 
+#'   \href{https://github.com/JVAdams/jvamisc}{[jvamisc]} package.
 #' @export
 #' @examples
 #' vals <- rlnorm(100, 6)
