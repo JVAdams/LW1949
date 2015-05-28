@@ -3,18 +3,12 @@ output: html_document
 runtime: shiny
 ---
 ```{r, echo=FALSE, include=FALSE}
-# library(devtools)
-# devtools::install_github("JVAdams/jvamisc")
-# library(jvamisc)
-
-# library(shinyapps)
-# deployApp()
-
-#library(shiny)
-#library(LW1949)
+require(devtools)
+devtools::install_github("JVAdams/LW1949")
+require(LW1949)
 ```
 
-### Evaluation of Dose-Effect Experiments using LW1949
+### Evaluation of Dose-Effect Experiments using Litchfield and Wilcoxon (1949)
 
 The R package **[LW1949](https://github.com/JVAdams/LW1949)** automates the manual approach to evaluating dose-effect experiments taken by Litchfield and Wilcoxon (1949).  Automation saves time and yields the best Litchfield Wilcoxon model fit possible, by minimizing the chi-squared statistic.
 

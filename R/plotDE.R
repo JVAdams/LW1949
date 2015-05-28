@@ -17,8 +17,6 @@
 #'  range using an open symbol.
 #' @param ...
 #'   Additional arguments to \code{\link{plot}}.
-#' @import
-#'   jvamisc
 #' @export
 #' @examples
 #' dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
