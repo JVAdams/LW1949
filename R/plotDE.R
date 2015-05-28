@@ -10,10 +10,13 @@
 #' @param ylab
 #'   A character scalar, the title for the affected (y) axis,
 #'     default "Affected  (\%)".
+#' @param xlim
+#'   A numeric vector of length two giving the x coordinate range for
+#'     dose, default range(DEdata$dose, na.rm=TRUE).
 #' @param ylim
 #'   A numeric vector of length two giving the y coordinate range for
 #'     affected (\%), default c(0.1, 99.9).
-#'	Observed effects beyond this range will be plotted at the limits of this
+#'  Observed effects beyond this range will be plotted at the limits of this
 #'  range using an open symbol.
 #' @param ...
 #'   Additional arguments to \code{\link{plot}}.
@@ -35,7 +38,7 @@
 #'   bg="white")
 
 plotDE <- function(DEdata, xlab="Dose", ylab="Affected  (%)",
-  ylim=c(0.1, 99.9), ...) {
+  xlim=range(DEdata$dose, na.rm=TRUE), ylim=c(0.1, 99.9), ...) {
   if (!is.data.frame(DEdata)) stop("DEdata must be a data frame.")
   if (any(is.na(match(c("dose", "pfx", "log10dose", "bitpfx", "fxcateg"),
     names(DEdata))))) {
@@ -53,12 +56,10 @@ plotDE <- function(DEdata, xlab="Dose", ylab="Affected  (%)",
   }
   if (any(ylim <= 0) | any(ylim >= 100)) stop("ylim must be between 0 and 100.")
 
-	xtix <- prettylog(DEdata$dose, 1:9, 5)
-	# xtix <- axTicks(side=2, axp=c(range(pretty(DEdata$dose)), -4), log=TRUE,
-  #   nintLog=Inf)
+  xtix <- prettylog(c(DEdata$dose, xlim), 1:9, 5)
+  xlim <- range(log10(c(DEdata$dose, xlim)), na.rm=TRUE)
 
-	plot(DEdata$log10dose, DEdata$bitpfx, type="n",
-    xlim=range(  log10( c(DEdata$dose, xtix[xtix>0]) ), na.rm=TRUE),
+	plot(DEdata$log10dose, DEdata$bitpfx, type="n", xlim=xlim,
     ylim=probit(ylim/100), axes=F, xlab=xlab, ylab=ylab, ...)
 
 	# background grid and axes

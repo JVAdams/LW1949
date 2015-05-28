@@ -4,8 +4,8 @@
 \alias{plotDE}
 \title{Plot Dose-Effect Experiments}
 \usage{
-plotDE(DEdata, xlab = "Dose", ylab = "Affected  (\%)", ylim = c(0.1,
-  99.9), ...)
+plotDE(DEdata, xlab = "Dose", ylab = "Affected  (\%)",
+  xlim = range(DEdata$dose, na.rm = TRUE), ylim = c(0.1, 99.9), ...)
 }
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from
@@ -17,9 +17,12 @@ dose, pfx, log10dose, bitpfx, fxcateg.}
 \item{ylab}{A character scalar, the title for the affected (y) axis,
 default "Affected  (\%)".}
 
+\item{xlim}{A numeric vector of length two giving the x coordinate range for
+dose, default range(DEdata$dose, na.rm=TRUE).}
+
 \item{ylim}{A numeric vector of length two giving the y coordinate range for
    affected (\%), default c(0.1, 99.9).
-   Observed effects beyond this range will be plotted at the limits of this
+Observed effects beyond this range will be plotted at the limits of this
 range using an open symbol.}
 
 \item{...}{Additional arguments to \code{\link{plot}}.}
