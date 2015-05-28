@@ -12,6 +12,9 @@ Imports:
   MASS,
   mgcv,
   tcltk
+Suggests:
+  magrittr,
+  testthat
 License: GPL
 LazyData: TRUE
 URL: https://github.com/JVAdams/LW1949
