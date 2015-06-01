@@ -14,7 +14,7 @@
 #'   A numeric vector of pretty values covering the range of \code{x} on
 #'   the log scale.
 #' @references
-#'   This is a copy of the \code{prettylog} function from the 
+#'   This is a copy of the \code{prettylog} function from the
 #'   \href{https://github.com/JVAdams/jvamisc}{[jvamisc]} package.
 #' @export
 #' @examples
@@ -40,5 +40,5 @@ prettylog <- function(x, lead=c(1, 5), extra=5) {
 	if (extra>0) {
 		out <- sort(unique(c(out, pretty(x, n=extra))))
 	}
-	out
+	out[out>0]
 }
