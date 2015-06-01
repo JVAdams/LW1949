@@ -80,7 +80,10 @@ assessfit <- function(params, DEdata, fit, simple=TRUE) {
 	n <- sum(sel)
 	### B2. Using the expected effect, record a corrected value for each
   # 0 and 100% effect
-	cor.exp <- ifelse(DEdata$fxcateg==50, expected, correctval(expected, fit))
+  cor.exp <- rep(NA, length(sel))
+  cor.exp[sel & DEdata$fxcateg==50] <- expected[sel & DEdata$fxcateg==50]
+  cor.exp[sel & DEdata$fxcateg!=50] <-
+    correctval(expected[sel & DEdata$fxcateg!=50], fit)
 	### C. The chi squared test
 	if (n < 0.5) {
     chilist <- list(chi=c(chistat=NA, df=NA, pval=NA), contrib=NA)
