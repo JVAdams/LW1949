@@ -5,7 +5,8 @@
 \title{Plot Dose-Effect Experiments}
 \usage{
 plotDE(DEdata, xlab = "Dose", ylab = "Affected  (\%)",
-  xlim = range(DEdata$dose, na.rm = TRUE), ylim = c(0.1, 99.9), ...)
+  xlim = range(DEdata$dose[DEdata$dose > 0], na.rm = TRUE), ylim = c(0.1,
+  99.9), ...)
 }
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from
