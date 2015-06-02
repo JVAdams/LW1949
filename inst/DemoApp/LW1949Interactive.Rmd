@@ -56,7 +56,7 @@ predLW <- reactive({
 output$onePlot <- renderPlot(
   {
     y <- probit(predLW()[, "pct"]/100)
-    xr <- range(mydat()$dose, 
+    xr <- range(mydat()$dose[!is.na(mydat()$dose) & mydat()$dose>0], 
       range(predLW()[, c("ED", "lower", "upper")], na.rm=TRUE), na.rm=TRUE)
     par(mar=c(4, 4, 1, 0.1))
     plotDE(mydat(), xlim=xr)
