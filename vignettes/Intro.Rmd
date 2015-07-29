@@ -15,7 +15,7 @@ You can also try a brief demonstration of **LW1949** in this [web app](https://j
   
 Install the **LW1949** package following these [instructions](https://github.com/JVAdams/LW1949/blob/master/README.md).  Then load the package.
 
-```{r}
+```{r load_package}
 library(LW1949)
 ```
 
@@ -25,7 +25,7 @@ Use the `dataprep` function to create a data frame with the results of a dose-ef
 - total number tested (`ntot`), and 
 - number affected (`nfx`).
 
-```{r}
+```{r dose-effect_data}
 conc <- c(0.0625, 0.125, 0.25, 0.5, 1, 2, 3)
 numtested <- rep(8, 7)
 numaffected <- c(1, 4, 4, 7, 8, 8, 8)
@@ -41,13 +41,13 @@ The `dataprep` function puts the input variables into a data frame along with se
 - an effects category (`fxcateg`) identifying none (0), partial (50), and complete (100) effects, and 
 - a column (`LWkeep`) to identify observations to keep when applying Litchfield and Wilcoxon's (1949) method (their step A).
 
-```{r}
+```{r dataprep()_output}
 mydat
 ```
 
 Use the `fitLW` function to fit a dose-effect relation following Litchfield and Wilcoxon's (1949) method.
 
-```{r}
+```{r fit_LW}
 fLW <- fitLW(mydat)
 ```
 
@@ -57,38 +57,38 @@ The output is a list with three elements,
 - `params`, the estimated intercept and slope on the log10-probit scale; and
 - `LWest`, additional estimates calculated in the process of using Litchfield and Wilcoxon's (1949) method (their steps D and E).
 
-```{r}
+```{r fitLW_output}
 fLW
 ```
 
 Use the `predlinear` function and the fitted Litchfield and Wilcoxon model to estimate the effective doses for specified percent effects (with 95% confidence limits).
 
-```{r}
+```{r estimate_LW}
 pctaffected <- c(25, 50, 99.9)
 predlinear(pctaffected, fLW)
 ```
 
 Use the `fitprobit` function to fit a dose-effect relation using a standard probit regression.
 
-```{r}
+```{r fit_probit}
 fp <- fitprobit(mydat)
 ```
 
 Use the `predprobit` function and the fitted probit model to estimate the effective dose for a specified percent effect (with 95% confidence limits).
 
-```{r}
+```{r estimate_probit}
 predprobit(25, fp)
 ```
 
 Use the `lapply`, `do.call`, and `cbind` functions to organize the probit model predictions of effective doses for several specified percent effects.
 
-```{r}
+```{r multiple_estimate_probit}
 cbind(pctaffected, do.call(rbind, lapply(pctaffected, predprobit, fp)))
 ```
 
 Use the `plotDE` function to plot the raw data on the log10-probit scale.  And use the `abline` function with the two fitted models to add their predicted relations to the plot.  Observations with no or 100% affected are plotted at 0.1 and 99.9% respectively using white filled circles.
 
-```{r, fig.width=5, fig.height=5}
+```{r plot_fits, fig.width=5, fig.height=6}
 plotDE(mydat)
 abline(fLW$params)
 abline(fp$coef, lty=2)
