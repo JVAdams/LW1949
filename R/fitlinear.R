@@ -9,7 +9,7 @@
 #' @param fit
 #'   A model object that can be used to predict the corrected values
 #'     (as proportions) from \code{distexpprop5},
-#'	  the distance between the expected values (as proportions) and 0.5.
+#'    the distance between the expected values (as proportions) and 0.5.
 #'    Typically the output from \code{\link{gamtable1}()}.
 #' @param constr
 #'   A numeric vector of length two, indicating the constraints
@@ -35,6 +35,6 @@ fitlinear <- function(DEdata, fit, constr=c(0.0001, 0.9999)) {
   if (length(constr)!=2 | any(is.na(constr)) | !is.numeric(constr)) {
     stop("constr must be a non-missing numeric vector of length 2")
   }
-	cbitpfx <- constrain(DEdata$bitpfx, probit(constr))
-	lm(cbitpfx ~ log10dose, data=DEdata[DEdata$LWkeep, ])$coef
-	}
+  cbitpfx <- constrain(DEdata$bitpfx, probit(constr))
+  lm(cbitpfx ~ log10dose, data=DEdata[DEdata$LWkeep, ])$coef
+  }

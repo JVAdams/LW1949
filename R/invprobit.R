@@ -12,5 +12,5 @@
 #' invprobit(c(-3, -1, 0, 1, 3))
 
 invprobit <- function(quan) {
-	pnorm(quan)
-	}
+  pnorm(quan)
+  }

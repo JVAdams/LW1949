@@ -22,7 +22,7 @@
 #' @return
 #'   If \code{simple=FALSE}, a list of length two.  The first element,
 #'   \code{chi}, is a numeric vector of length three:
-#'	   \code{chistat}, chi-squared statistic;
+#'     \code{chistat}, chi-squared statistic;
 #'     \code{df}, degrees of freedom; and
 #'     \code{pval}, P value.
 #'   The second element,
@@ -32,14 +32,14 @@
 #'     \code{expcorr}, expected effects corrected; and
 #'     \code{contrib}, contributions to the chi-squared.
 #'
-#'	If \code{simple=TRUE}, a numeric scalar, the chi-squared statistic
+#'  If \code{simple=TRUE}, a numeric scalar, the chi-squared statistic
 #'    (see details).
 #' @export
 #' @details
 #'   This function is used to find the dose-response curve that minimizes the
 #'   chi-squared statistic measuring the distance between the observed and
 #'   expected values of the response (the proportion affected).
-#' 	 Following Litchfield and Wilcoxon (1949, steps B1 and B2),
+#'    Following Litchfield and Wilcoxon (1949, steps B1 and B2),
 #'   records with expected effects < 0.01\% or > 99.99\% are deleted, and
 #'   other expected effects are "corrected" using the
 #'   \code{\link{correctval}} function.
@@ -71,36 +71,36 @@ assessfit <- function(params, DEdata, fit, simple=TRUE) {
     stop("simple must be a logical scalar")
   }
 
-	# calculate chi squared value from given line
-	expected <- invprobit(params[1] + params[2]*log10(DEdata$dose))
-	### B1. If the expected value for any 0% or 100% dose is < 0.01% or > 99.99%,
+  # calculate chi squared value from given line
+  expected <- invprobit(params[1] + params[2]*log10(DEdata$dose))
+  ### B1. If the expected value for any 0% or 100% dose is < 0.01% or > 99.99%,
   # delete record
-	sel <- (!is.na(expected) & expected >= 0.0001 & expected <= 0.9999) |
+  sel <- (!is.na(expected) & expected >= 0.0001 & expected <= 0.9999) |
     (!is.na(DEdata$fxcateg) & DEdata$fxcateg==50)
-	n <- sum(sel)
-	### B2. Using the expected effect, record a corrected value for each
+  n <- sum(sel)
+  ### B2. Using the expected effect, record a corrected value for each
   # 0 and 100% effect
   cor.exp <- rep(NA, length(sel))
   cor.exp[sel & DEdata$fxcateg==50] <- expected[sel & DEdata$fxcateg==50]
   cor.exp[sel & DEdata$fxcateg!=50] <-
     correctval(expected[sel & DEdata$fxcateg!=50], fit)
-	### C. The chi squared test
-	if (n < 0.5) {
+  ### C. The chi squared test
+  if (n < 0.5) {
     chilist <- list(chi=c(chistat=NA, df=NA, pval=NA), contrib=NA)
   } else {
     chilist <- chi2((DEdata$pfx*DEdata$ntot)[sel], (cor.exp*DEdata$ntot)[sel])
   }
 
-	# expand contributions to chi-squared to original length
-	stepB <- matrix(NA, nrow=length(expected), ncol=3,
+  # expand contributions to chi-squared to original length
+  stepB <- matrix(NA, nrow=length(expected), ncol=3,
     dimnames=list(NULL, c("exp", "expcorr", "contrib")))
-	stepB[, "exp"] <- expected
-	stepB[, "expcorr"] <- cor.exp
-	stepB[sel, "contrib"] <- chilist$contrib
-	if (simple) {
+  stepB[, "exp"] <- expected
+  stepB[, "expcorr"] <- cor.exp
+  stepB[sel, "contrib"] <- chilist$contrib
+  if (simple) {
     y <- chilist$chi["chistat"]
   } else {
     y <- list(chi=chilist$chi, contrib=stepB)
   }
-	y
+  y
 }

@@ -59,25 +59,25 @@ plotDE <- function(DEdata, xlab="Dose", ylab="Affected  (%)",
   xtix <- prettylog(c(DEdata$dose, xlim), 1:9, 5)
   xlim <- range(log10(c(DEdata$dose[DEdata$dose>0], xlim)), na.rm=TRUE)
 
-	plot(DEdata$log10dose, DEdata$bitpfx, type="n", xlim=xlim,
+  plot(DEdata$log10dose, DEdata$bitpfx, type="n", xlim=xlim,
     ylim=probit(ylim/100), axes=F, xlab=xlab, ylab=ylab, ...)
 
-	# background grid and axes
-	abline(v=log10(xtix), lwd=2, col="lightgray")
-	axis(1, at=log10(xtix), labels=xtix)
+  # background grid and axes
+  abline(v=log10(xtix), lwd=2, col="lightgray")
+  axis(1, at=log10(xtix), labels=xtix)
 
-	ytix1 <- c(seq(0.1, 0.9, 0.1), seq(1, 9, 1), seq(10, 90, 10), seq(91, 99, 1),
+  ytix1 <- c(seq(0.1, 0.9, 0.1), seq(1, 9, 1), seq(10, 90, 10), seq(91, 99, 1),
     seq(99.1, 99.9, 0.1))
-	ytix2 <- c(0.1, 1, 10, 50, 90, 99, 99.9)
-	abline(h=probit(ytix1/100), col="lightgray")
-	abline(h=probit(ytix2/100), lwd=2, col="lightgray")
-	axis(2, at=probit(ytix2/100), labels=ytix2, las=1)
-	box()
+  ytix2 <- c(0.1, 1, 10, 50, 90, 99, 99.9)
+  abline(h=probit(ytix1/100), col="lightgray")
+  abline(h=probit(ytix2/100), lwd=2, col="lightgray")
+  axis(2, at=probit(ytix2/100), labels=ytix2, las=1)
+  box()
 
-	# observed points
-	points(DEdata$log10dose, probit(constrain(DEdata$pfx, ylim/100)), pch=16,
+  # observed points
+  points(DEdata$log10dose, probit(constrain(DEdata$pfx, ylim/100)), pch=16,
     cex=1.5)
-	points(DEdata$log10dose[DEdata$fxcateg!=50],
+  points(DEdata$log10dose[DEdata$fxcateg!=50],
     probit(constrain(DEdata$pfx[DEdata$fxcateg!=50], ylim/100)),
     pch=16, col="white")
-	}
+  }

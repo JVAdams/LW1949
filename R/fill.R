@@ -28,8 +28,8 @@
 #' fill(charvec)
 
 fill <- function(x, resetWhen=rep(FALSE, length(x))) {
-	# fill in a vector of values
-	# assign to every NA or "" the last value for the vector
+  # fill in a vector of values
+  # assign to every NA or "" the last value for the vector
   y <- x
   last <- x[1]
   if (is.character(x)){

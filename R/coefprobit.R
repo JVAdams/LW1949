@@ -19,7 +19,7 @@
 #' toxdat <- data.frame(
 #'  dose=c(0.05, 0.0625, 0.125, 0.25, 0.5, 1),
 #'  ntot=rep(8, 6),
-#' 	nfx = c(0, 1, 4, 4, 6, 8))
+#'   nfx = c(0, 1, 4, 4, 6, 8))
 #' myfit <- fitprobit(toxdat)
 #' coefprobit(myfit)
 
@@ -29,19 +29,19 @@ coefprobit <- function(pfit, alpha=0.05) {
     stop("alpha must be a non-missing numeric vector of length 1.")
   }
   if (alpha <= 0 | alpha >= 1) stop("alpha must be between 0 and 1.")
-	if (pfit$converged) {
+  if (pfit$converged) {
     z <- qnorm(1 - alpha/2)
     pcoef <- coef(summary(pfit))
     if (!all.equal(dim(pcoef), c(2, 4))) {
       stop("pfit must have one and only one independent variable.")
     }
-		Pint <- pcoef[1, 1] + c(0, -1, 1)*z*pcoef[1, 2]
-		Pslope <- pcoef[2, 1] + c(0, -1, 1)*z*pcoef[2, 2]
-	} else {
-		Pint <- rep(NA, 3)
-		Pslope <- rep(NA, 3)
-	}
-	names(Pint) <- c("int", "ilower", "iupper")
-	names(Pslope) <- c("slope", "slower", "supper")
-	c(Pint, Pslope)
+    Pint <- pcoef[1, 1] + c(0, -1, 1)*z*pcoef[1, 2]
+    Pslope <- pcoef[2, 1] + c(0, -1, 1)*z*pcoef[2, 2]
+  } else {
+    Pint <- rep(NA, 3)
+    Pslope <- rep(NA, 3)
+  }
+  names(Pint) <- c("int", "ilower", "iupper")
+  names(Pslope) <- c("slope", "slower", "supper")
+  c(Pint, Pslope)
 }

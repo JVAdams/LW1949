@@ -12,9 +12,9 @@
 #' @export
 #' @examples
 #' toxdat <- data.frame(
-#' 	dose=c(0.0625, 0.125, 0.25, 0.5),
-#' 	ntot=rep(8, 4),
-#' 	nfx = c(0, 4, 6, 8))
+#'   dose=c(0.0625, 0.125, 0.25, 0.5),
+#'   ntot=rep(8, 4),
+#'   nfx = c(0, 4, 6, 8))
 #' cbind(toxdat, fxcat(toxdat))
 
 fxcat <- function(dat) {
@@ -22,12 +22,12 @@ fxcat <- function(dat) {
   if (any(is.na(match(c("ntot", "nfx"), names(dat))))) {
     stop("Input must include at least two variables: ntot, nfx")
   }
-	categ <- rep(50, dim(dat)[1])
-	categ[with(dat, !is.na(nfx) & nfx==0)] <- 0
-	categ[with(dat, !is.na(ntot) & !is.na(nfx) & ntot==nfx)] <- 100
+  categ <- rep(50, dim(dat)[1])
+  categ[with(dat, !is.na(nfx) & nfx==0)] <- 0
+  categ[with(dat, !is.na(ntot) & !is.na(nfx) & ntot==nfx)] <- 100
   categ[with(dat, is.na(ntot) | is.na(nfx))] <- NA
   categ[with(dat, (!is.na(nfx) & !is.na(ntot) & nfx>ntot) |
       (!is.na(nfx) & nfx<0) |
       (!is.na(ntot) & ntot<1))] <- NA
-	as.integer(categ)
-	}
+  as.integer(categ)
+  }

@@ -23,12 +23,12 @@
 
 keeponly <- function(x, extremes=c(0, 100), nconsec=2) {
   if (any(is.na(x))) stop("No missing values allowed in x.")
-	ord <- order(x)
-	orderedx <- x[ord]
+  ord <- order(x)
+  orderedx <- x[ord]
   hi <- sapply(orderedx, all.equal, extremes[2])=="TRUE"
-	selnohi <- cumsum(hi) <= nconsec
+  selnohi <- cumsum(hi) <= nconsec
   lo <- rev(sapply(orderedx, all.equal, extremes[1])=="TRUE")
-	selnolo <- rev(cumsum(lo) <= nconsec)
-	ko <- selnolo & selnohi
-	ko[order(ord)]
-	}
+  selnolo <- rev(cumsum(lo) <= nconsec)
+  ko <- selnolo & selnohi
+  ko[order(ord)]
+  }

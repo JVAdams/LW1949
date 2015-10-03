@@ -51,7 +51,7 @@ predprobit <- function(pct, pfit, alpha=0.05, logbase=10) {
       all.equal(as.logical(logbase), FALSE)!=TRUE) {
     stop("logbase should be set to 10, exp(1), or FALSE.")
   }
-	if (pfit$converged) {
+  if (pfit$converged) {
     z <- qnorm(1 - alpha/2)
     predED <- dose.p(pfit, cf=1:2, p=pct/100)
     predEDCI <- c(
@@ -59,9 +59,9 @@ predprobit <- function(pct, pfit, alpha=0.05, logbase=10) {
     if (logbase!=FALSE) {
       predEDCI <- logbase^predEDCI
     }
-	} else {
-		predEDCI <- rep(NA, 3)
-	}
-	names(predEDCI) <- c("ED", "lower", "upper")
-	predEDCI
+  } else {
+    predEDCI <- rep(NA, 3)
+  }
+  names(predEDCI) <- c("ED", "lower", "upper")
+  predEDCI
 }

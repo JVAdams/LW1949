@@ -31,14 +31,14 @@ prettylog <- function(x, lead=c(1, 5), extra=5) {
   }
   if (is.character(extra) | abs(as.integer(extra) - extra)>0 |
       length(extra)!=1) stop("extra must be an integer scalar")
-	urd <- function(d, x) {
-		lxd <- log10(x/d)
-		rlxd <- unique(c(floor(lxd), ceiling(lxd)))
-		d*10^rlxd
-	}
-	out <- sort(unlist(lapply(lead, urd, x)))
-	if (extra>0) {
-		out <- sort(unique(c(out, pretty(x, n=extra))))
-	}
-	out[out>0]
+  urd <- function(d, x) {
+    lxd <- log10(x/d)
+    rlxd <- unique(c(floor(lxd), ceiling(lxd)))
+    d*10^rlxd
+  }
+  out <- sort(unlist(lapply(lead, urd, x)))
+  if (extra>0) {
+    out <- sort(unique(c(out, pretty(x, n=extra))))
+  }
+  out[out>0]
 }

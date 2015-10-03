@@ -53,28 +53,28 @@ dataprep <- function(dose, ntot, nfx) {
   if (sum(duplicated(dose.nona))>0) {
     stop("Dose should be a vector of unique values, with no duplicates")
   }
-	# create a data frame
-	df <- data.frame(dose=dose, ntot=ntot, nfx=nfx)
-	# assign row number
-	df$rec <- 1:dim(df)[1]
-	# calculate proportion affected
-	df$pfx <- df$nfx/df$ntot
-	# order data frame
-	df <- df[order(df$dose, df$pfx), ]
-	# transform variables
-	df$log10dose <- log10(df$dose)
-	df$bitpfx <- probit(df$pfx)
-	# define three effect categories, 0 for none affected, 100 for all affected,
+  # create a data frame
+  df <- data.frame(dose=dose, ntot=ntot, nfx=nfx)
+  # assign row number
+  df$rec <- 1:dim(df)[1]
+  # calculate proportion affected
+  df$pfx <- df$nfx/df$ntot
+  # order data frame
+  df <- df[order(df$dose, df$pfx), ]
+  # transform variables
+  df$log10dose <- log10(df$dose)
+  df$bitpfx <- probit(df$pfx)
+  # define three effect categories, 0 for none affected, 100 for all affected,
   #   and 50 for other proportions affected
-	df$fxcateg <- fxcat(df)
-	# define records to keep for Litchfield Wilcoxon method
-	# get rid of consecutive 0% and 100%s
-	# A 1. Don't list > 2 consecutive 100% effects at the upper end or > 2
+  df$fxcateg <- fxcat(df)
+  # define records to keep for Litchfield Wilcoxon method
+  # get rid of consecutive 0% and 100%s
+  # A 1. Don't list > 2 consecutive 100% effects at the upper end or > 2
   #   consecutive 0% effects at the lower end.
-	df$LWkeep <- keeponly(100*df$pfx)
-	# get rid of any missing doses or effects
-	df$LWkeep[is.na(df$dose) | is.na(df$pfx)] <- FALSE
-	# get rid of any zero doses (controls)
-	df$LWkeep[df$dose == 0] <- FALSE
-	df
-	}
+  df$LWkeep <- keeponly(100*df$pfx)
+  # get rid of any missing doses or effects
+  df$LWkeep[is.na(df$dose) | is.na(df$pfx)] <- FALSE
+  # get rid of any zero doses (controls)
+  df$LWkeep[df$dose == 0] <- FALSE
+  df
+  }

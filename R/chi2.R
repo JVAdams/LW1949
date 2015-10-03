@@ -11,7 +11,7 @@
 #'     \code{chistat}, chi-squared statistic;
 #'     \code{df}, degrees of freedom; and
 #'     \code{pval}, P value.
-#'	 The second element is a numeric vector the same length as \code{obsn},
+#'   The second element is a numeric vector the same length as \code{obsn},
 #'     contributions to the chi-squared.
 #' @export
 #' @seealso
@@ -30,11 +30,11 @@ chi2 <- function(obsn, expn) {
   if (sum(sel) < 1) stop("No non-missing data provided.")
   obsn <- obsn[sel]
   expn <- expn[sel]
-	contrib <- (obsn - expn)^2 / expn
-	chistat <- sum(contrib)
-	df <- length(obsn) - 2
-	df[df<0] <- NA
-	pval <- NA
-	pval[length(obsn)> 2.5] <- 1 - pchisq(chistat, df)
-	list(chi=c(chistat=chistat, df=df, pval=pval), contrib=contrib)
+  contrib <- (obsn - expn)^2 / expn
+  chistat <- sum(contrib)
+  df <- length(obsn) - 2
+  df[df<0] <- NA
+  pval <- NA
+  pval[length(obsn)> 2.5] <- 1 - pchisq(chistat, df)
+  list(chi=c(chistat=chistat, df=df, pval=pval), contrib=contrib)
 }

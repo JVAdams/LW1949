@@ -5,7 +5,7 @@
 #'   A data frame of dose-effect data (typically, the output from
 #'     \code{\link{dataprep}}) containing at least two variables: dose,
 #'     a numeric vector of chemical concentrations, and pfx,
-#'	   a numeric vector of proportional effects at each dose (see Details).
+#'     a numeric vector of proportional effects at each dose (see Details).
 #' @return
 #'   A logical scalar indicating if a dose-effect relation is estimable.
 #' @export
@@ -34,12 +34,12 @@ estimable <- function(DEdata) {
   if (sum(duplicated(dose.nona))>0) {
     stop("Dose should be a vector of unique values, with no duplicates")
   }
-	nonmiss <- !is.na(DEdata$dose) & !is.na(DEdata$pfx)
-	if (sum(nonmiss) < 1.5) {
-		out <- FALSE
-	} else {
-		out <- !(var(DEdata$dose[nonmiss]) < 0.00000001 |
+  nonmiss <- !is.na(DEdata$dose) & !is.na(DEdata$pfx)
+  if (sum(nonmiss) < 1.5) {
+    out <- FALSE
+  } else {
+    out <- !(var(DEdata$dose[nonmiss]) < 0.00000001 |
       var(DEdata$pfx[nonmiss]) < 0.00000001)
-	}
-	out
-	}
+  }
+  out
+  }

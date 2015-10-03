@@ -16,8 +16,8 @@
 #' @examples
 #' toxdat <- data.frame(
 #'  dose=c(0.05, 0.0625, 0.125, 0.25, 0.5, 1),
-#' 	ntot=rep(8, 6),
-#' 	nfx = c(0, 1, 4, 4, 6, 8))
+#'   ntot=rep(8, 6),
+#'   nfx = c(0, 1, 4, 4, 6, 8))
 #' fitprobit(toxdat)
 
 fitprobit <- function(dat) {
@@ -25,9 +25,9 @@ fitprobit <- function(dat) {
   if (any(is.na(match(c("dose", "ntot", "nfx"), names(dat))))) {
     stop("Input must include at least three variables: dose, ntot, nfx.")
   }
-	sel <- with(dat, !is.na(dose) & dose>0 & !is.na(ntot) & ntot>0 &
+  sel <- with(dat, !is.na(dose) & dose>0 & !is.na(ntot) & ntot>0 &
       !is.na(nfx) & nfx>=0)
   if (sum(sel) < 1) stop("Data frame contains no rows of valid data.")
-	glm(cbind(nfx, ntot-nfx) ~ log10(dose), family=binomial(link=probit),
+  glm(cbind(nfx, ntot-nfx) ~ log10(dose), family=binomial(link=probit),
     data=dat[sel, ])
-	}
+  }
