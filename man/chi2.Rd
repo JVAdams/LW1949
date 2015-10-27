@@ -17,7 +17,7 @@ A list of length two.
     \code{chistat}, chi-squared statistic;
     \code{df}, degrees of freedom; and
     \code{pval}, P value.
-	 The second element is a numeric vector the same length as \code{obsn},
+  The second element is a numeric vector the same length as \code{obsn},
     contributions to the chi-squared.
 }
 \description{

@@ -28,7 +28,7 @@ Calculate the coefficients from a fitted probit regression model with
 toxdat <- data.frame(
  dose=c(0.05, 0.0625, 0.125, 0.25, 0.5, 1),
  ntot=rep(8, 6),
-	nfx = c(0, 1, 4, 4, 6, 8))
+  nfx = c(0, 1, 4, 4, 6, 8))
 myfit <- fitprobit(toxdat)
 coefprobit(myfit)
 }

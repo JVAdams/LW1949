@@ -15,7 +15,7 @@ maximum value for \code{x}.}
 \value{
 A numeric vector, the same length as \code{x}, in which the minimum
     constraint is assigned to values of \code{x} less than the minimum,
-	   and the maximum constraint is assigned to values of \code{x} greater than
+    and the maximum constraint is assigned to values of \code{x} greater than
     the maximum.
 }
 \description{

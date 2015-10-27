@@ -30,7 +30,7 @@ placed in the same directory as the input file.}
 
 \item{showresults}{A logical scalar indicating if results should be printed to the console,
 default TRUE.
-   These results include the chi-squared statistic, degrees of freedom, and
+These results include the chi-squared statistic, degrees of freedom, and
 p-value for the Litchfield Wilcoxon method.}
 
 \item{returnresults}{A logical scalar indicating if results should be returned by the function,
@@ -48,7 +48,7 @@ If \code{returnresults=TRUE}, a data frame with 11 rows per test and
 \description{
 User friendly evaluation of dose-effect experiments using automated
   Litchfield Wilcoxon (1949) and probit estimation methods.
-	 This function has been tailored for non-R users with input data set up in a
+  This function has been tailored for non-R users with input data set up in a
   particular way (see Details).
 }
 \details{

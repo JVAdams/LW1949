@@ -10,7 +10,7 @@ estimable(DEdata)
 \item{DEdata}{A data frame of dose-effect data (typically, the output from
 \code{\link{dataprep}}) containing at least two variables: dose,
 a numeric vector of chemical concentrations, and pfx,
-   a numeric vector of proportional effects at each dose (see Details).}
+a numeric vector of proportional effects at each dose (see Details).}
 }
 \value{
 A logical scalar indicating if a dose-effect relation is estimable.

@@ -26,8 +26,8 @@ Only those rows with \code{dose > 0}, \code{ntot > 0}, and \code{nfx >= 0}
 \examples{
 toxdat <- data.frame(
  dose=c(0.05, 0.0625, 0.125, 0.25, 0.5, 1),
-	ntot=rep(8, 6),
-	nfx = c(0, 1, 4, 4, 6, 8))
+  ntot=rep(8, 6),
+  nfx = c(0, 1, 4, 4, 6, 8))
 fitprobit(toxdat)
 }
 

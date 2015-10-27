@@ -11,16 +11,16 @@ predlinear(pct, LWmod, simple = FALSE)
 effective dose(s).}
 
 \item{LWmod}{If \code{simple=TRUE}, a numeric vector of length two giving the intercept
-and slope of the linear relation between the dose (x, the concentration
-of the applied chemical on the log10 scale), and the proportion of
-affected individuals (y, on the probit scale, with 0s converted to
-0.1\% and 1s converted to 99.9\%).
- If \code{simple=FALSE}, a list with the results of fitting a Litchfield and
-Wilcoxon model to dose-effect data, the output from \code{\link{fitLW}}.}
+  and slope of the linear relation between the dose (x, the concentration
+  of the applied chemical on the log10 scale), and the proportion of
+  affected individuals (y, on the probit scale, with 0s converted to
+  0.1\% and 1s converted to 99.9\%).
+If \code{simple=FALSE}, a list with the results of fitting a Litchfield and
+  Wilcoxon model to dose-effect data, the output from \code{\link{fitLW}}.}
 
 \item{simple}{A logical scalar indicating whether to carry out a simple estimation of
 effective doses from the intercept and slope (TRUE),
-   or an estimation of effective doses with confidence intervals from the
+or an estimation of effective doses with confidence intervals from the
 Litchfield and Wilcoxon model (default, FALSE).}
 }
 \value{
@@ -29,11 +29,11 @@ A numeric vector the same length as \code{pct} giving the estimated dose
 
 If \code{simple=TRUE}, a numeric vector the same length as \code{pct} with
     the estimated effective doses.
-	 If \code{simple=FALSE}, an n*4 numeric matrix with the given effects
+  If \code{simple=FALSE}, an n*4 numeric matrix with the given effects
     (\code{pct}), the effective doses (\code{ED}), and Litchfield and
     Wilcoxon's (1949) 95\% confidence intervals for the effective doses
     (\code{lower} and \code{upper}).
-	 The number of rows of the matrix, n, is the length of \code{pct}.
+  The number of rows of the matrix, n, is the length of \code{pct}.
 }
 \description{
 Determine the effective dose for a specified percent effect from the
@@ -41,7 +41,7 @@ Determine the effective dose for a specified percent effect from the
 }
 \details{
 Follows methods outlined in Litchfield and Wilcoxon (1949).
-	   Specifically, for the 95\% confidence intervals, see page 105, and
+    Specifically, for the 95\% confidence intervals, see page 105, and
     equation 13 in the Appendix (corresponding to Nomograph 4).
 }
 \examples{
@@ -56,8 +56,8 @@ predlinear(c(25, 50, 99.9), fLW)
 }
 \references{
 Litchfield, JT Jr. and F Wilcoxon.  1949.
-	   A simplified method of evaluating dose-effect experiments.
-	   Journal of Pharmacology and Experimental Therapeutics 96(2):99-113.
-	   \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}.
+    A simplified method of evaluating dose-effect experiments.
+    Journal of Pharmacology and Experimental Therapeutics 96(2):99-113.
+    \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}.
 }
 

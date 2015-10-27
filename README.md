@@ -3,7 +3,7 @@ LW1949
 
 **LW1949** is a package of functions for the [R programming language](http://www.r-project.org/).  It provides an automated approach to 
 Litchfield and Wilcoxon's (1949) evaluation of dose-effect experiments. **LW1949** was first introduced by Adams et al. (*in preparation*).
-A brief demonstration of **LW1949** is given in this [web app](https://jvadams.shinyapps.io/LW1949demo/LW1949Interactive.Rmd).
+A brief demonstration of **LW1949** is given in this [web app](https://jvadams.shinyapps.io/LW1949demo).
 An example of how to use the functions in **LW1949** is given in this [vignette](http://htmlpreview.github.io/?https://github.com/JVAdams/LW1949/blob/master/vignettes/Intro.html).
 
 - - -
@@ -34,9 +34,9 @@ encouraged me to create my first R package._
 
 - - -
 
-_U.S. Geological Survey_ (USGS) Computer Program **LW1949** version 0.0.0.9006. 
+_U.S. Geological Survey_ (USGS) Computer Program **LW1949** version 0.0.0.9007. 
 Written by Jean V. Adams, [USGS - Great Lakes Science Center](http://www.glsc.usgs.gov/), Ann Arbor, Michigan, USA. 
-Written in programming language R (R Core Team, 2015, www.R-project.org), version 3.1.3 (2015-03-09). 
+Written in programming language R (R Core Team, 2015, www.R-project.org), version 3.2.2 (2015-08-14). 
 Run on a PC with Intel(R) Core(TM) I7-4600m CPU, 2.90 GHz processor, 16.0 GB RAM, and Microsoft Windows 7 Enterprise operating system 2009 Service Pack 1. 
 Source code is available from Jean V. Adams on [GitHub](https://github.com/JVAdams/LW1949), _jvadams (at) usgs (dot) gov_.
 

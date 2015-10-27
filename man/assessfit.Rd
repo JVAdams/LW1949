@@ -26,7 +26,7 @@ just the P value, default TRUE.}
 \value{
 If \code{simple=FALSE}, a list of length two.  The first element,
   \code{chi}, is a numeric vector of length three:
-	   \code{chistat}, chi-squared statistic;
+    \code{chistat}, chi-squared statistic;
     \code{df}, degrees of freedom; and
     \code{pval}, P value.
   The second element,
@@ -36,7 +36,7 @@ If \code{simple=FALSE}, a list of length two.  The first element,
     \code{expcorr}, expected effects corrected; and
     \code{contrib}, contributions to the chi-squared.
 
-	If \code{simple=TRUE}, a numeric scalar, the chi-squared statistic
+ If \code{simple=TRUE}, a numeric scalar, the chi-squared statistic
    (see details).
 }
 \description{
@@ -48,7 +48,7 @@ Assess the fit of a dose-response curve using the chi-squared statistic.
 This function is used to find the dose-response curve that minimizes the
   chi-squared statistic measuring the distance between the observed and
   expected values of the response (the proportion affected).
-	 Following Litchfield and Wilcoxon (1949, steps B1 and B2),
+   Following Litchfield and Wilcoxon (1949, steps B1 and B2),
   records with expected effects < 0.01\% or > 99.99\% are deleted, and
   other expected effects are "corrected" using the
   \code{\link{correctval}} function.
