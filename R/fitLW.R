@@ -108,7 +108,9 @@ fitLW <- function(DEdata) {
     #   space, by minimizing the chi squared
     estparams <- optim(par=sv, fn=assessfit, DEdata=dfsub, fit=gamfit)$par
     chi <- assessfit(estparams, DEdata=dfsub, fit=gamfit, simple=FALSE)
+    poorfit <- FALSE
     if (!is.na(chi$chi["pval"]) & chi$chi["pval"] < 0.05) {
+      poorfit <- TRUE
       warning("Chi squared test indicates poor fit.")
     }
 
@@ -121,8 +123,20 @@ fitLW <- function(DEdata) {
     # D3. Obtain Nprime, the total number of animals tested at those doses with
     #   expected effects between 16 and 84%.
     Nprime <- sum(dfsub$ntot[dfsub$dose > ED16 & dfsub$dose < ED84])
+
     # D4. Calculate S to the exponent for the ED50
-    fED50 <- S^(2.77/sqrt(Nprime))
+    if(!poorfit) {
+      fED50 <- S^(2.77/sqrt(Nprime))
+    } else {
+      # F. Factors for significantly heterogeneous data
+      # value of t for p=0.05 and given df (Table 2)
+      # n defined as df, K-2, in L-W's step C3
+      n <- chi$chi["df"]
+      t <- qt(1 - 0.05/2, n)
+      formchunk <- as.vector(sqrt( chi$chi["chistat"] / (n*Nprime) ))
+      fED50 <- S ^ ( 1.4 * t * formchunk )
+    }
+
     # D5. Calculate the 95% confidence limits of the ED50
     if (is.finite(fED50)) {
       upper50 <- ED50 * fED50
@@ -138,16 +152,19 @@ fitLW <- function(DEdata) {
     R <- max(dfsub$dose)/min(dfsub$dose)
     # E2. Calculate A from equation 6 in Appendix (Nomograph 3)
     A <- 10^( 1.1*(log10(S))^2 / log10(R) )
+
     # E3. Calculate K (the number of doses) and fS (Nomograph 2)
     K <- dim(dfsub)[1]
-    fS <- A^( 10*(K-1) / (K * sqrt(Nprime)) )
+    if(!poorfit) {
+      fS <- A^( 10*(K-1) / (K * sqrt(Nprime)) )
+    } else {
+      # F. Factors for significantly heterogeneous data
+      fS = A ^ ( 5.1 * t * (K-1) * formchunk / K )
+    }
+
     # E4. Calculate the 95% confidence limits of S
     upperS <- S * fS
     lowerS <- S / fS
-
-    ### I'm skipping the rest of the steps
-    # F. Factors for significantly heterogeneous data
-    # G. Test for parallelism of two lines and estimate of relative potency
 
     out <- list(chi=chi, params=estparams,
       LWest=c(ED50=ED50, lower=lower50, upper=upper50, npartfx=npartfx,

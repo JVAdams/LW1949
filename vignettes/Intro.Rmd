@@ -68,31 +68,16 @@ pctaffected <- c(25, 50, 99.9)
 predlinear(pctaffected, fLW)
 ```
 
-Use the `fitprobit` function to fit a dose-effect relation using a standard probit regression.
+Use the `plotDELP` and `plotDE` functions to plot the raw data on the log10-probit and arithmetics scales.  Observations with no or 100% affected are plotted using white filled circles (at 0.1 and 99.9% respectively in the log10-probit plot).  
 
-```{r fit_probit}
-fp <- fitprobit(mydat)
-```
-
-Use the `predprobit` function and the fitted probit model to estimate the effective dose for a specified percent effect (with 95% confidence limits).
-
-```{r estimate_probit}
-predprobit(25, fp)
-```
-
-Use the `lapply`, `do.call`, and `cbind` functions to organize the probit model predictions of effective doses for several specified percent effects.
-
-```{r multiple_estimate_probit}
-cbind(pctaffected, do.call(rbind, lapply(pctaffected, predprobit, fp)))
-```
-
-Use the `plotDE` function to plot the raw data on the log10-probit scale.  And use the `abline` function with the two fitted models to add their predicted relations to the plot.  Observations with no or 100% affected are plotted at 0.1 and 99.9% respectively using white filled circles.
+Use the `predLinesLP` and `predLines` functions to add the L-W predicted relations to both plots, with 95% **horizontal** confidence intervals for the predicted dose to elicit a given percent affected.
 
 ```{r plot_fits, fig.width=5, fig.height=6}
+plotDELP(mydat)
+predLinesLP(fLW)
+
 plotDE(mydat)
-abline(fLW$params)
-abline(fp$coef, lty=2)
-legend("topleft", c("LW", "Probit"), lty=1:2, bg="white")
+predLines(fLW)
 ```
 
 ### References
