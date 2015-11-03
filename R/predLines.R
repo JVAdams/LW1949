@@ -10,6 +10,8 @@
 #'     plot representing the \strong{horizontal} 95% confidence intervals
 #'     for the predicted dose to elicit a given percent affected.
 #' @export
+#' @seealso  
+#'   \code{\link{plotDE}}, \code{\link{plotDELP}}, \code{\link{predLinesLP}}
 #' @examples
 #' dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
 #' ntested <- rep(8, 5)

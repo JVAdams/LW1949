@@ -52,17 +52,30 @@ predLW <- reactive({
 ```
 
 ```{r, echo=FALSE}
-# plot of dose vs. % affected
+# plot of dose vs. % affected, log scale
 output$onePlot <- renderPlot(
   {
+    plotDELP(mydat())
+    predLinesLP(fLW())
     y <- probit(predLW()[, "pct"]/100)
-    xr <- range(mydat()$dose[!is.na(mydat()$dose) & mydat()$dose>0], 
-      range(predLW()[, c("ED", "lower", "upper")], na.rm=TRUE), na.rm=TRUE)
-    par(mar=c(4, 4, 1, 0.1))
-    plotDE(mydat(), xlim=xr)
-    abline(fLW()$params)
     points(log10(predLW()[, "ED"]), y, cex=0.7, pch=16, col="red")
     arrows(log10(predLW()[, "lower"]), y, log10(predLW()[, "upper"]), y, 
+      length=0.1, angle=90, code=3, col="red")
+  }, 
+  width=700, 
+  height=700,
+)
+```
+
+```{r, echo=FALSE}
+# plot of dose vs. % affected, arithmetic scale
+output$twoPlot <- renderPlot(
+  {
+    plotDE(mydat(), ref=NA)
+    predLines(fLW())
+    y <- predLW()[, "pct"]
+    points(predLW()[, "ED"], y, cex=0.7, pch=16, col="red")
+    arrows(predLW()[, "lower"], y, predLW()[, "upper"], y, 
       length=0.1, angle=90, code=3, col="red")
   }, 
   width=700, 
@@ -128,7 +141,11 @@ fluidPage(
   ),
   fluidRow(
     plotOutput("onePlot", inline=TRUE),
-    h5("FIGURE  -  Plot of the observed data with the Litchfield Wilcoxon fitted model on the log10-probit scale. Predicted effective doses with 95% confidence intervals for the specified percentages affected are in red.  Observations with 0% or 100% affected are plotted at 0.1 and 99.9% respectively using white filled circles.")
+    h5("FIGURE 1. -  Plot of the observed data with the Litchfield Wilcoxon fitted model on the log10-probit scale. Predicted effective doses with 95% confidence intervals for the specified percentages affected are in red.  Observations with 0% or 100% affected are plotted at 0.1 and 99.9% respectively using white filled circles.")
+  ),
+  fluidRow(
+    plotOutput("twoPlot", inline=TRUE),
+    h5("FIGURE 2.  -  Plot of the observed data with the Litchfield Wilcoxon fitted model on the arithmetic scale. Predicted effective doses with 95% confidence intervals for the specified percentages affected are in red.  Observations with 0% or 100% affected are shown as white filled circles.")
   ),
   fluidRow(
     h5("TABLE  -  Predicted effective doses (with 95% confidence intervals) for the specified percentages affected using the Litchfield Wilcoxon approach."),
@@ -144,7 +161,7 @@ Litchfield, J. T. Jr. and F. Wilcoxon. 1949. [A simplified method of evaluating 
 
 ---
 
-Last modified: 27 Oct 2015  
+Last modified: 3 November 2015  
 Author: Jean V. Adams, [USGS - Great Lakes Science Center](http://www.glsc.usgs.gov/) and [Great Lakes Fishery Commission](http://www.GLFC.org/)
 
 Created with: [R Shiny](http://shiny.rstudio.com/) by [Rstudio](http://www.rstudio.com/)  

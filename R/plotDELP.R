@@ -1,6 +1,6 @@
 #' Plot Dose-Effect Experiments
 #'
-#' Plot the results of dose-effect experiments on the log10-probit scale.
+#' Plot dose-effect experiments on the log10-probit scale.
 #' @param DEdata
 #'   A data frame of dose-effect data (typically, the output from
 #'     \code{\link{dataprep}}) containing at least five variables:
@@ -21,6 +21,8 @@
 #' @param ...
 #'   Additional arguments to \code{\link{plot}}.
 #' @export
+#' @seealso  
+#'   \code{\link{predLinesLP}}, \code{\link{plotDE}}, \code{\link{predLines}}
 #' @examples
 #' dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
 #' ntested <- rep(8, 5)

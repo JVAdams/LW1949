@@ -1,6 +1,6 @@
 #' Plot Dose-Effect Experiments
 #'
-#' Plot the results of dose-effect experiments on the arithmetic scale.
+#' Plot dose-effect experiments on the arithmetic scale.
 #' @param DEdata
 #'   A data frame of dose-effect data (typically, the output from
 #'     \code{\link{dataprep}}) containing at least five variables:
@@ -24,6 +24,8 @@
 #' @param ...
 #'   Additional arguments to \code{\link{plot}}.
 #' @export
+#' @seealso  
+#'   \code{\link{predLines}}, \code{\link{plotDELP}}, \code{\link{predLinesLP}}
 #' @examples
 #' dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
 #' ntested <- rep(8, 5)
