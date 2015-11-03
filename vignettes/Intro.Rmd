@@ -81,7 +81,7 @@ Use the `plotDELP` and `plotDE` functions to plot the raw data on the log10-prob
 
 Use the `predLinesLP` and `predLines` functions to add the L-W predicted relations to both plots, with 95% **horizontal** confidence intervals for the predicted dose to elicit a given percent affected.
 
-```{r plot_fits, fig.width=5, fig.height=6}
+```{r plot_fits, fig.width=5, fig.height=5}
 plotDELP(mydat)
 predLinesLP(fLW)
 
