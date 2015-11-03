@@ -29,7 +29,7 @@
 #'   \code{contrib}, is a matrix of three numeric vectors the same length as
 #'     \code{obsn}:
 #'     \code{exp}, expected effects;
-#'     \code{expcorr}, expected effects corrected; and
+#'     \code{obscorr}, observed effects corrected; and
 #'     \code{contrib}, contributions to the chi-squared.
 #'
 #'  If \code{simple=TRUE}, a numeric scalar, the chi-squared statistic
@@ -44,7 +44,7 @@
 #'   other expected effects are "corrected" using the
 #'   \code{\link{correctval}} function.
 #' @seealso
-#'   \code{\link{chi2}} and \code{\link{chisq.test}}.
+#'   \code{\link{LWchi2}} and \code{\link{chisq.test}}.
 #' @references
 #'   Litchfield, JT Jr. and F Wilcoxon.  1949.
 #'     A simplified method of evaluating dose-effect experiments.
@@ -79,23 +79,29 @@ assessfit <- function(params, DEdata, fit, simple=TRUE) {
     (!is.na(DEdata$fxcateg) & DEdata$fxcateg==50)
   n <- sum(sel)
   ### B2. Using the expected effect, record a corrected value for each
-  # 0 and 100% effect
-  cor.exp <- rep(NA, length(sel))
-  cor.exp[sel & DEdata$fxcateg==50] <- expected[sel & DEdata$fxcateg==50]
-  cor.exp[sel & DEdata$fxcateg!=50] <-
+  # 0 and 100% effect, and use this corrected value in place of the OBSERVED
+  cor.obs <- rep(NA, length(sel))
+  cor.obs[sel & DEdata$fxcateg==50] <- DEdata$pfx[sel & DEdata$fxcateg==50]
+  cor.obs[sel & DEdata$fxcateg!=50] <-
     correctval(expected[sel & DEdata$fxcateg!=50], fit)
+#   cor.exp <- rep(NA, length(sel))
+#   cor.exp[sel & DEdata$fxcateg==50] <- expected[sel & DEdata$fxcateg==50]
+#   cor.exp[sel & DEdata$fxcateg!=50] <-
+#     correctval(expected[sel & DEdata$fxcateg!=50], fit)
   ### C. The chi squared test
   if (n < 0.5) {
     chilist <- list(chi=c(chistat=NA, df=NA, pval=NA), contrib=NA)
   } else {
-    chilist <- chi2((DEdata$pfx*DEdata$ntot)[sel], (cor.exp*DEdata$ntot)[sel])
+    # chilist <- LWchi2((DEdata$pfx*DEdata$ntot)[sel], (cor.exp*DEdata$ntot)[sel])
+    chilist <- LWchi2((cor.obs*DEdata$ntot)[sel], (expected*DEdata$ntot)[sel],
+      DEdata$ntot[sel])
   }
 
   # expand contributions to chi-squared to original length
   stepB <- matrix(NA, nrow=length(expected), ncol=3,
-    dimnames=list(NULL, c("exp", "expcorr", "contrib")))
+    dimnames=list(NULL, c("exp", "obscorr", "contrib")))
   stepB[, "exp"] <- expected
-  stepB[, "expcorr"] <- cor.exp
+  stepB[, "obscorr"] <- cor.obs
   stepB[sel, "contrib"] <- chilist$contrib
   if (simple) {
     y <- chilist$chi["chistat"]

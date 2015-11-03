@@ -6,11 +6,6 @@
 #'   A data frame of dose-effect data (typically, the output from
 #'     \code{\link{dataprep}}) containing at least three variables:
 #'     log10dose, bitpfx, and LWkeep.
-#' @param fit
-#'   A model object that can be used to predict the corrected values
-#'     (as proportions) from \code{distexpprop5},
-#'    the distance between the expected values (as proportions) and 0.5.
-#'    Typically the output from \code{\link{gamtable1}()}.
 #' @param constr
 #'   A numeric vector of length two, indicating the constraints
 #'     (see \code{\link{constrain}}) applied to the proportional effects,
@@ -23,10 +18,9 @@
 #' numtested <- rep(8, 5)
 #' nalive <- c(1, 4, 4, 7, 8)
 #' mydat <- dataprep(dose=conc, ntot=numtested, nfx=nalive)
-#' gamfit <- gamtable1()
-#' fitlinear(mydat, gamfit)
+#' fitlinear(mydat)
 
-fitlinear <- function(DEdata, fit, constr=c(0.0001, 0.9999)) {
+fitlinear <- function(DEdata, constr=c(0.0001, 0.9999)) {
   if (!is.data.frame(DEdata)) stop("DEdata must be a data frame.")
   if (any(is.na(match(c("log10dose", "bitpfx", "LWkeep"), names(DEdata))))) {
     stop("DEdata must include at least three variables:",

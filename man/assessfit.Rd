@@ -33,7 +33,7 @@ If \code{simple=FALSE}, a list of length two.  The first element,
   \code{contrib}, is a matrix of three numeric vectors the same length as
     \code{obsn}:
     \code{exp}, expected effects;
-    \code{expcorr}, expected effects corrected; and
+    \code{obscorr}, observed effects corrected; and
     \code{contrib}, contributions to the chi-squared.
 
  If \code{simple=TRUE}, a numeric scalar, the chi-squared statistic
@@ -68,6 +68,6 @@ Litchfield, JT Jr. and F Wilcoxon.  1949.
     \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}.
 }
 \seealso{
-\code{\link{chi2}} and \code{\link{chisq.test}}.
+\code{\link{LWchi2}} and \code{\link{chisq.test}}.
 }
 
