@@ -15,9 +15,9 @@
 #' @examples
 #' d <- c(0.0625, 0.125, 0.25, 0.5, 1)
 #' p <- c(9.5, 34, 67, 90.5, 98.6)
-#' handLW(handDose=d, handPct=p)
+#' fitHand(handDose=d, handPct=p)
 
-handLW <- function(handDose, handPct) {
+fitHand <- function(handDose, handPct) {
   if(length(unique(handDose))<2) {
     stop("handDose must have at least 2 unique values")
   }

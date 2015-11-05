@@ -5,6 +5,8 @@
 #' @param fit
 #'   A list of length three containing the result of a Litchfield and
 #'     Wilcoxon model fit, typically the output from \code{\link{LWestimate}}.
+#' @param ...
+#'   Additional arguments to \code{\link{lines}}.
 #' @return
 #'   A solid fitted line is added to the plot.  Dashed lines are added to the
 #'     plot representing the \strong{horizontal} 95% confidence intervals
@@ -21,10 +23,10 @@
 #' myfit <- LWestimate(fitLWauto(mydat), mydat)
 #' predLines(myfit)
 
-predLines <- function(fit) {
+predLines <- function(fit, ...) {
   ys <- c(seq(0.1, 0.9, 0.1), 1:99, seq(99.1, 99.9, 0.1))
   lc <- predlinear(ys, fit)
-  lines(lc[, "ED"], lc[, "pct"], lwd=2)
-  lines(lc[, "upper"], lc[, "pct"], lty=2)
-  lines(lc[, "lower"], lc[, "pct"], lty=2)
+  lines(lc[, "ED"], lc[, "pct"], lwd=2, ...)
+  lines(lc[, "upper"], lc[, "pct"], lty=2, ...)
+  lines(lc[, "lower"], lc[, "pct"], lty=2, ...)
 }

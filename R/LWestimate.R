@@ -80,7 +80,7 @@ LWestimate <- function(estParams, DEdata) {
   S <- (ED84/ED50 + ED50/ED16) / 2
   # D3. Obtain Nprime, the total number of animals tested at those doses with
   #   expected effects between 16 and 84%.
-  Nprime <- sum(dfsub$ntot[dfsub$dose > ED16 & dfsub$dose < ED84])
+  Nprime <- sum(dfsub$ntot[dfsub$dose >= ED16 & dfsub$dose <= ED84])
 
   # D4. Calculate S to the exponent for the ED50
   if(!poorfit) {

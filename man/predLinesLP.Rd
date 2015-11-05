@@ -4,11 +4,13 @@
 \alias{predLinesLP}
 \title{Add Litchfield and Wilcoxon Predictions to a Plot}
 \usage{
-predLinesLP(fit)
+predLinesLP(fit, ...)
 }
 \arguments{
 \item{fit}{A list of length three containing the result of a Litchfield and
 Wilcoxon model fit, typically the output from \code{\link{LWestimate}}.}
+
+\item{...}{Additional arguments to \code{\link{abline}} and \code{\link{lines}}.}
 }
 \value{
 A solid fitted line is added to the plot.  Dashed lines are added to the
