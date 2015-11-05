@@ -1,13 +1,13 @@
-#' Litchfield and Wilcoxon's Chi-Squared Statistic
+#' Chi-Squared Statistic
 #'
 #' Calculate the chi-squared statistic from observed and expected counts
 #' using the Litchfield and Wilcoxon (1949) approach.
 #' @param obsn
 #'   A numeric vector of observed counts.
 #' @param expn
-#'   A numeric vector of expected counts.
+#'   A numeric vector of expected counts, the same length as \code{obsn}.
 #' @param totn
-#'   A numeric vector of total counts possible.
+#'   A numeric vector of total counts possible, the same length as \code{obsn}.
 #' @return
 #'   A list of length two.
 #'   The first element is a numeric vector of length three:
@@ -15,12 +15,16 @@
 #'     \code{df}, degrees of freedom; and
 #'     \code{pval}, P value.
 #'   The second element is a numeric vector the same length as \code{obsn},
-#'     contributions to the chi-squared.
+#'     containing \strong{total} contributions to the chi-squared.  To get the
+#'     \strong{individual} contributions to the chi-squared as reported in
+#'     Litchfield and Wilcoxon (1949), divide by \code{totn}.
 #' @export
 #' @details
 #'   The denominator of Litchfield and Wilcoxon's (1949) chi-squared estimate
 #'   is the minimum of the \code{expn} and (\code{totn} - \code{expn})
-#'   following their Nomograph No. 1.
+#'   following their Nomograph No. 1.  This ensures that the same chi-squared
+#'   value is calculated regardless of which proportion is reported (e.g.,
+#'   affected vs. not affected).
 #' @seealso
 #'   \code{\link{chisq.test}}.
 #' @references

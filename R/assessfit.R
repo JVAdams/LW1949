@@ -14,8 +14,7 @@
 #' @param fit
 #'   A model object that can be used to predict the corrected values
 #'   (as proportions) from \code{distexpprop5}, the distance between the
-#'   expected values (as proportions) and 0.5.  Typically, the output from
-#'   \code{\link{gamtable1}()}.
+#'   expected values (as proportions) and 0.5, default \code{\link{gamtable1}()}.
 #' @param simple
 #'   A logical scalar indicating if the output should be restricted to
 #'   just the P value, default TRUE.
@@ -56,9 +55,9 @@
 #' nalive <- c(1, 4, 4, 7, 8)
 #' mydat <- dataprep(dose=conc, ntot=numtested, nfx=nalive)
 #' gamfit <- gamtable1()
-#' assessfit(log10(c(0.125, 0.5)), mydat, gamfit, simple=FALSE)
+#' assessfit(log10(c(0.125, 0.5)), mydat, simple=FALSE)
 
-assessfit <- function(params, DEdata, fit, simple=TRUE) {
+assessfit <- function(params, DEdata, fit=gamtable1(), simple=TRUE) {
   if (length(params) != 2 | !is.numeric(params)) {
     stop("params must be a numeric vector of length 2")
   }
