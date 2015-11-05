@@ -10,9 +10,9 @@
 #' \href{https://github.com/JVAdams/LW1949/blob/master/Vignette.md}{[link]}.
 #' Use \code{\link{dataprep}} to create a data frame with the results of a
 #' dose-effect experiment.
-#' Use \code{\link{fitLW}} and \code{\link{fitprobit}} to fit dose-effect
-#' relations.
-#' And use \code{\link{plotDE}} to plot the results.
+#' Use \code{\link{fitLWauto}} and \code{\link{LWestimate}}to 
+#'   fit dose-effect relations.
+#' And use \code{\link{plotDELP}} and \code{\link{plotDE}}to plot the results.
 #'
 #' \emph{U.S. Geological Survey} (USGS) Computer Program \pkg{LW1949} version 
 #'   0.0.0.9008.

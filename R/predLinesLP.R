@@ -4,7 +4,7 @@
 #' a plot of the results of a dose-effect experiment on the log10-probit scale.
 #' @param fit
 #'   A list of length three containing the result of a Litchfield and
-#'     Wilcoxon model fit, typically the output from \code{\link{fitLW}}.
+#'     Wilcoxon model fit, typically the output from \code{\link{LWestimate}}.
 #' @return
 #'   A solid fitted line is added to the plot.  Dashed lines are added to the
 #'     plot representing the \strong{horizontal} 95% confidence intervals
@@ -18,7 +18,7 @@
 #' nalive <- c(1, 4, 4, 7, 8)
 #' mydat <- dataprep(dose=dose, ntot=ntested, nfx=nalive)
 #' plotDELP(mydat)
-#' myfit <- fitLW(mydat)
+#' myfit <- LWestimate(fitLWauto(mydat), mydat)
 #' predLinesLP(myfit)
 
 predLinesLP <- function(fit) {

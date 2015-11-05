@@ -144,7 +144,7 @@ LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
     mydat <- with(df, dataprep(dose=TFM.Conc...mg.L., ntot=No..Tested,
       nfx=No..Dead))
 
-    fLW <- fitLW(mydat)
+    fLW <- LWestimate(fitLWauto(mydat), mydat)
     fp <- fitprobit(mydat)
     pctalive <- c(25, 50, 99.9)
 

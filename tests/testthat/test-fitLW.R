@@ -1,5 +1,5 @@
 
-test_that("fitLW() throws errors when it should", {
+test_that("fitLWauto() throws errors when it should", {
 
   dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
   ntested <- rep(8, 5)
@@ -19,17 +19,17 @@ test_that("fitLW() throws errors when it should", {
 
   mydatdup <- rbind(mydat, mydat[1, ])
 
-  expect_that(fitLW(mymat), throws_error())
+  expect_that(fitLWauto(mymat), throws_error())
 
-  expect_that(fitLW(mydat1), throws_error())
-  expect_that(fitLW(mydat2), throws_error())
-  expect_that(fitLW(mydat3), throws_error())
-  expect_that(fitLW(mydat5), throws_error())
-  expect_that(fitLW(mydat6), throws_error())
-  expect_that(fitLW(mydat7), throws_error())
-  expect_that(fitLW(mydat8), throws_error())
-  expect_that(fitLW(mydat9), throws_error())
+  expect_that(fitLWauto(mydat1), throws_error())
+  expect_that(fitLWauto(mydat2), throws_error())
+  expect_that(fitLWauto(mydat3), throws_error())
+  expect_that(fitLWauto(mydat5), throws_error())
+  expect_that(fitLWauto(mydat6), throws_error())
+  expect_that(fitLWauto(mydat7), throws_error())
+  expect_that(fitLWauto(mydat8), throws_error())
+  expect_that(fitLWauto(mydat9), throws_error())
 
-  expect_that(fitLW(mydatdup), throws_error())
+  expect_that(fitLWauto(mydatdup), throws_error())
 
 })

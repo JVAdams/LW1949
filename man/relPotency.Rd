@@ -7,13 +7,13 @@
 relPotency(ED50nS1, ED50nS2, vec = FALSE)
 }
 \arguments{
-\item{ED50nS1}{Either the list output from \code{\link{fitLW}} (\code{vec = FALSE}) or a
-numeric vector of length four (\code{vec = TRUE})  with the estimated
+\item{ED50nS1}{Either the list output from \code{\link{LWestimate}} (\code{vec = FALSE}) 
+or a numeric vector of length four (\code{vec = TRUE}) with the estimated
 ED50, fED50, S, and fS from a Litchfield and Wilcoxon fit to dose-effect
 data for the first toxin.}
 
-\item{ED50nS2}{Either the list output from \code{\link{fitLW}} (\code{vec = FALSE}) or a
-numeric vector of length four (\code{vec = TRUE})  with the estimated
+\item{ED50nS2}{Either the list output from \code{\link{LWestimate}} (\code{vec = FALSE}) 
+or a numeric vector of length four (\code{vec = TRUE}) with the estimated
 ED50, fED50, S, and fS from a Litchfield and Wilcoxon fit to dose-effect
 data for the second toxin.}
 
@@ -61,8 +61,8 @@ nalive1 <- c(1, 4, 4, 7, 8)
 mydat1 <- dataprep(dose=dose, ntot=ntested, nfx=nalive1)
 nalive2 <- c(0, 1, 2, 6, 6)
 mydat2 <- dataprep(dose=dose, ntot=ntested, nfx=nalive2)
-fit1 <- fitLW(mydat1)
-fit2 <- fitLW(mydat2)
+fit1 <- LWestimate(fitLWauto(mydat1), mydat1)
+fit2 <- LWestimate(fitLWauto(mydat2), mydat2)
 relPotency(fit1, fit2)
 
 # Example from Litchfield and Wilcoxon (1949)

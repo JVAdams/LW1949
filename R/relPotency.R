@@ -3,13 +3,13 @@
 #' Estimate of relative potency of two toxins using Litchfield and
 #' Wilcoxon's (1949) approach to evaluating dose-effect experiments.
 #' @param ED50nS1
-#'   Either the list output from \code{\link{fitLW}} (\code{vec = FALSE}) or a
-#'   numeric vector of length four (\code{vec = TRUE})  with the estimated
+#'   Either the list output from \code{\link{LWestimate}} (\code{vec = FALSE}) 
+#'   or a numeric vector of length four (\code{vec = TRUE}) with the estimated
 #'   ED50, fED50, S, and fS from a Litchfield and Wilcoxon fit to dose-effect
 #'   data for the first toxin.
 #' @param ED50nS2
-#'   Either the list output from \code{\link{fitLW}} (\code{vec = FALSE}) or a
-#'   numeric vector of length four (\code{vec = TRUE})  with the estimated
+#'   Either the list output from \code{\link{LWestimate}} (\code{vec = FALSE}) 
+#'   or a numeric vector of length four (\code{vec = TRUE}) with the estimated
 #'   ED50, fED50, S, and fS from a Litchfield and Wilcoxon fit to dose-effect
 #'   data for the second toxin.
 #' @param vec
@@ -57,8 +57,8 @@
 #' mydat1 <- dataprep(dose=dose, ntot=ntested, nfx=nalive1)
 #' nalive2 <- c(0, 1, 2, 6, 6)
 #' mydat2 <- dataprep(dose=dose, ntot=ntested, nfx=nalive2)
-#' fit1 <- fitLW(mydat1)
-#' fit2 <- fitLW(mydat2)
+#' fit1 <- LWestimate(fitLWauto(mydat1), mydat1)
+#' fit2 <- LWestimate(fitLWauto(mydat2), mydat2)
 #' relPotency(fit1, fit2)
 #'
 #' # Example from Litchfield and Wilcoxon (1949)

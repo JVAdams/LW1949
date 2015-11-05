@@ -50,19 +50,26 @@ mydat
 
 ### Fit model
 
-Use the `fitLW` function to fit a dose-effect relation following Litchfield and Wilcoxon's (1949) method.
+Use the `fitLWauto` and `LWestimate` functions to fit a dose-effect relation following Litchfield and Wilcoxon's (1949) method.
 
 ```{r fit_LW}
-fLW <- fitLW(mydat)
+intslope <- fitLWauto(mydat)
+fLW <- LWestimate(intslope, mydat)
 ```
 
-The output is a list with three elements,
+The output from `fitLWauto` is a numeric vector of length two, the estimated intercept and slope of the best fitting line on the log10-probit scale..
+
+```{r fitLWauto_output}
+intslope
+```
+
+The output from `LWestimate` is a list with three elements,
 
 - `chi`, the chi-squared test comparing observed and expected effects, including the expected effects, the "corrected" expected effects (step B in Litchfield and Wilcoxon 1949), and the contribution to the chi-squared statistic (their step C);
 - `params`, the estimated intercept and slope on the log10-probit scale; and
 - `LWest`, additional estimates calculated in the process of using Litchfield and Wilcoxon's (1949) method (their steps D and E).
 
-```{r fitLW_output}
+```{r LWestimate_output}
 fLW
 ```
 

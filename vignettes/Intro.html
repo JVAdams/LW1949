@@ -10,7 +10,7 @@
 
 <meta name="author" content="Jean V. Adams" />
 
-<meta name="date" content="2015-11-04" />
+<meta name="date" content="2015-11-05" />
 
 <title>Introduction to LW1949</title>
 
@@ -54,7 +54,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <div id="header">
 <h1 class="title">Introduction to LW1949</h1>
 <h4 class="author"><em>Jean V. Adams</em></h4>
-<h4 class="date"><em>2015-11-04</em></h4>
+<h4 class="date"><em>2015-11-05</em></h4>
 </div>
 
 
@@ -97,9 +97,14 @@ mydat &lt;-<span class="st"> </span><span class="kw">dataprep</span>(<span class
 </div>
 <div id="fit-model" class="section level3">
 <h3>Fit model</h3>
-<p>Use the <code>fitLW</code> function to fit a dose-effect relation following Litchfield and Wilcoxon’s (1949) method.</p>
-<pre class="sourceCode r"><code class="sourceCode r">fLW &lt;-<span class="st"> </span><span class="kw">fitLW</span>(mydat)</code></pre>
-<p>The output is a list with three elements,</p>
+<p>Use the <code>fitLWauto</code> and <code>LWestimate</code> functions to fit a dose-effect relation following Litchfield and Wilcoxon’s (1949) method.</p>
+<pre class="sourceCode r"><code class="sourceCode r">intslope &lt;-<span class="st"> </span><span class="kw">fitLWauto</span>(mydat)
+fLW &lt;-<span class="st"> </span><span class="kw">LWestimate</span>(intslope, mydat)</code></pre>
+<p>The output from <code>fitLWauto</code> is a numeric vector of length two, the estimated intercept and slope of the best fitting line on the log10-probit scale..</p>
+<pre class="sourceCode r"><code class="sourceCode r">intslope</code></pre>
+<pre><code>## Intercept     Slope 
+##  1.726888  2.280443</code></pre>
+<p>The output from <code>LWestimate</code> is a list with three elements,</p>
 <ul>
 <li><code>chi</code>, the chi-squared test comparing observed and expected effects, including the expected effects, the “corrected” expected effects (step B in Litchfield and Wilcoxon 1949), and the contribution to the chi-squared statistic (their step C);</li>
 <li><code>params</code>, the estimated intercept and slope on the log10-probit scale; and</li>
@@ -122,8 +127,8 @@ mydat &lt;-<span class="st"> </span><span class="kw">dataprep</span>(<span class
 ## 
 ## 
 ## $params
-## (Intercept)   log10dose 
-##    1.726888    2.280443 
+## Intercept     Slope 
+##  1.726888  2.280443 
 ## 
 ## $LWest
 ##        ED50       lower       upper     npartfx        ED16        ED84 
