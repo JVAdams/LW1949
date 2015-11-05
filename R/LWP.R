@@ -190,7 +190,7 @@ LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
     if (saveplots | showplots) {
       # plot the results to a pdf file
       par(mar=c(4, 4, 2, 1))
-      plotDE(mydat, main=descr, ylab="Mortality  (%)")
+      plotDELP(mydat, main=descr, ylab="Mortality  (%)")
       if (!is.na(fpc[1])) abline(fpc, lty=2, col="red")
       abline(fLW$params)
       # notes on graph
