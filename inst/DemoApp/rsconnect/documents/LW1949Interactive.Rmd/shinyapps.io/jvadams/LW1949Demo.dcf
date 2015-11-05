@@ -1,8 +1,8 @@
 name: LW1949Demo
 account: jvadams
 server: shinyapps.io
-bundleId: 304627
+bundleId: 305003
 url: https://jvadams.shinyapps.io/LW1949demo
-when: 1446682522.74272
+when: 1446734456.27679
 asMultiple: FALSE
 asStatic: FALSE
