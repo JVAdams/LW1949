@@ -56,26 +56,16 @@ fitLWauto <- function(DEdata) {
     svchi <- NA
     # fit line to partial effects alone
     if (pms > 1) {
+    # fit line to partial effects alone
       dfpart <- dfsub[dfsub$fxcateg==50, ]
       sv <- fitlinear(dfpart)
       svchi <- assessfit(sv, dfpart, gamfit)
-    }
-    # fit line to partial effects with last 0% and first 100%
-    if (pms==1 | is.na(svchi)) {
+    } else {
+      # fit line to partial effects with last 0% and first 100%
       dfpart <- rbind(
         df0[with(df0, which.max(dose)), ],
         dfsub[dfsub$fxcateg==50, ],
         df100[with(df100, which.min(dose)), ]
-      )
-      sv <- fitlinear(dfpart)
-      svchi <- assessfit(sv, dfpart, gamfit)
-    }
-    # fit line to first 0% and last 100% alone
-    if (is.na(svchi)) {
-      dfpart <- rbind(
-        df0[with(df0, which.min(dose)), ],
-        dfsub[dfsub$fxcateg==50, ],
-        df100[with(df100, which.max(dose)), ]
       )
       sv <- fitlinear(dfpart)
       svchi <- assessfit(sv, dfpart, gamfit)
