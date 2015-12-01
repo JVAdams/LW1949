@@ -19,6 +19,8 @@
 #'     \strong{individual} contributions to the chi-squared as reported in
 #'     Litchfield and Wilcoxon (1949), divide by \code{totn}.
 #' @export
+#' @import
+#'   stats
 #' @details
 #'   The denominator of Litchfield and Wilcoxon's (1949) chi-squared estimate
 #'   is the minimum of the \code{expn} and (\code{totn} - \code{expn})

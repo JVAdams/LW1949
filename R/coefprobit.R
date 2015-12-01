@@ -14,6 +14,8 @@
 #'   A numeric vector of length six, the intercept and slope of the
 #'     dose-response curve, each with 100*(1 - \code{alpha})\%
 #'     confidence limits.
+#' @import
+#'   stats
 #' @export
 #' @examples
 #' toxdat <- data.frame(

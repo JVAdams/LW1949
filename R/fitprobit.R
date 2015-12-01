@@ -10,6 +10,8 @@
 #' @return
 #'   A an object of class \code{\link{glm}}.
 #' @export
+#' @import
+#'   stats
 #' @details
 #'   Only those rows with \code{dose > 0}, \code{ntot > 0}, and \code{nfx >= 0}
 #'   are used in fitting the model.

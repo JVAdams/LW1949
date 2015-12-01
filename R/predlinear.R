@@ -31,6 +31,8 @@
 #'     (\code{lower} and \code{upper}).
 #'   The number of rows of the matrix, n, is the length of \code{pct}.
 #' @export
+#' @import
+#'   stats
 #' @details
 #'   Follows methods outlined in Litchfield and Wilcoxon (1949).
 #'     Specifically, for the 95\% confidence intervals, see page 105, and

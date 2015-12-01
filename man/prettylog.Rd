@@ -30,8 +30,4 @@ prettylog(vals, 1, 0)
 prettylog(vals, 1)
 prettylog(vals, c(1, 2, 5))
 }
-\references{
-This is a copy of the \code{prettylog} function from the
-  \href{https://github.com/JVAdams/jvamisc}{[jvamisc]} package.
-}
 

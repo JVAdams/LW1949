@@ -13,7 +13,7 @@
 #'   A numeric vector of corrected effects (as proportions),
 #'     the same length as \code{val}.
 #' @import
-#'   mgcv
+#'   mgcv stats
 #' @export
 #' @references Litchfield, JT Jr. and F Wilcoxon.  1949.
 #' A simplified method of evaluating dose-effect experiments.

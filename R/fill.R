@@ -15,9 +15,6 @@
 #' @details
 #'   Similar to \code{\link[zoo]{na.locf}} in the \code{zoo} package,
 #'   but works for "" in character vectors as well.
-#' @references
-#'   This is a copy of the \code{fill} function from the 
-#'   \href{https://github.com/JVAdams/jvamisc}{[jvamisc]} package.
 #' @examples
 #' numvec <- c(NA, 1:5, NA, NA, NA, 10:12, NA)
 #' newgroup <- c(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)

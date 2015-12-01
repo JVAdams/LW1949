@@ -18,10 +18,10 @@ menu.}
 test, default 1:4.}
 
 \item{saveplots}{A logical scalar indicating if plots should be saved to a pdf file,
-default TRUE.}
+default TRUE.  See details.}
 
 \item{showplots}{A logical scalar indicating if plots should be shown on screen,
-default FALSE.}
+default FALSE.  See details.}
 
 \item{saveresults}{A logical scalar indicating if results should be saved to a csv file,
 default TRUE.
@@ -66,8 +66,12 @@ The input data must include at least these seven columns,
     \item \code{No. Tested} = A numeric vector, the number of animals tested
     \item \code{No. Dead} = A numeric vector, the number of animals dead
   }
+
   The input data are expected to be summarized by dose.
     If duplicate doses are provided, an error will be thrown.
+
+  Both \code{saveplots} and \code{showplots} may be set to FALSE, in which
+    case no plots will be produced.  But both may not be set to TRUE.
 }
 \examples{
 \dontrun{

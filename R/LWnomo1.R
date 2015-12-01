@@ -22,6 +22,8 @@
 #'   scale) of the end points of the three scales.  Information is provided
 #'   twice for the first scale, once for the left tick marks and once for the
 #'   right tick marks.
+#' @import
+#'   graphics
 #' @references
 #'   Litchfield, JT Jr. and F Wilcoxon.  1949.
 #'     A simplified method of evaluating dose-effect experiments.

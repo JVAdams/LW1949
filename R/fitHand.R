@@ -11,6 +11,8 @@
 #' @return
 #'   A numeric vector of length two, the estimated intercept and slope of the
 #'   dose-response curve on the log10-probit scale,
+#' @import
+#'   stats
 #' @export
 #' @examples
 #' d <- c(0.0625, 0.125, 0.25, 0.5, 1)

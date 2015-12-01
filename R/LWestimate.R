@@ -28,6 +28,8 @@
 #'       (ED16, ED84, S with 95\% confidence intervals, N', and fED50).
 #'   }
 #' @export
+#' @import
+#'   stats
 #' @references
 #'   Litchfield, JT Jr. and F Wilcoxon.  1949.
 #'     A simplified method of evaluating dose-effect experiments.

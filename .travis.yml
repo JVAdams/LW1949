@@ -1,5 +1,23 @@
-# Sample .travis.yml for R projects
-
 language: r
+
+# Be strict when checking our package
 warnings_are_errors: true
+
+# R support in Travis CI currently requires sudo
 sudo: required
+
+# System dependencies for HTTP calling
+r_binary_packages:
+ - MASS
+ - mgcv
+ - plotrix
+ - tcltk
+ - testthat
+
+# Install the bleeding edge version of a package from github (eg to pick
+# up a not-yet-released bugfix)
+r_github_packages:
+ - cran/MASS
+ - cran/mgcv
+ - cran/plotrix
+ - cran/tcltk

@@ -5,7 +5,7 @@
 #' @return
 #'   A \code{\link{gamObject}} that can be used to predict the corrected values
 #'     (as proportions) from \code{distexpprop5},
-#'     the distance bewteen the expected values (as proportions) and 0.5
+#'     the distance between the expected values (as proportions) and 0.5
 #' @import
 #'   mgcv
 #' @export

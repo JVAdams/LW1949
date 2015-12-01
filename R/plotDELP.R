@@ -21,6 +21,8 @@
 #' @param ...
 #'   Additional arguments to \code{\link{plot}}.
 #' @export
+#' @import
+#'   graphics
 #' @seealso  
 #'   \code{\link{predLinesLP}}, \code{\link{plotDE}}, \code{\link{predLines}}
 #' @examples

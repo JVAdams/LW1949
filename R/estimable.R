@@ -9,6 +9,8 @@
 #' @return
 #'   A logical scalar indicating if a dose-effect relation is estimable.
 #' @export
+#' @import
+#'   stats
 #' @details
 #'   A dose-effect relation is defined to be estimable if and only if there are
 #'     at least two test records and there is some (non-zero) variability in

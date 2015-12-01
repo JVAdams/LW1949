@@ -1,25 +1,34 @@
 Package: LW1949
+Version: 1.0.0
+Date: 2015-12-01
 Title: An Automated Approach to Evaluating Dose-Effect Experiments Following
     Litchfield and Wilcoxon (1949)
-Version: 0.0.0.9010
-Authors@R: person(given="Jean V.", family="Adams", email="jvadams@usgs.gov", 
-  role=c("aut", "cre"))
-Description: LW1949 takes the manual approach to evaluating dose-effect
-    experiments (Litchfield and Wilcoxon 1949) and automates the steps so that
-    the computer can do the work.
+Authors@R: person(given="Jean V.", family="Adams", email="jvadams@usgs.gov",
+    role=c("aut", "cre"))
+Author: Jean V. Adams [aut, cre]
+Maintainer: Jean V. Adams <jvadams@usgs.gov>
 Depends:
     R (>= 3.2.2)
 Imports:
     MASS,
     mgcv,
     plotrix,
-    tcltk
+    tcltk,
+    grDevices,
+    graphics,
+    stats,
+    utils
 Suggests:
     magrittr,
     testthat,
     knitr
+Description: The manual approach of Litchfield and Wilcoxon (1949)
+    <http://jpet.aspetjournals.org/content/96/2/99.abstract>
+    for evaluating dose-effect experiments
+    is automated so that the computer can do the work. 
 License: GPL
-LazyData: TRUE
 URL: https://github.com/JVAdams/LW1949
+BugReports: https://github.com/JVAdams/LW1949/issues
+LazyData: TRUE
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1

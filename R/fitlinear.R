@@ -13,6 +13,8 @@
 #' @return
 #'   A numeric vector of length two, the estimated intercept and slope.
 #' @export
+#' @import
+#'   stats
 #' @examples
 #' conc <- c(0.0625, 0.125, 0.25, 0.5, 1)
 #' numtested <- rep(8, 5)

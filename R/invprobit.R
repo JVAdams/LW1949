@@ -6,6 +6,8 @@
 #' @return
 #'   A numeric vector of proportions the same length as \code{quan}.
 #' @export
+#' @import
+#'   stats
 #' @details
 #'   Simply calls \code{\link{pnorm}(quan)}.
 #' @examples

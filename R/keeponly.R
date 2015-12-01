@@ -11,7 +11,7 @@
 #'   An integer scalar, the maximum number of consecutive extreme values
 #'     allowed, default 2.
 #' @return
-#'   A logical vector for selecting all elements of \code{orderedx} without
+#'   A logical vector for selecting all elements of \code{x} without
 #'     exceeding \code{nconsec} consecutive extreme values.
 #' @export
 #' @examples

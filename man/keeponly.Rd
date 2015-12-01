@@ -16,7 +16,7 @@ default c(0, 100).}
 allowed, default 2.}
 }
 \value{
-A logical vector for selecting all elements of \code{orderedx} without
+A logical vector for selecting all elements of \code{x} without
     exceeding \code{nconsec} consecutive extreme values.
 }
 \description{

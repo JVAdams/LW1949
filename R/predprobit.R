@@ -20,7 +20,7 @@
 #'   A numeric vector of length three, the effective dose and the lower and
 #'   upper 100*(1 - \code{alpha})\% confidence limits.
 #' @import
-#'   MASS
+#'   MASS stats
 #' @export
 #' @examples
 #' toxdat <- data.frame(

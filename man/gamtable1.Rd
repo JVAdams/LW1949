@@ -9,7 +9,7 @@ gamtable1()
 \value{
 A \code{\link{gamObject}} that can be used to predict the corrected values
     (as proportions) from \code{distexpprop5},
-    the distance bewteen the expected values (as proportions) and 0.5
+    the distance between the expected values (as proportions) and 0.5
 }
 \description{
 Fit a smooth GAM function to replace looking up values in Table 1 of

@@ -12,6 +12,8 @@
 #'     plot representing the \strong{horizontal} 95% confidence intervals
 #'     for the predicted dose to elicit a given percent affected.
 #' @export
+#' @import
+#'   graphics
 #' @seealso  
 #'   \code{\link{plotDELP}}, \code{\link{plotDE}}, \code{\link{predLines}}
 #' @examples

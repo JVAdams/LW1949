@@ -14,6 +14,8 @@
 #' The input data are expected to be summarized by dose.
 #'   If duplicate doses are provided, an error will be thrown.
 #' @export
+#' @import
+#'   stats
 #' @references
 #'   Litchfield, JT Jr. and F Wilcoxon.  1949.
 #'     A simplified method of evaluating dose-effect experiments.

@@ -14,10 +14,10 @@
 #'     test, default 1:4.
 #' @param saveplots
 #'   A logical scalar indicating if plots should be saved to a pdf file,
-#'     default TRUE.
+#'     default TRUE.  See details.
 #' @param showplots
 #'   A logical scalar indicating if plots should be shown on screen,
-#'     default FALSE.
+#'     default FALSE.  See details.
 #' @param saveresults
 #'   A logical scalar indicating if results should be saved to a csv file,
 #'     default TRUE.
@@ -40,7 +40,7 @@
 #'     95\% confidence interval of the estimate (\code{lower95ci} and
 #'     \code{upper95ci})
 #' @import
-#'   tcltk
+#'   graphics grDevices tcltk utils
 #' @export
 #' @references
 #'   Litchfield, JT Jr. and F Wilcoxon.  1949.
@@ -62,8 +62,12 @@
 #'     \item \code{No. Tested} = A numeric vector, the number of animals tested
 #'     \item \code{No. Dead} = A numeric vector, the number of animals dead
 #'   }
+#'
 #'   The input data are expected to be summarized by dose.
 #'     If duplicate doses are provided, an error will be thrown.
+#'
+#'   Both \code{saveplots} and \code{showplots} may be set to FALSE, in which
+#'     case no plots will be produced.  But both may not be set to TRUE.
 #' @examples
 #' \dontrun{
 #' LWP()
@@ -71,6 +75,7 @@
 
 LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
   saveresults=TRUE, showresults=TRUE, returnresults=FALSE) {
+
   if (sum(abs(as.integer(descrcolz) - descrcolz))>0) {
     stop("descrcolz must be a vector of integers.")
   }
@@ -88,6 +93,9 @@ LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
   }
   if (!is.logical(returnresults) | length(returnresults)!=1) {
     stop("returnresults must be a logical scalar.")
+  }
+  if (saveplots & showplots) {
+    stop("Either saveplots or showplots (or both) must be FALSE.")
   }
 
   oldopt <- as.logical(options("stringsAsFactors"))
@@ -121,13 +129,17 @@ LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
   filesegs <- strsplit(rawfile, "/")[[1]]
   L <- length(filesegs)
   filename <- filesegs[L]
-  dirname <- paste(filesegs[-L], collapse="/")
+  if(L>1) {
+    dirname <- paste0(paste(filesegs[-L], collapse="/"), "/")
+  } else {
+    dirname <- ""
+  }
   prefix <- strsplit(filename, ".csv")[[1]]
   smryname <- paste0(prefix, "Smry.csv")
 
   if (saveplots) {
     pdfname <- paste0(prefix, "Smry.pdf")
-    pdf(file = paste(dirname, pdfname, sep="/"), paper="letter")
+    pdf(file = paste0(dirname, pdfname), paper="letter")
     }
 
   ### fit LW and probit models to the data
@@ -186,7 +198,6 @@ LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
       print(format(smryPr[, -2], 2, nsmall=2, digits=0), row.names=FALSE)
       }
 
-    if (showplots) windows()
     if (saveplots | showplots) {
       # plot the results to a pdf file
       par(mar=c(4, 4, 2, 1))
@@ -216,7 +227,7 @@ LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
   if (saveplots) graphics.off()
   # save the results to a csv file
   smrydat <- do.call(rbind, results)
-  if (saveresults) write.csv(smrydat, paste(dirname, smryname, sep="/"),
+  if (saveresults) write.csv(smrydat, paste0(dirname, smryname),
     row.names=FALSE)
   if (returnresults) {
     return(smrydat)
@@ -228,7 +239,7 @@ LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
     cat("\n\n\n")
     cat("Rounded results are printed to the screen for convenience.\n")
     cat("No need to copy or print them though, because they are saved in:\n")
-    cat("     ", paste(dirname, smryname, sep="/"), "\n")
+    cat("     ", paste0(dirname, smryname), "\n")
     cat('Note that "S" is the slope defined by',
       "Litchfield and Wilcoxon (1949).\n\n")
     }
