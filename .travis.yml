@@ -12,3 +12,4 @@ r_binary_packages:
  - mgcv
  - plotrix
  - testthat
+ - zoo
