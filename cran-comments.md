@@ -13,7 +13,7 @@ There were no ERRORs or WARNINGs in any of the environments tested
 There were 2 NOTEs:
 
 * checking CRAN incoming feasibility ... NOTE
-  Maintainer: ‘Jean V. Adams <jvadams@usgs.gov>’
+  Maintainer: 'Jean V. Adams <jvadams@usgs.gov>'
   New submission
 
 * checking package dependencies ... NOTE
