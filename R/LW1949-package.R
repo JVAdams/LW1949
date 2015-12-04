@@ -7,7 +7,7 @@
 #'
 #' An example of how to use the functions in \pkg{LW1949} is given in this
 #' vignette
-#' \href{http://htmlpreview.github.io/?https://github.com/JVAdams/LW1949/blob/master/vignettes/Intro.html}{[link]}.
+#' \href{https://rawgit.com/JVAdams/LW1949/master/vignettes/Intro.html}{[link]}.
 #' Use \code{\link{dataprep}} to create a data frame with the results of a
 #' dose-effect experiment.
 #' Use \code{\link{fitLWauto}} and \code{\link{LWestimate}} to 
