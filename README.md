@@ -8,24 +8,15 @@ An example of how to use the functions in **LW1949** is given in this [vignette]
 
 - - -
 
-You should be able to access the functions by installing them directly from within R.
+To get the current released version from CRAN:
 
-	library("devtools")
-	devtools::install_github("JVAdams/LW1949", build_vignettes=TRUE)
-	library(LW1949)
+    install.packages("LW1949")
 
-If you don't already have `Rtools` and `devtools`, you will need to download and install (as administrator, if using a PC) `Rtools` from 
-[CRAN](http://cran.r-project.org/bin/windows/Rtools/) then run the following lines of code before submitting the code above:
+To get the current development version from GitHub:
 
-	find_rtools()
-	install.packages("devtools")
+    install.packages("devtools")
+    devtools::install_github("JVAdams/LW1949", build_vignettes=TRUE)
 
-An alternative approach for Windows users is to download this 
-[zip file](https://github.com/JVAdams/LW1949/archive/master.zip)
-and install the package from the R menu:
-- Packages
-- Install package(s) from local zip files...
-	
 - - -
 
 _Thanks to Hilary Parker whose blog post 
@@ -34,7 +25,7 @@ encouraged me to create my first R package._
 
 - - -
 
-_U.S. Geological Survey_ (USGS) Computer Program **LW1949** version 1.0.0. 
+_U.S. Geological Survey_ (USGS) Computer Program **LW1949** version 1.0.0.9000. 
 Written by Jean V. Adams, [USGS - Great Lakes Science Center](http://www.glsc.usgs.gov/), Ann Arbor, Michigan, USA. 
 Written in programming language R (R Core Team, 2015, www.R-project.org), version 3.2.2 (2015-08-14). 
 Run on a PC with Intel(R) Core(TM) I7-4600m CPU, 2.90 GHz processor, 16.0 GB RAM, and Microsoft Windows 7 Enterprise operating system 2009 Service Pack 1. 

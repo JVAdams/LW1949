@@ -14,7 +14,13 @@ You can also try a brief demonstration of **LW1949** in this [web app](https://j
 
 ### Install
 
-Install the **LW1949** package following these [instructions](https://github.com/JVAdams/LW1949/blob/master/README.md).  Then load the package.
+Install
+
+```{r install_package, eval=FALSE}
+install.packages("LW1949")
+```
+
+and load the **LW1949** package.
 
 ```{r load_package}
 library(LW1949)
