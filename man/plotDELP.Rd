@@ -6,7 +6,7 @@
 \usage{
 plotDELP(DEdata, xlab = "Dose", ylab = "Affected  (\%)",
   xlim = range(DEdata$dose[DEdata$dose > 0], na.rm = TRUE), ylim = c(0.1,
-  99.9), ...)
+  99.9), grid = TRUE, ...)
 }
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from
@@ -25,6 +25,9 @@ dose, default range(DEdata$dose, na.rm=TRUE).}
   affected (\%), default c(0.1, 99.9).
 Observed effects beyond this range will be plotted at the limits of this
   range using an open symbol.}
+
+\item{grid}{A logical scalar indicating if a background grid should be plotted,
+default TRUE.}
 
 \item{...}{Additional arguments to \code{\link{plot}}.}
 }

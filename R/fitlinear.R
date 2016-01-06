@@ -9,7 +9,7 @@
 #' @param constr
 #'   A numeric vector of length two, indicating the constraints
 #'     (see \code{\link{constrain}}) applied to the proportional effects,
-#'     default c(0.0001, 0.9999).
+#'     default c(0.001, 0.999).
 #' @return
 #'   A numeric vector of length two, the estimated intercept and slope.
 #' @export
@@ -22,7 +22,7 @@
 #' mydat <- dataprep(dose=conc, ntot=numtested, nfx=nalive)
 #' fitlinear(mydat)
 
-fitlinear <- function(DEdata, constr=c(0.0001, 0.9999)) {
+fitlinear <- function(DEdata, constr=c(0.001, 0.999)) {
   if (!is.data.frame(DEdata)) stop("DEdata must be a data frame.")
   if (any(is.na(match(c("log10dose", "bitpfx", "LWkeep"), names(DEdata))))) {
     stop("DEdata must include at least three variables:",

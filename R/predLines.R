@@ -14,7 +14,7 @@
 #' @export
 #' @import
 #'   graphics
-#' @seealso  
+#' @seealso
 #'   \code{\link{plotDE}}, \code{\link{plotDELP}}, \code{\link{predLinesLP}}
 #' @examples
 #' dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
@@ -26,7 +26,9 @@
 #' predLines(myfit)
 
 predLines <- function(fit, ...) {
-  ys <- c(seq(0.1, 0.9, 0.1), 1:99, seq(99.1, 99.9, 0.1))
+  pusr <- par("usr")
+  yends <- invprobit(fit$params[1] + fit$params[2]*log10(pusr[1:2]))
+  ys <- sort(c(yends, seq(0.1, 0.9, 0.1), 1:99, seq(99.1, 99.9, 0.1)))
   lc <- predlinear(ys, fit)
   lines(lc[, "ED"], lc[, "pct"], lwd=2, ...)
   lines(lc[, "upper"], lc[, "pct"], lty=2, ...)

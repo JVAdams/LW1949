@@ -4,7 +4,7 @@
 \alias{fitlinear}
 \title{Determine Linear Regression Coefficients from Dose-Effect Data}
 \usage{
-fitlinear(DEdata, constr = c(1e-04, 0.9999))
+fitlinear(DEdata, constr = c(0.001, 0.999))
 }
 \arguments{
 \item{DEdata}{A data frame of dose-effect data (typically, the output from
@@ -13,7 +13,7 @@ log10dose, bitpfx, and LWkeep.}
 
 \item{constr}{A numeric vector of length two, indicating the constraints
 (see \code{\link{constrain}}) applied to the proportional effects,
-default c(0.0001, 0.9999).}
+default c(0.001, 0.999).}
 }
 \value{
 A numeric vector of length two, the estimated intercept and slope.

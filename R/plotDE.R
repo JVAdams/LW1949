@@ -26,7 +26,7 @@
 #' @export
 #' @import
 #'   graphics
-#' @seealso  
+#' @seealso
 #'   \code{\link{predLines}}, \code{\link{plotDELP}}, \code{\link{predLinesLP}}
 #' @examples
 #' dose <- c(0.0625, 0.125, 0.25, 0.5, 1)
@@ -61,9 +61,12 @@ plotDE <- function(DEdata, xlab="Dose", ylab="Affected  (%)",
 
   # reference lines
   abline(h=ref, lwd=2, col="lightgray")
+  box()
 
   # observed points
-  points(DEdata$dose, y, pch=16, cex=1.5)
-  sel <- DEdata$fxcateg!=50
-  points(DEdata$dose[sel], y[sel], pch=16, col="white")
+  extr <- DEdata$fxcateg!=50
+  points(DEdata$dose[!extr], y[!extr], pch=16, cex=1.5*par("cex"))
+  points(DEdata$dose[extr], y[extr], pch=21, cex=1.5*par("cex"),
+    bg="white", col="black", lwd=2)
+
 }

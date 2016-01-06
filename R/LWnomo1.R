@@ -16,6 +16,8 @@
 #' (observed - expected)^2 / (100 * expected)
 #' @param values
 #'   A logical scalar indicating whether values should be output.
+#' @param ...
+#'   Additional parameters to \code{\link{par}}.
 #' @return
 #'   If \code{values} is TRUE, a list of length four, with the x and y
 #'   coordinates and the corresponding values (all displayed in the log10
@@ -32,7 +34,7 @@
 #' @examples
 #' LWnomo1()
 
-LWnomo1 <- function(values=FALSE) {
+LWnomo1 <- function(values=FALSE, ...) {
 
   bigtix <- function(x, fudge=10, roundingto=c(1, 2, 5)) {
     onedigit <- signif(x, 1) - round(x, fudge) == 0
@@ -78,12 +80,21 @@ c(seq(0.001, 0.002, 0.0002), seq(0.0025, 0.005, 0.0005),seq(0.006, 0.01, 0.001),
   opmepladj. <- sort(unique(c(range(opmepladj), opmepladj[bigtix(opmepladj)])))
   opmepl. <- 2*log10(opmepladj.)
 
-  par(xaxs="i", yaxs="i", mar=c(1, 1, 4, 1), las=1)
+  par(xaxs="i", yaxs="i", mar=c(1, 1.5, 4.5, 0.5), las=1, ...)
   plot(0:1, 0:1, type="n", axes=FALSE, xlab="", ylab="")
+
+  # http://stackoverflow.com/a/29893376/2140956
+  # fix the number of lines for right labels on first axis
+  nlines <- 1.5
+  # convert 1 from lines to inches
+  inches <- nlines * par("cin")[2] * par("cex") * par("lheight")
+  # convert from inches to user coords
+  mycoord <- diff(grconvertX(c(0, inches), from="inches", to="user"))
+
   axis(2, pos=0.1,  at=rescale(log10(ep1l),  0:1), labels=FALSE, tck=-0.01)
   axis(2, pos=0.1,  at=rescale(log10(ep1l.), 0:1), labels=round(rev(ep2l.), 2))
-  axis(2, pos=0.152, at=rescale(log10(ep1l.), 0:1), labels=round(ep1l., 2),
-    tick=FALSE, hadj=0)
+  axis(2, pos=0.1+mycoord, at=rescale(log10(ep1l.), 0:1),
+    labels=round(ep1l., 2), tick=FALSE, hadj=0)
   axis(2, pos=0.5, at=rescale(opmepl,  0:1)[-1], labels=FALSE, tck=-0.01)
   axis(2, pos=0.5, at=rescale(opmepl., 0:1)[-1],
     labels=round(opmepladj., 3)[-1])
