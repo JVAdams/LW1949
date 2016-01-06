@@ -39,8 +39,9 @@
 #'     the method used (\code{method}), the estimate (\code{estimate}), and the
 #'     95\% confidence interval of the estimate (\code{lower95ci} and
 #'     \code{upper95ci})
+#' @importFrom tcltk tk_choose.files
 #' @import
-#'   graphics grDevices tcltk utils
+#'   graphics grDevices utils
 #' @export
 #' @references
 #'   Litchfield, JT Jr. and F Wilcoxon.  1949.
@@ -103,7 +104,7 @@ LWP <- function(rawfile=NULL, descrcolz=1:4, saveplots=TRUE, showplots=FALSE,
 
   ### bring in the data ###
   # allow user to choose raw data file from menu
-  if (is.null(rawfile)) rawfile <- tk_choose.files(default="*.csv", multi=FALSE)
+  if (is.null(rawfile)) rawfile <- tcltk::tk_choose.files(default="*.csv", multi=FALSE)
   # read in the data, fill in the blanks
   rawdat <- read.csv(rawfile, as.is=TRUE)
   rawdat2 <- data.frame(lapply(rawdat, fill))
