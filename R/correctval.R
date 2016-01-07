@@ -32,7 +32,9 @@ correctval <- function(val, fit) {
   x <- val[sel]
   correction <- predict(fit, newdata=data.frame(distexpprop5 = abs(0.5 - x)))
   result1 <- ifelse(x < 0.5, correction, 1-correction)
-  result2 <- ifelse(x >= 0.01 & x <= 0.99, result1, x)
+  # I use 0.005 and 0.995 as a way to ensure that effects that
+  # would be rounded up to 1% or down to 99% are still included.
+  result2 <- ifelse(x >= 0.005 & x <= 0.995, result1, x)
   result3 <- rep(NA, length(val))
   result3[sel] <- result2
   result3

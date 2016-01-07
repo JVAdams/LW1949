@@ -9,7 +9,7 @@
 #'   Additional arguments to \code{\link{abline}} and \code{\link{lines}}.
 #' @return
 #'   A solid fitted line is added to the plot.  Dashed lines are added to the
-#'     plot representing the \strong{horizontal} 95% confidence intervals
+#'     plot representing the \strong{horizontal} 95\% confidence intervals
 #'     for the predicted dose to elicit a given percent affected.
 #' @export
 #' @import

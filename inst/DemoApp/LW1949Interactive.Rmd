@@ -165,7 +165,7 @@ Litchfield, J. T. Jr. and F. Wilcoxon. 1949. [A simplified method of evaluating 
 
 ---
 
-Last modified: 6 January 2016  
+Last modified: 7 January 2016  
 Author: Jean V. Adams, [USGS - Great Lakes Science Center](http://www.glsc.usgs.gov/) and [Great Lakes Fishery Commission](http://www.GLFC.org/)
 
 Created with: [R Shiny](http://shiny.rstudio.com/) by [Rstudio](http://www.rstudio.com/)  

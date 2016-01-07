@@ -74,7 +74,9 @@ assessfit <- function(params, DEdata, fit=gamtable1(), simple=TRUE) {
   expected <- invprobit(params[1] + params[2]*log10(DEdata$dose))
   ### B1. If the expected value for any 0% or 100% dose is < 0.01% or > 99.99%,
   # delete record
-  sel <- (!is.na(expected) & expected >= 0.0001 & expected <= 0.9999) |
+  # I used 0.005% and 99.995% as the cut offs as a way to ensure effects that
+  # would be rounded up to 0.01% or down to 99.99% are still included.
+  sel <- (!is.na(expected) & expected >= 0.00005 & expected <= 0.99995) |
     (!is.na(DEdata$fxcateg) & DEdata$fxcateg==50)
   n <- sum(sel)
   ### B2. Using the expected effect, record a corrected value for each

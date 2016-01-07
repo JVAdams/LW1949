@@ -9,7 +9,7 @@
 #'   Additional arguments to \code{\link{lines}}.
 #' @return
 #'   A solid fitted line is added to the plot.  Dashed lines are added to the
-#'     plot representing the \strong{horizontal} 95% confidence intervals
+#'     plot representing the \strong{horizontal} 95\% confidence intervals
 #'     for the predicted dose to elicit a given percent affected.
 #' @export
 #' @import
@@ -27,7 +27,8 @@
 
 predLines <- function(fit, ...) {
   pusr <- par("usr")
-  yends <- invprobit(fit$params[1] + fit$params[2]*log10(pusr[1:2]))
+  yends <- invprobit(fit$params[1] +
+      fit$params[2]*log10(constrain(pusr[1:2], c(0.1, Inf))))
   ys <- sort(c(yends, seq(0.1, 0.9, 0.1), 1:99, seq(99.1, 99.9, 0.1)))
   lc <- predlinear(ys, fit)
   lines(lc[, "ED"], lc[, "pct"], lwd=2, ...)
