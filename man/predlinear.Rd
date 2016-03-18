@@ -16,7 +16,7 @@ effective dose(s).}
   affected individuals (y, on the probit scale, with 0s converted to
   0.1\% and 1s converted to 99.9\%).
 If \code{simple=FALSE}, a list with the results of fitting a Litchfield and
-  Wilcoxon model to dose-effect data, 
+  Wilcoxon model to dose-effect data,
   the output from \code{\link{LWestimate}}.}
 
 \item{simple}{A logical scalar indicating whether to carry out a simple estimation of
@@ -25,9 +25,6 @@ or an estimation of effective doses with confidence intervals from the
 Litchfield and Wilcoxon model (default, FALSE).}
 }
 \value{
-A numeric vector the same length as \code{pct} giving the estimated dose
-    at the specified percent effect.
-
 If \code{simple=TRUE}, a numeric vector the same length as \code{pct} with
     the estimated effective doses.
   If \code{simple=FALSE}, an n*4 numeric matrix with the given effects

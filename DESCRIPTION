@@ -21,7 +21,8 @@ Imports:
 Suggests:
     magrittr,
     testthat,
-    knitr
+    knitr,
+    rmarkdown
 Description: The manual approach of Litchfield and Wilcoxon (1949)
     <http://jpet.aspetjournals.org/content/96/2/99.abstract>
     for evaluating dose-effect experiments
