@@ -25,9 +25,9 @@ encouraged me to create my first R package._
 
 - - -
 
-_U.S. Geological Survey_ (USGS) Computer Program **LW1949** version 1.0.0.9003. 
+_U.S. Geological Survey_ (USGS) Computer Program **LW1949** version 1.0.0.9004. 
 Written by Jean V. Adams, [USGS - Great Lakes Science Center](http://www.glsc.usgs.gov/), Ann Arbor, Michigan, USA. 
-Written in programming language R (R Core Team, 2015, www.R-project.org), version 3.2.3 (2015-12-10). 
+Written in programming language R (R Core Team, 2016, www.R-project.org), version 3.2.5 (2016-04-14). 
 Run on a PC with Intel(R) Core(TM) I7-4600m CPU, 2.90 GHz processor, 16.0 GB RAM, and Microsoft Windows 7 Enterprise operating system 2009 Service Pack 1. 
 Source code is available from Jean V. Adams on [GitHub](https://github.com/JVAdams/LW1949), _jvadams (at) usgs (dot) gov_.
 

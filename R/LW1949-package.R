@@ -15,11 +15,11 @@
 #' And use \code{\link{plotDELP}} and \code{\link{plotDE}} to plot the results.
 #'
 #' \emph{U.S. Geological Survey} (USGS) Computer Program \pkg{LW1949} version 
-#'   1.0.0.9003
+#'   1.0.0.9004
 #' Written by Jean V. Adams, USGS - Great Lakes Science Center
 #' \href{http://www.glsc.usgs.gov/}{glsc.usgs.gov}, Ann Arbor, Michigan, USA.
-#' Written in programming language R (R Core Team, 2015, www.R-project.org),
-#' version 3.2.3 (2015-12-10).
+#' Written in programming language R (R Core Team, 2016, www.R-project.org),
+#' version 3.2.5 (2016-04-14).
 #' Run on a PC with Intel(R) Core(TM) I7-4600m CPU, 2.90 GHz processor,
 #' 16.0 GB RAM, and Microsoft Windows 7 Enterprise operating system 2009
 #' Service Pack 1.

@@ -40,6 +40,6 @@ fitlinear <- function(DEdata, constr=c(0.0005, 0.9995)) {
   if (length(constr)!=2 | any(is.na(constr)) | !is.numeric(constr)) {
     stop("constr must be a non-missing numeric vector of length 2")
   }
-  cbitpfx <- constrain(DEdata$bitpfx, probit(constr))
+  DEdata$cbitpfx <- constrain(DEdata$bitpfx, probit(constr))
   lm(cbitpfx ~ log10dose, data=DEdata[DEdata$LWkeep, ])$coef
   }

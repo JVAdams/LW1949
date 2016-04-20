@@ -1,5 +1,6 @@
-# LW1949 1.0.0.9003
+# LW1949 1.0.0.9004
 
+* Constrained corrected values for observed effects of 0% to a maximum of 10.5% and those for observed effects of 100% to a minimum of 89.5% in keeping with the intended application of Litchfield and Wilcoxon's (1949) Table 1.
 * Incorporated rounding in keeping with the true approach taken by Litchfield and Wilcoxon (1949)
     * `fitlinear()` - default setting for argument `constr` set to `c(0.0005, 0.9995)`
     * `assessfit()` - exclude records with expected effects < 0.005% or > 99.995%
