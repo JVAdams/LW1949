@@ -8,7 +8,7 @@ Authors@R: person(given="Jean V.", family="Adams", email="jvadams@usgs.gov",
 Author: Jean V. Adams [aut, cre]
 Maintainer: Jean V. Adams <jvadams@usgs.gov>
 Depends:
-    R (>= 3.2.5)
+    R (>= 3.2.4)
 Imports:
     MASS,
     mgcv,
