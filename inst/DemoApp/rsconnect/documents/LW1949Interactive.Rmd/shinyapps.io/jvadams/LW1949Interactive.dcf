@@ -2,8 +2,8 @@ name: LW1949Interactive
 account: jvadams
 server: shinyapps.io
 appId: 96244
-bundleId: 426681
+bundleId: 427531
 url: https://jvadams.shinyapps.io/LW1949Interactive/
-when: 1461177378.62476
+when: 1461240238.28785
 asMultiple: FALSE
 asStatic: FALSE
