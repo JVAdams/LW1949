@@ -16,7 +16,9 @@ To get the current development version from GitHub:
 
     install.packages("devtools")
     devtools::install_github("JVAdams/LW1949", build_vignettes=TRUE)
-Or:
+
+ or:
+
     source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")
     remotes::install_github("JVAdams/LW1949")
 
