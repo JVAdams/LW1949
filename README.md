@@ -40,6 +40,4 @@ Written in programming language R (R Core Team, 2016, www.R-project.org), versio
 Run on a PC with Intel(R) Core(TM) I7-4600m CPU, 2.90 GHz processor, 16.0 GB RAM, and Microsoft Windows 7 Enterprise operating system 2009 Service Pack 1. 
 Source code is available from Jean V. Adams on [GitHub](https://github.com/JVAdams/LW1949), _jvadams (at) usgs (dot) gov_.
 
-_Disclaimer:_ Although this program has been used by the USGS, no warranty, expressed or implied, is made by the USGS or the United States Government 
-as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, 
-and no responsibility is assumed by the USGS in connection therewith.
+_Disclaimer:_ This software has been approved for release by the U.S. Geological Survey (USGS). Although the software has been subjected to rigorous review, the USGS reserves the right to update the software as needed pursuant to further analysis and review. No warranty, expressed or implied, is made by the USGS or the U.S. Government as to the functionality of the software and related material nor shall the fact of release constitute any such warranty. Furthermore, the software is released on condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from its authorized or unauthorized use.
