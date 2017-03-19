@@ -1,24 +1,21 @@
 ## Test environments
 
-* local Windows 7 Enterprise SP 1, R 3.2.2
+* local Windows 7 Enterprise SP 1, R 3.3.3
 * win-builder (devel)
-* ubuntu 12.04 (on travis-ci), R 3.2.2
+* ubuntu 12.04 (on travis-ci), R 3.3.2
 
 
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs in any of the environments tested  
+There were no ERRORs in any of the environments tested  
 
-There were 2 NOTEs:
+WARNINGs:
 
-* checking CRAN incoming feasibility ... NOTE
-  Maintainer: 'Jean V. Adams <jvadams@usgs.gov>'
-  New submission
+* no DISPLAY variable so Tk is not available
 
-* checking package dependencies ... NOTE
-  No repository set, so cyclic dependency check skipped
+* Found the following non-portable file path: LW1949/inst/DemoApp/rsconnect/documents/LW1949Interactive.Rmd/shinyapps.io/jvadams/LW1949Interactive.dcf
 
+NOTEs:
 
-
-This is my first submission
+* Version contains large components (1.1.0)
