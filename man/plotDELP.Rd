@@ -44,4 +44,3 @@ plotDELP(mydat)
 \seealso{
 \code{\link{predLinesLP}}, \code{\link{plotDE}}, \code{\link{predLines}}
 }
-

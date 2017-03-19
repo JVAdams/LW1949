@@ -30,4 +30,3 @@ toxdat <- data.frame(
   nfx = c(0, 1, 4, 4, 6, 8))
 fitprobit(toxdat)
 }
-

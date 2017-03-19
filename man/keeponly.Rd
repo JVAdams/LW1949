@@ -30,4 +30,3 @@ vec[keeponly(vec)]
 vec <- c(100, 4, 100, 4, 0, 100, 0, 4, 0, 100)
 keeponly(vec)
 }
-

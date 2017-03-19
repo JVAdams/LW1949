@@ -32,4 +32,3 @@ A simplified method of evaluating dose-effect experiments.
 Journal of Pharmacology and Experimental Therapeutics 96(2):99-113.
 \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}.
 }
-

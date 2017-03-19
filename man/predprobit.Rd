@@ -37,4 +37,3 @@ toxdat <- data.frame(
 myfit <- fitprobit(toxdat)
 predprobit(50, myfit)
 }
-

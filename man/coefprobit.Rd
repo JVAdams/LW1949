@@ -32,4 +32,3 @@ toxdat <- data.frame(
 myfit <- fitprobit(toxdat)
 coefprobit(myfit)
 }
-

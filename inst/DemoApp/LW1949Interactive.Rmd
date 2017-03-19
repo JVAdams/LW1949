@@ -159,13 +159,16 @@ fluidPage(
 ```
 
 #### References
-LW1949. An automated approach (R package) to Litchfield and Wilcoxon's (1949) evaluation of dose-effect experiments.  Available on [Cran](https://cran.r-project.org/web/packages/LW1949/index.html) with the latest development version on [GitHub](https://github.com/JVAdams/LW1949).
+
+Adams, J. V., K. S. Slaght, and M. A. Boogaard.  2016.  An automated approach to Litchfield and Wilcoxon's evaluation of dose-effect experiments using the R package LW1949.  *Environmental Toxicology and Chemistry* 35(12):3058-3061.  [DOI 10.1002/etc.3490](https://doi.org/10.1002/etc.3490)
 
 Litchfield, J. T. Jr. and F. Wilcoxon. 1949. [A simplified method of evaluating dose-effect experiments](http://jpet.aspetjournals.org/content/96/2/99.abstract). *Journal of Pharmacology and Experimental Therapeutics* 96(2):99-113.
 
+LW1949. An automated approach (R package) to Litchfield and Wilcoxon's (1949) evaluation of dose-effect experiments.  Available on [Cran](https://cran.r-project.org/web/packages/LW1949/index.html), with the latest development version on [GitHub](https://github.com/JVAdams/LW1949).
+
 ---
 
-Last modified: 21 April 2016  
+Last modified: 19 March 2017  
 Author: Jean V. Adams, [USGS - Great Lakes Science Center](http://www.glsc.usgs.gov/) and [Great Lakes Fishery Commission](http://www.GLFC.org/)
 
 Created with: [R Shiny](http://shiny.rstudio.com/) by [Rstudio](http://www.rstudio.com/)  

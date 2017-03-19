@@ -34,4 +34,3 @@ toxy <- nomoCoord(scales$scale3, 16^2/(100*34))
 segments(fromxy[1], fromxy[2], toxy[1], toxy[2], col="red")
 
 }
-

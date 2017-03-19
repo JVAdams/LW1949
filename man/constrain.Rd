@@ -25,4 +25,3 @@ Constrain data to a specified range, assigning values from the specified
 \examples{
 constrain(1:20, c(3, 19))
 }
-

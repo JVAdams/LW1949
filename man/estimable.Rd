@@ -35,4 +35,3 @@ nalive2 <- rep(4, 5)
 mydat2 <- dataprep(dose=conc, ntot=numtested, nfx=nalive2)
 estimable(mydat2)
 }
-

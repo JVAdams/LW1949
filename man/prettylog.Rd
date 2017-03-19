@@ -30,4 +30,3 @@ prettylog(vals, 1, 0)
 prettylog(vals, 1)
 prettylog(vals, c(1, 2, 5))
 }
-

@@ -47,4 +47,3 @@ Litchfield, JT Jr. and F Wilcoxon.  1949.
 \seealso{
 \code{\link{chisq.test}}.
 }
-

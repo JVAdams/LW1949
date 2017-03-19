@@ -26,4 +26,3 @@ toxdat <- data.frame(
   nfx = c(0, 4, 6, 8))
 cbind(toxdat, fxcat(toxdat))
 }
-

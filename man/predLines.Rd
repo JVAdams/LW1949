@@ -33,4 +33,3 @@ predLines(myfit)
 \seealso{
 \code{\link{plotDE}}, \code{\link{plotDELP}}, \code{\link{predLinesLP}}
 }
-

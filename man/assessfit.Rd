@@ -69,4 +69,3 @@ Litchfield, JT Jr. and F Wilcoxon.  1949.
 \seealso{
 \code{\link{LWchi2}} and \code{\link{chisq.test}}.
 }
-

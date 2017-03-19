@@ -17,16 +17,16 @@ vignette
 \href{https://rawgit.com/JVAdams/LW1949/master/vignettes/Intro.html}{[link]}.
 Use \code{\link{dataprep}} to create a data frame with the results of a
 dose-effect experiment.
-Use \code{\link{fitLWauto}} and \code{\link{LWestimate}} to 
+Use \code{\link{fitLWauto}} and \code{\link{LWestimate}} to
   fit dose-effect relations.
 And use \code{\link{plotDELP}} and \code{\link{plotDE}} to plot the results.
 
-\emph{U.S. Geological Survey} (USGS) Computer Program \pkg{LW1949} version 
-  1.0.0.9004
+\emph{U.S. Geological Survey} (USGS) Computer Program \pkg{LW1949} version
+  1.0.0.9005
 Written by Jean V. Adams, USGS - Great Lakes Science Center
 \href{http://www.glsc.usgs.gov/}{glsc.usgs.gov}, Ann Arbor, Michigan, USA.
-Written in programming language R (R Core Team, 2016, www.R-project.org),
-version 3.2.4 Revised (2016-03-16 r70336).
+Written in programming language R (R Core Team, 2017, www.R-project.org),
+version 3.3.3 (2017-03-06).
 Run on a PC with Intel(R) Core(TM) I7-4600m CPU, 2.90 GHz processor,
 16.0 GB RAM, and Microsoft Windows 7 Enterprise operating system 2009
 Service Pack 1.
@@ -42,13 +42,15 @@ warranty, and no responsibility is assumed by the USGS in connection
 therewith.
 }
 \references{
-Adams, JV, KS Slaght, and MA Boogaard.  \emph{In preparation}.
+Adams, JV, KS Slaght, and MA Boogaard.  2016.
     An automated approach to Litchfield and Wilcoxon's evaluation of
-    dose-effect experiments.
+    dose-effect experiments using the R package LW1949.
+    Environmental Toxicology and Chemistry 35(12):3058-3061.
+    \href{https://doi.org/10.1002/etc.3490}{DOI 10.1002/etc.3490}.
+    Adams, Jean V., Karen S. Slaght, and Michael A. Boogaard.",
 
 Litchfield, JT Jr. and F Wilcoxon.  1949.
     A simplified method of evaluating dose-effect experiments.
     Journal of Pharmacology and Experimental Therapeutics 96(2):99-113.
     \href{http://jpet.aspetjournals.org/content/96/2/99.abstract}{[link]}.
 }
-

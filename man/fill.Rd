@@ -34,4 +34,3 @@ fill(numvec, newgroup)
 charvec <- c("", letters[1:5], "", "", "", letters[10:12], "")
 fill(charvec)
 }
-
