@@ -1,6 +1,6 @@
 Package: LW1949
 Version: 1.1.0
-Date: 2017-03-18
+Date: 2017-03-20
 Title: An Automated Approach to Evaluating Dose-Effect Experiments Following
     Litchfield and Wilcoxon (1949)
 Authors@R: person(given="Jean V.", family="Adams", email="jvadams@usgs.gov",

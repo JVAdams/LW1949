@@ -14,8 +14,6 @@ WARNINGs:
 
 * no DISPLAY variable so Tk is not available
 
-* Found the following non-portable file path: LW1949/inst/DemoApp/rsconnect/documents/LW1949Interactive.Rmd/shinyapps.io/jvadams/LW1949Interactive.dcf
-
 NOTEs:
 
 * Version contains large components (1.1.0)
