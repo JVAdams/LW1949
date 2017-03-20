@@ -3,4 +3,4 @@
 ^\.travis\.yml$
 ^cran-comments.md$
 ^README\.md$
-^\.dcf$
+inst/DemoApp/rsconnect
