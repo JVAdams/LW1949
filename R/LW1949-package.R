@@ -15,7 +15,7 @@
 #' And use \code{\link{plotDELP}} and \code{\link{plotDE}} to plot the results.
 #'
 #' \emph{U.S. Geological Survey} (USGS) Computer Program \pkg{LW1949} version
-#'   1.1.0
+#'   1.1.0.9000
 #' Written by Jean V. Adams, USGS - Great Lakes Science Center
 #' \href{http://www.glsc.usgs.gov/}{glsc.usgs.gov}, Ann Arbor, Michigan, USA.
 #' Written in programming language R (R Core Team, 2017, www.R-project.org),

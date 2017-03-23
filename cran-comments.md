@@ -13,7 +13,3 @@ There were no ERRORs in any of the environments tested
 WARNINGs:
 
 * no DISPLAY variable so Tk is not available
-
-NOTEs:
-
-* Version contains large components (1.1.0)
